@@ -1,0 +1,28 @@
+threshold: 5000
+oldagerating: 0
+medicalrating: 0
+unemploymentrating: 0.02
+housingfundrating: 0.12
+level:
+- 3000
+- 12000
+- 25000
+- 35000
+- 55000
+- 80000
+rating:
+- 3
+- 10
+- 20
+- 25
+- 30
+- 35
+- 45
+deduction:
+- 0
+- 210
+- 1410
+- 2660
+- 4410
+- 7160
+- 15160

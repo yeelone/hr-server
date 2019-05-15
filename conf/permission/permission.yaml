@@ -1,0 +1,424 @@
+用户:
+  获取用户列表: 
+    resource: LIST_USERS
+    object: /api/v1/user
+    action: GET
+  获取用户信息 : 
+    resource: GET_USER_INFO 
+    object: /api/v1/user/:username
+    action: GET  
+  创建用户:
+    resource: CREATE_USER  
+    object: /api/v1/user
+    action: POST
+  删除用户:  
+    resource: DELETE_USER 
+    object : /api/v1/user/:id
+    action : DELETE
+  更新用户信息: 
+    resource: UPDATE_USER 
+    object : /api/v1/user/:id
+    action : PUT
+  冻结用户:  
+    resource: FREEZE_USER 
+    object : /api/v1/user/freeze
+    action : POST
+  激活用户: 
+    resource: ACTIVE_USER  
+    object : /api/v1/user/active
+    action : POST
+  重置密码:  
+    resource: RESET_PASSWORD
+    object : /api/v1/user/password/reset
+    action : POST
+  修改密码 : 
+    resource: CHANGE_PASSWORD
+    object : /api/v1/user/password/change
+    action : POST
+用户组:
+  列出所有组:
+    resource: LIST_USERGROUPS
+    object : /api/v1/usergroup
+    action : GET
+  创建用户组:
+    resource: CREATE_USER_GROUP
+    object : /api/v1/usergroup
+    action : POST
+  列出用户:
+    resource: LIST_GROUP_USERS
+    object : /api/v1/usergroup/:id/users
+    action : GET
+  添加用户:
+    resource: ADD_GROUP_USERS
+    object : /api/v1/usergroup/:id/users
+    action : POST
+  移除用户:
+    resource: REMOVE_GROUP_USERS
+    object : /api/v1/usergroup/:id/users/remove
+    action : POST
+  更新组:
+    resource: UPDATE_USER_GROUP
+    object : /api/v1/usergroup/:id
+    action : PUT
+  删除组:
+    resource: DELETE_USER_GROUP
+    object : /api/v1/usergroup/:id
+    action : DELETE
+角色:
+  列出角色:
+    resource: LIST_ROLES
+    object : /api/v1/role
+    action : GET
+  列出角色关联用户:
+    resource: LIST_ROLE_USERS
+    object : /api/v1/role/:id/users
+    action : GET
+  创建角色 :
+    resource: CREATE_ROLE
+    object :  /api/v1/role
+    action : POST
+  添加用户:
+    resource: ADD_ROLE_USERS
+    object :  /api/v1/role/:id/users
+    action : POST
+  移除用户:
+    resource: REMOIVE_ROLE_USERS
+    object : /api/v1/role/:id/users/remove
+    action : POST
+  更新角色 :
+    resource: UPDATE_ROLE
+    object : /api/v1/role/:id
+    action : PUT
+  删除角色: 
+    resource: DELETE_ROLE
+    object : /api/v1/role/:id
+    action : DELETE
+用户档案 :
+  查询档案:
+    resource: LIST_PROFILES
+    object : /api/v1/profile
+    action : GET
+  查询指定档案:
+    resource: GET_PROFILE_INFO
+    object : /api/v1/profile/:id
+    action : GET
+  创建档案:
+    resource: CREATE_PROFILE
+    object : /api/v1/profile
+    action : POST
+  调动:
+    resource: MOVE_PROFILE_TO_GROUP
+    object : /api/v1/profile/transfer
+    action : POST
+  调动记录:
+    resource: TRANSFER_RECORD
+    object: /api/v1/profile/:id/transfer
+    action: GET
+  删除档案:
+    resource: DELETE_PROFILE
+    object : /api/v1/profile/delete
+    action : POST
+  冻结:
+    resource: FREEZE_PROFILE
+    object : /api/v1/:id/freeze
+    action : GET
+  解冻:
+    resource: UNFREEZE_PROFILE
+    object: /api/v1/:id/unfreeze
+    action: GET
+  更新档案:
+    resource: UPDATE_PROFILE
+    object : /api/v1/profile/:id
+    action : PUT
+  更新档案系数关联关系:
+    resource: ADD_PROFILE_TAGS
+    object: /api/v1/profile/:id/tags
+    action: PUT
+  列出档案关联系数:
+    resource: LIST_PROFILE_TAGS
+    object: /api/v1/profile/:id/tags
+    action: GET
+  列出档案关联组织关系:
+    resource: LIST_PROFILE_GroupS
+    object: /api/v1/profile/:id/groups
+    action: GET
+分类组:
+  查询组:
+    resource: GET_GROUP
+    object: /api/v1/group/:id
+    action: GET
+  查询组列表:
+    resource: LIST_GROUP
+    object : /api/v1/group
+    action : GET
+  查询组关联档案:
+    resource: LIST_GROUP_PROFILES
+    object : /api/v1/group/:id/profiles
+    action : GET
+  锁定组:
+    resource: LOCK_GROUP
+    object : /api/v1/group/:id/lock
+    action : GET
+  解锁组:
+    resource: UNLOCK_GROUP
+    object : /api/v1/group/:id/unlock
+    action : GET
+  启用组:
+    resource: VALID_GROUP
+    object : /api/v1/group/:id/valid
+    action : GET
+  作废组:
+    resource: INVALID_GROUP
+    object : /api/v1/group/:id/invalid
+    action : GET
+  关联档案:
+    resource: ADD_GROUP_PROFILES
+    object : /api/v1/group/:id/profiles
+    action : POST
+  移除档案:
+    resource: REMOVE_GROUP_PROFILES
+    object : /api/v1/group/:id/profiles/remove
+    action : POST
+  创建组:
+    resource: CREATE_GROUP
+    object : /api/v1/group
+    action : POST
+  更新组:
+    resource: UPDATE_GROUP
+    object : /api/v1/group/:id
+    action : PUT
+  移动组:
+    resource: MOVE_GROUP
+    object : /api/v1/group/:id/move
+    action : PUT
+  删除组:
+    resource: DELETE_GROUP
+    object : /api/v1/group/:id
+    action : DELETE
+  群组关联系数标签:
+    resource: RELATE_GROUP
+    object: /api/v1/group/:id/tags
+    action: PUT
+系数标签:
+  查询子标签列表:
+    resource: GET_CHILD_TAG
+    object: /api/v1/tag/:id/child
+    action: GET
+  查询标签列表:
+    resource: LIST_TAGS
+    object : /api/v1/tag
+    action : GET
+  查询关联档案:
+    resource: LIST_TAG_PROFILES
+    object : /api/v1/tag/:id/profiles
+    action : GET
+  关联档案:
+    resource: ADD_TAG_PROFILES
+    object : /api/v1/tag/:id/profiles
+    action : POST
+  创建标签:
+    resource: CREATE_TAG
+    object: /api/v1/tag
+    action: POST
+  移除档案:
+    resource: REMOVE_TAG_PROFILES
+    object : /api/v1/tag/:id/profiles/remove
+    action : POST
+  更新标签:
+    resource: UPDATE_TAG
+    object : /api/v1/tag/:id
+    action : PUT
+  删除标签:
+    resource: DELETE_TAG
+    object : /api/v1/tag/:id
+    action : DELETE
+导入:
+  批量导入档案:
+    resource: IMPORT_PROFILE
+    object : /api/v1/import/profile
+    action : POST
+  导入工资条目:
+    resource: IMPORT_SALARY
+    object : /api/v1/import/salary
+    action : POST
+  导入系数表:
+    resource: IMPORT_TAG
+    object: /api/v1/import/tag
+    action: POST
+  导入组织关系:
+    resource: IMPORT_GROUP
+    object: /api/v1/import/group
+    action: POST
+  导入组织与系数标签关系:
+    resource: IMPORT_GROUP_TAGS
+    object: /api/v1/import/group/tags
+    action: POST
+工资核算:
+  核算:
+    resource: CALCULATE_SALARY
+    object : /api/v1/salary/calculate
+    action : POST
+  工资模板配置:
+    resource: SET_TEMPLATE
+    object : /api/v1/salary/template/config
+    action : POST
+  设置个税:
+    resource: SET_TAX
+    object : /api/v1/salary/tax/config
+    action : GET
+  查询个人所得税预扣率:
+    resource: GET_TAX
+    object : /api/v1/salary/pre_deduction_rate/config
+    action : GET
+  设置个人所得税预扣率:
+    resource: SET_TAX
+    object: /api/v1/salary/pre_deduction_rate/config
+    action: POST
+  查询个税:
+    resource: GET_TAX
+    object: /api/v1/salary/tax/config
+    action: GET
+  设置基本工资:
+    resource: SET_BASE_SALARY
+    object : /api/v1/salary/base/config
+    action : POST
+  查询基本工资:
+    resource: QUERY_BASE_SALARY
+    object : /api/v1/salary/base
+    action : GET
+  查询员工工资:
+    resource: QUERY_PROFILE_SALARY
+    object: /api/v1/salary/year/:year/month/:month/profile/:id
+    action: GET
+  导入工资条目:
+    resource: IMPORT_SALARY_FIELDS
+    object : /api/v1/salary/upload
+    action : POST
+  导出工资表:
+    resource: EXPORT_SALARY
+    object : /api/v1/salary/export
+    action : GET
+模板:
+  查询所有模板:
+    resource: GET_TEMPLATES
+    object : /api/v1/salary/template 
+    action : GET
+  查询指定模板:
+    resource: GET_TEMPLATE
+    object : /api/v1/salary/template/:id
+    action : GET
+  删除模板:
+    resource: DELETE_TEMPLATE
+    object : /api/v1/salary/template/:id
+    action : DELETE
+  更新模板顺序:
+    resource: UPDATE_TEMPLATE_ORDER
+    object: /api/v1/salary/template/order
+    action: POST
+账套:
+  查询账套:
+    resource: GET_ACCOUNTS
+    object : /api/v1/salary/account
+    action : GET 
+  查询指定账套:
+    resource: GET_ACCOUNT
+    object : /api/v1/salary/account/:id
+    action : GET
+  查询指定账套模板:
+    resource: GET_ACCOUNT_TEMPLATE
+    object: /api/v1/salary/account/:id/template
+    action: GET
+  查询账套关联所有字段:
+    resource: GET_ACCOUNT_ALL_FIELDS
+    object: /api/v1/salary/account/:id/year/:year/fields
+    action: GET
+  查询账套模板:
+    resource: GET_ACCOUNT_TEMPLATES
+    object : /api/v1/templateaccount/:id/templates
+    action : GET
+  创建账套:
+    resource: CREATE_ACCOUNT
+    object : /api/v1/salary/account
+    action : POST
+  更新账套:
+    resource: UPDATE_ACCOUNT
+    object : /api/v1/salary/account/:id
+    action : POST
+  删除账套:
+    resource: DELETE_ACCOUNT
+    object : /api/v1/salary/account/:id
+    action : DELETE
+系统功能:
+  工资核算辅助函数:
+    resource: GET_BUILDIN_FUNC
+    default : allow 
+    object : /api/v1/tool/func
+    action : GET
+服务器基本信息:
+  查询服务器健康状况:
+    resource: SERVER_HEALTH
+    default : allow 
+    object : /api/sd/health
+    action : GET
+  查询服务器磁盘:
+    resource: SERVER_DISK
+    default : allow 
+    object : /api/sd/disk
+    action : GET
+  查询服务器CPU:
+    resource: SERVER_CPU
+    default : allow 
+    object : /api/sd/cpu
+    action : GET
+  查询服务器内存:
+    resource: SERVER_RAM
+    default : allow 
+    object : /api/sd/ram
+    action : GET
+权限:
+  查询权限列表: 
+    resource: PERMISSION_LIST
+    object: /api/v1/permission/role/:id
+    action: GET
+  添加权限:
+    resource: ADD_PERMISSIONS
+    object: /api/v1/permission
+    action: POST
+审核:
+  任务:
+    resource: LIST_AUDIT
+    object: /api/v1/audit
+    action: GET
+  审核:
+    resource: UPDATE_AUDIT
+    object: /api/v1/audit/:id
+    action: POST
+统计:
+  员工年度收入:
+    resource: EMPLOYEE_ANNUAL_INCOME
+    object: /api/v1/statistics/annual_income/employee
+    action: GET
+  部门年度收入:
+    resource: DEPARTMENT_ANNUAL_INCOME
+    object: /api/v1/statistics/annual_income/department
+    action: GET
+  定制查询:
+    resource: QUERY_DETAIL
+    object: /api/v1/statistics/query/detail
+    action: POST
+  查询部门收入情况:
+    resource: QUERY_DEPARTMENT_INCOME
+    object: /api/v1/statistics/query/department/income
+    action: POST
+  查询档案变动记录:
+    resource: RECORD_LIST
+    object: /api/v1/record/list
+    action: GET
+  查询员工调动记录:
+    resource: RECORD_TRANSFER
+    object: /api/v1/record/transfer
+    action: GET
+
+
+
+

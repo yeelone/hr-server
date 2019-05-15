@@ -1,0 +1,3 @@
+p, 查询岗, /api/v1/salary/year/:year/month/:month/profile/:id, GET
+p, 查询岗, /api/v1/group, GET
+p, 查询岗, /api/v1/user/password/reset, POST

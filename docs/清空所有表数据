@@ -1,0 +1,6 @@
+SELECT 'TRUNCATE TABLE '
+       || string_agg(quote_ident(schemaname) || '.' || quote_ident(tablename), ', ')
+       || ' CASCADE'
+   FROM   pg_tables
+   WHERE  tableowner = 'elone'
+   AND    schemaname = 'public';

@@ -1,0 +1,87 @@
+p, 操作岗, /v1/user, GET
+p, 操作岗, /v1/user/*, GET
+p, 操作岗, /v1/user, POST
+p, 操作岗, /v1/user/*, (DELETE)|(PUT)
+p, 操作岗, /v1/user/freeze, POST
+p, 操作岗, /v1/user/active, POST
+p, 操作岗, /v1/user/password/reset, POST
+p, 操作岗, /v1/user/password/change, POST
+
+p, 操作岗, /v1/usergroup, GET
+p, 操作岗, /v1/usergroup/*/users, GET
+p, 操作岗, /v1/usergroup, POST
+p, 操作岗, /v1/usergroup/*/users, POST
+p, 操作岗, /v1/usergroup/*/users/remove, POST
+p, 操作岗, /v1/usergroup/*, PUT
+p, 操作岗, /v1/usergroup/*, DELETE
+
+p, 操作岗, /v1/role, GET
+p, 操作岗, /v1/role/*/users, GET
+p, 操作岗, /v1/role, POST
+p, 操作岗, /v1/role/*/users, POST
+p, 操作岗, /v1/role/*/users/remove, POST
+p, 操作岗, /v1/role/*, PUT
+p, 操作岗, /v1/role/*, DELETE
+
+p, 操作岗, /v1/profile, GET
+p, 操作岗, /v1/profile/*, GET
+p, 操作岗, /v1/profile, POST
+p, 操作岗, /v1/profile/*/transfer, POST
+p, 操作岗, /v1/profile/*, DELETE
+p, 操作岗, /v1/profile/*, PUT
+
+p, 操作岗, /v1/import/profile, POST
+p, 操作岗, /v1/import/salary, POST
+
+p, 操作岗, /v1/group, GET
+p, 操作岗, /v1/group/*/users, GET
+p, 操作岗, /v1/group/*/profiles, GET
+p, 操作岗, /v1/group/*/lock, GET
+p, 操作岗, /v1/group/*/unlock, GET
+p, 操作岗, /v1/group/*/invalid, GET
+p, 操作岗, /v1/group/*/valid, GET
+p, 操作岗, /v1/group/*/valid, POST
+p, 操作岗, /v1/group/*/profiles, POST
+p, 操作岗, /v1/group/*/profiles/remove, POST
+p, 操作岗, /v1/group/*, PUT
+p, 操作岗, /v1/group/*/move, PUT
+p, 操作岗, /v1/group/*, DELETE
+
+p, 操作岗, /v1/tag, GET
+p, 操作岗, /v1/tag/*/users, GET
+p, 操作岗, /v1/tag/*/profiles, GET
+p, 操作岗, /v1/tag, POST
+p, 操作岗, /v1/tag/*, PUT
+p, 操作岗, /v1/tag/*/profiles, POST
+p, 操作岗, /v1/tag/*/profiles/remove, POST
+p, 操作岗, /v1/tag/*, DELETE
+
+p, 操作岗, /v1/salary/calculate, POST
+p, 操作岗, /v1/salary/template/config, POST
+p, 操作岗, /v1/salary/tax/config, GET
+p, 操作岗, /v1/salary/tax/config, POST
+p, 操作岗, /v1/salary/base/config, POST
+p, 操作岗, /v1/salary/base, GET
+p, 操作岗, /v1/salary/upload, POST
+p, 操作岗, /v1/salary/template, GET
+p, 操作岗, /v1/salary/template/*, GET
+p, 操作岗, /v1/salary/template/*, DELETE
+p, 操作岗, /v1/salary/account, GET
+p, 操作岗, /v1/salary/account/*, GET
+p, 操作岗, /v1/salary/account/*, POST
+p, 操作岗, /v1/salary/account/*, DELETE
+p, 操作岗, /v1/salary/export, GET
+
+p, 操作岗, /v1/templateaccount/*/templates, GET
+
+p, 操作岗, /v1/tool/func, GET
+
+
+
+
+
+
+
+
+
+

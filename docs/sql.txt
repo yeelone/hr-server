@@ -1,0 +1,44 @@
+
+https://dba.stackexchange.com/questions/127689/how-to-get-particular-object-from-jsonb-array-in-postgresql
+
+数据格式如下：
+ [ {"id": 1, "name": "江奕龙", "post": 4, "wage": 810.7038, "工龄": 5, "base_wage": 810.2938, "education": 12, "job_number": "18312312899", "独生子女": 10, "on_board_date": "2014-07-01"}, {"id": 2, "name": "", "post": 4, "wage": 810.6538, "工龄": -1, "base_wage": 810.2938, "education": 12, "job_number": "", "独生子女": 10, "on_board_date": ""}, {"id": 3, "name": "", "post": 4, "wage": 810.6538, "工龄": -1, "base_wage": 810.2938, "education": 12, "job_number": "", "on_board_date": ""}, {"id": 4, "name": "江奕龙", "post": 4, "wage": 810.7038, "工龄": 5, "base_wage": 810.2938, "education": 12, "job_number": "18312312899", "独生子女": 10, "on_board_date": "2014-07-01"}, {"id": 5, "name": "江奕龙", "post": 4, "wage": 810.7038, "工龄": 5, "base_wage": 810.2938, "education": 12, "job_number": "18312312899", "独生子女": 10, "on_board_date": "2014-07-01"}
+
+找出符合条件的一项
+db_gdrc_hr=> select id,template, obj.value->>'id',obj.value->>'工龄',obj.value->>'base_wage' as base_wage from tb_wage t join lateral jsonb_array_elements(t.data) obj(value) on obj.value->>'id' = '1' where data @> '[{"id":1}]';
+
+
+
+jsonb 操作
+查询 ：
+
+db_gdrc_hr=> select wage from tb_wage cross join jsonb_array_elements(data)  wage ;
+              wage
+---------------------------------
+ {"id": 1, "分摊金额": 10000.00}
+ {"id": 2, "分摊金额": 1900.00}
+(2 行记录)
+
+db_gdrc_hr=> select wage from tb_wage cross join jsonb_array_elements(data)  wage where (wage->>'id')='1';
+              wage
+---------------------------------
+ {"id": 1, "分摊金额": 10000.00}
+(1 行记录)
+
+增加：
+ update tb_wage set data = data || '{"id": 3, "分摊金额": 10001.00}'
+ db_gdrc_hr=> select * from tb_wage;
+ id |  template   |                                                data       
+----+-----------+-----------+-----------+------+-------+-------------+--------------+--------------+----------------------------------------------------------------------------------------------------
+  1 |  智能分摊模板 | [{"id": 1, "分摊金额": 10000.00}, {"id": 2, "分摊金额": 1900.00}, {"id": 3, "分摊金额": 10001.00}]
+(1 行记录)
+
+插入：
+db_gdrc_hr=> insert into tb_wage(id,template,year,month,data) values(33,'基础模板','2018','8','[{"id":1,"全年总收入":29100.00},{"id":2,"全年总收入":190000.00}]');
+
+
+更新：
+更新哪个需要知道数组位置
+update tb_wage  set data = jsonb_set(data,'{0,"分摊金额"}','10003.00');
+//加入一个新的字段 
+ update tb_wage  set data = jsonb_set(data,'{0,"1月"}','1000.00');
