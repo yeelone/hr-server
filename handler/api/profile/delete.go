@@ -1,10 +1,11 @@
 package profile
 
 import (
-	h "hrgdrc/handler"
-	"hrgdrc/model"
-	"hrgdrc/pkg/errno"
-	"hrgdrc/util"
+	"fmt"
+	h "hr-server/handler"
+	"hr-server/model"
+	"hr-server/pkg/errno"
+	"hr-server/util"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
@@ -13,7 +14,7 @@ import (
 //此API废除
 func Delete(c *gin.Context) {
 	profileID, _ := strconv.Atoi(c.Param("id"))
-	profile,err  := model.GetProfile(uint64(profileID))
+	profile, err := model.GetProfile(uint64(profileID))
 	if err != nil {
 		h.SendResponse(c, nil, nil)
 		return
@@ -44,6 +45,6 @@ func Delete(c *gin.Context) {
 		h.SendResponse(c, errno.ErrDatabase, nil)
 		return
 	}
-
+	model.CreateOperateRecord(c, fmt.Sprintf("删除员工信息, 员工信息： %s", profile.Name))
 	h.SendResponse(c, nil, nil)
 }

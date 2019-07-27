@@ -2,10 +2,10 @@ package salary
 
 import (
 	"fmt"
-	h "hrgdrc/handler"
-	"hrgdrc/model"
-	"hrgdrc/pkg/errno"
-	"hrgdrc/util"
+	h "hr-server/handler"
+	"hr-server/model"
+	"hr-server/pkg/errno"
+	"hr-server/util"
 	"strconv"
 	"time"
 
@@ -18,12 +18,12 @@ func DeleteTemplate(c *gin.Context) {
 	t, err := model.GetTemplate(uint64(id))
 
 	if err != nil {
-		h.SendResponse(c, errno.ErrDatabase,  err.Error())
+		h.SendResponse(c, errno.ErrDatabase, err.Error())
 		return
 	}
 
 	if err := model.DeleteTemplate(t.ID); err != nil {
-		h.SendResponse(c, errno.ErrDatabase,  err.Error())
+		h.SendResponse(c, errno.ErrDatabase, err.Error())
 		return
 	}
 
@@ -34,7 +34,7 @@ func DeleteTemplate(c *gin.Context) {
 			fmt.Println("cannot delete file " + t.Name + err.Error())
 		}
 	}
-
+	model.CreateOperateRecord(c, fmt.Sprintf("删除模板,模板名: %s", t.Name))
 	h.SendResponse(c, nil, nil)
 
 }

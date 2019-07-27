@@ -3,9 +3,9 @@ package middleware
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/lexkong/log"
-	"hrgdrc/handler"
-	"hrgdrc/pkg/errno"
-	"hrgdrc/pkg/token"
+	"hr-server/handler"
+	"hr-server/pkg/errno"
+	"hr-server/pkg/token"
 )
 
 func AuthMiddleware() gin.HandlerFunc {

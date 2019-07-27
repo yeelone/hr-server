@@ -1,10 +1,10 @@
 package templateaccount
 
 import (
-	h "hrgdrc/handler"
-	"hrgdrc/model"
-	"hrgdrc/pkg/errno"
-	"hrgdrc/pkg/template"
+	h "hr-server/handler"
+	"hr-server/model"
+	"hr-server/pkg/errno"
+	"hr-server/pkg/template"
 	"strconv"
 
 	"github.com/gin-gonic/gin"

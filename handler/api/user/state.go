@@ -2,10 +2,10 @@ package user
 
 import (
 	"fmt"
-	h "hrgdrc/handler"
-	"hrgdrc/model"
-	"hrgdrc/pkg/errno"
-	"hrgdrc/util"
+	h "hr-server/handler"
+	"hr-server/model"
+	"hr-server/pkg/errno"
+	"hr-server/util"
 
 	"github.com/gin-gonic/gin"
 	"github.com/lexkong/log"
@@ -24,7 +24,7 @@ func Freeze(c *gin.Context) {
 		h.SendResponse(c, errno.ErrDatabase, err.Error())
 		return
 	}
-
+	model.CreateOperateRecord(c, fmt.Sprintf("冻结用户, 用户列表: [ %s ]", util.ArrayToString(r.Users, ",")))
 	h.SendResponse(c, nil, nil)
 }
 
@@ -41,6 +41,6 @@ func Active(c *gin.Context) {
 		h.SendResponse(c, errno.ErrDatabase, err.Error())
 		return
 	}
-
+	model.CreateOperateRecord(c, fmt.Sprintf("激活用户, 用户列表: [ %s ]", util.ArrayToString(r.Users, ",")))
 	h.SendResponse(c, nil, nil)
 }

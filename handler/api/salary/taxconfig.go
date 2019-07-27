@@ -2,10 +2,10 @@ package salary
 
 import (
 	"fmt"
-	h "hrgdrc/handler"
-	"hrgdrc/model"
-	"hrgdrc/pkg/errno"
-	"hrgdrc/util"
+	h "hr-server/handler"
+	"hr-server/model"
+	"hr-server/pkg/errno"
+	"hr-server/util"
 	"io/ioutil"
 	"os"
 	"time"
@@ -49,7 +49,7 @@ func TaxSetting(c *gin.Context) {
 	}
 	record := model.Record{}
 	record.Body = "个税起征点有发生变更,请仔细检查！"
-	if err := record.Create() ; err != nil {
+	if err := record.Create(); err != nil {
 
 	}
 	h.SendResponse(c, nil, nil)

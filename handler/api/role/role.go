@@ -1,14 +1,14 @@
 package role
 
 import (
-	"hrgdrc/model"
+	"hr-server/model"
 )
 
 type CreateRequest struct {
-	ID    uint64   `json:"id"`
-	Name  string   `json:"name"`
-	Users []uint64 `json:"user_id_list"`
-	Remark string `json:"remark"`
+	ID     uint64   `json:"id"`
+	Name   string   `json:"name"`
+	Users  []uint64 `json:"user_id_list"`
+	Remark string   `json:"remark"`
 }
 
 type CreateResponse struct {

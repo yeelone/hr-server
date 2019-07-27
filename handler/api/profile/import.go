@@ -2,10 +2,10 @@ package profile
 
 import (
 	"fmt"
-	h "hrgdrc/handler"
-	"hrgdrc/model"
-	"hrgdrc/pkg/errno"
-	"hrgdrc/util"
+	h "hr-server/handler"
+	"hr-server/model"
+	"hr-server/pkg/errno"
+	"hr-server/util"
 	"strings"
 	"time"
 
@@ -37,16 +37,14 @@ func Import(c *gin.Context) {
 		return
 	}
 
-	// fields, err := handleUploadedExcel(newFilename)
-
 	if f, err := model.ImportProfileFromExcel(newFilename); err != nil {
 		fmt.Println("err", err.Error())
-		h.SendResponse(c, errno.ErrImport, CreateResponse{File: f, Error:err.Error()})
+		h.SendResponse(c, errno.ErrImport, CreateResponse{File: f, Error: err.Error()})
 		return
 	}
 
 	rsp := CreateResponse{}
-
+	model.CreateOperateRecord(c, fmt.Sprintf("导入员工, 文件：[ %s ]", newFilename))
 	// Show the user information.
 	h.SendResponse(c, nil, rsp)
 }

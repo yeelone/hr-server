@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"strconv"
 
-	h "hrgdrc/handler"
-	"hrgdrc/model"
-	"hrgdrc/pkg/errno"
-	"hrgdrc/util"
+	h "hr-server/handler"
+	"hr-server/model"
+	"hr-server/pkg/errno"
+	"hr-server/util"
 
 	"github.com/gin-gonic/gin"
 	"github.com/lexkong/log"
@@ -44,5 +44,6 @@ func UpdateState(c *gin.Context) {
 		return
 	}
 
+	model.CreateOperateRecord(c, fmt.Sprintf("更新审核,ID :  %s ", audit.ID))
 	h.SendResponse(c, nil, nil)
 }

@@ -1,10 +1,10 @@
 package group
 
 import (
-	h "hrgdrc/handler"
-	"hrgdrc/model"
-	"hrgdrc/pkg/errno"
-	"hrgdrc/util"
+	h "hr-server/handler"
+	"hr-server/model"
+	"hr-server/pkg/errno"
+	"hr-server/util"
 	"os"
 	"strconv"
 	"strings"
@@ -25,12 +25,12 @@ func Get(c *gin.Context) {
 	//获取组时,同时解析群与标签的规则关系
 	//todo : 是否需要拆开成独立的API
 	rules, _ := getRulesFromCSV(group)
-	h.SendResponse(c, nil, CreateResponse{Group: group,Rules:rules})
+	h.SendResponse(c, nil, CreateResponse{Group: group, Rules: rules})
 }
 
-func getRulesFromCSV(group *model.Group) (rules []string , err error) {
-	parent,_ := model.GetGroup(group.Parent, false)
-	name :=  parent.Name + "." + group.Name
+func getRulesFromCSV(group *model.Group) (rules []string, err error) {
+	parent, _ := model.GetGroup(group.Parent, false)
+	name := parent.Name + "." + group.Name
 	filename := "conf/group_tag_rule.csv"
 	var f *os.File
 	if !util.Exists(filename) {

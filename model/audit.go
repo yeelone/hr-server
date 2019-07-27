@@ -7,8 +7,8 @@ import (
 	"github.com/lexkong/log"
 	"github.com/lexkong/log/lager"
 	"github.com/lib/pq"
-	"hrgdrc/pkg/constvar"
-	"hrgdrc/util"
+	"hr-server/pkg/constvar"
+	"hr-server/util"
 	"os"
 	"strconv"
 	"strings"
@@ -211,8 +211,16 @@ func handleProfile(a *Audit, state int) error {
 			//获取所有标签的信息, 主要是为了建立标签ID 与 Name 的映射表
 			topTags, _, err := GetAllTags(0, 10000, "parent", "0")
 			topTagMap := make(map[uint64]string)
+
+			parentTagMap := make(map[uint64]Tag) // 记录所有父标签
+
 			for _, tag := range topTags {
 				topTagMap[tag.ID] = tag.Name
+
+				if tag.Parent == 0 {
+					parentTagMap[tag.ID] = *tag
+				}
+
 			}
 
 			rules, _ := getRulesFromCSV(newGroup)
@@ -231,6 +239,33 @@ func handleProfile(a *Audit, state int) error {
 			profileTags, _ := GetProfileWithTags(profile.ID)
 
 			for _, ptag := range profileTags.Tags {
+				associatedGroupIds := make([]int64, 0)
+
+				if ptag.Parent != 0 {
+					associatedGroupIds = parentTagMap[ptag.Parent].CommensalismGroupIds
+				}
+
+				fmt.Println("ptag", util.PrettyJson(ptag))
+				fmt.Println("associatedGroupIds", associatedGroupIds)
+
+				//标签共生组的情况下，如果目标组有该标签，则为用户加上该标签，如果没有该标签，则将该标签删除，类似共生体
+				for _, gid := range associatedGroupIds {
+					fmt.Println("uint64(gid) == newGroup.Parent", uint64(gid), newGroup.Parent)
+					if uint64(gid) == newGroup.Parent { //如果标签有关联到这个组
+						hasTag := false
+						//看看这个组是不是有关联该标签
+						for _, gtag := range newGroup.Tags {
+							if ptag.Parent == gtag.Parent {
+								hasTag = true
+							}
+						}
+
+						if !hasTag {
+							deleteIDList = append(deleteIDList, ptag.ID)
+						}
+					}
+				}
+
 				for _, gtag := range newGroup.Tags {
 					if ptag.Parent == gtag.Parent { // 同属于车改补贴这个大标签类，
 						deleteIDList = append(deleteIDList, ptag.ID)

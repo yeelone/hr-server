@@ -1,6 +1,6 @@
 package grouptransfer
 
-import "hrgdrc/model"
+import "hr-server/model"
 
 type CreateRequest struct {
 	UserID      uint64 `json:"user_id"`

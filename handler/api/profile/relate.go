@@ -5,10 +5,10 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/lexkong/log"
 	"github.com/lexkong/log/lager"
-	h "hrgdrc/handler"
-	"hrgdrc/model"
-	"hrgdrc/pkg/errno"
-	"hrgdrc/util"
+	h "hr-server/handler"
+	"hr-server/model"
+	"hr-server/pkg/errno"
+	"hr-server/util"
 )
 
 var tempProfile = model.Profile{}
@@ -43,6 +43,7 @@ func RelateTags(c *gin.Context) {
 	if err := record.Create(); err != nil {
 		fmt.Println(err)
 	}
+	model.CreateOperateRecord(c, fmt.Sprintf("员工关联标签, 员工信息：[ %s ]", tempProfile.Name))
 
 	h.SendResponse(c, nil, nil)
 }

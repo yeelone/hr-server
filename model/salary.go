@@ -5,7 +5,7 @@ import (
 	"github.com/jinzhu/gorm/dialects/postgres"
 	"github.com/lexkong/log"
 	"github.com/lexkong/log/lager"
-	"hrgdrc/util"
+	"hr-server/util"
 	"strings"
 	"time"
 )

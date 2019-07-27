@@ -2,10 +2,10 @@ package user
 
 import (
 	"fmt"
-	h "hrgdrc/handler"
-	"hrgdrc/model"
-	"hrgdrc/pkg/errno"
-	"hrgdrc/util"
+	h "hr-server/handler"
+	"hr-server/model"
+	"hr-server/pkg/errno"
+	"hr-server/util"
 
 	"github.com/gin-gonic/gin"
 	"github.com/lexkong/log"
@@ -24,7 +24,6 @@ func Create(c *gin.Context) {
 	log.Info("User Create function called.", lager.Data{"X-Request-Id": util.GetReqID(c)})
 	var r CreateRequest
 	if err := c.Bind(&r); err != nil {
-
 		h.SendResponse(c, errno.ErrBind, err.Error())
 		return
 	}
@@ -34,7 +33,7 @@ func Create(c *gin.Context) {
 		IsSuper:  r.IsSuper,
 		Picture:  r.Picture,
 		Username: r.Username,
-		IDCard: r.IDCard,
+		IDCard:   r.IDCard,
 		Nickname: r.Nickname,
 		Password: r.Password,
 	}
@@ -52,11 +51,11 @@ func Create(c *gin.Context) {
 	}
 	// Insert the user to the database.
 	if err := u.Create(); err != nil {
-		fmt.Println(err)
 		h.SendResponse(c, errno.ErrDatabase, err.Error())
 		return
 	}
 
+	model.CreateOperateRecord(c, fmt.Sprintf("创建用户:  %s ", u.Username))
 	if r.Group > 0 {
 		if err := model.AddUserGroupUsers(r.Group, []uint64{u.ID}); err != nil {
 			h.SendResponse(c, errno.ErrDatabase, err.Error())

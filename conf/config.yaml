@@ -1,7 +1,8 @@
+version: 1.0.1
 runmode: debug                 # 开发模式, debug, release, test
 addr: :8080                 # HTTP绑定端口
 name: gdrc_hr              # API Server的名字
-url: http://0.0.0.0:8080   # pingServer函数请求的API服务器的ip:port
+url: http://127.0.0.1:8080   # pingServer函数请求的API服务器的ip:port
 max_ping_count: 10           # pingServer函数try的次数
 jwt_secret: Rtg8BPKNEf2mB4mgvKONGPZZQSaJWNLijxR42qRgq0iBb5
 default_password : '000000'
@@ -21,19 +22,20 @@ log:
   log_rotate_size: 1
   log_backup_count: 7
 db:
-  name: db_gdrc_hr
+  name: db_hr
   addr: 127.0.0.1
   port: 5432
-  username: elone
+  username: dbuser
   password: 123456
 docker_db:
-  name: db_gdrc_hr
+  name: db_hr
   addr: 127.0.0.1
   port: 5432
-  username: elone
+  username: dbuser
   password: 123456
 admin:
   email: 'admin@admin.com'
   username: 'admin'
   password: '123456'
+  role: '超级管理员'
 

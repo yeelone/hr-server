@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"sync"
 
-	"hrgdrc/model"
-	"hrgdrc/util"
+	"hr-server/model"
+	"hr-server/util"
 )
 
 func ListUser(username string, offset, limit int) ([]*model.UserInfo, uint64, error) {

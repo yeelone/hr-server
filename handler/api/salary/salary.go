@@ -1,8 +1,8 @@
 package salary
 
 import (
-	"hrgdrc/model"
-	"hrgdrc/pkg/template"
+	"hr-server/model"
+	"hr-server/pkg/template"
 )
 
 type CreateRequest struct {
@@ -22,7 +22,20 @@ type CreateRequest struct {
 	Body                map[string]template.Field `json:"body"` //模板配置内容,从客户端发送的json格式，在服务器端要转化为yaml并保存到template文件夹中
 	Remark              string                    `json:"remark"`
 }
+type CreateProfileConfigCreateRequest struct {
+	ProfileID       uint64  `json:"profile_id"`
+	TemplateFieldID string  `json:"template_field_id"`
+	Operate         string  `json:"operate"`
+	Value           float64 `json:"value"`
+	Description     string  `json:"description"`
+}
 
+type SalaryProfileConfigResponse struct {
+	ConfigList []model.SalaryProfileConfig `json:"config_list"`
+}
+type DeleteRequest struct {
+	ID uint64 `json:"id"`
+}
 type ProfileSalaryRequest struct {
 	ProfileID uint64 `json:"profile_id"`
 	Year      string `json:"year"`

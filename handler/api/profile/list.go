@@ -1,9 +1,9 @@
 package profile
 
 import (
-	h "hrgdrc/handler"
-	"hrgdrc/model"
-	"hrgdrc/pkg/errno"
+	h "hr-server/handler"
+	"hr-server/model"
+	"hr-server/pkg/errno"
 
 	"github.com/gin-gonic/gin"
 	"github.com/lexkong/log"
@@ -16,7 +16,7 @@ func List(c *gin.Context) {
 		h.SendResponse(c, errno.ErrBind, nil)
 		return
 	}
-	infos, count, err := model.ListProfile(r.Key, r.Value, r.Offset, r.Limit, r.Freezed )
+	infos, count, err := model.ListProfile(r.Key, r.Value, r.Offset, r.Limit, r.Freezed)
 	if err != nil {
 		h.SendResponse(c, err, nil)
 		return

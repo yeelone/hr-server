@@ -1,9 +1,9 @@
 package profile
 
 import (
-	h "hrgdrc/handler"
-	"hrgdrc/model"
-	"hrgdrc/pkg/errno"
+	h "hr-server/handler"
+	"hr-server/model"
+	"hr-server/pkg/errno"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
@@ -17,5 +17,5 @@ func Get(c *gin.Context) {
 		h.SendResponse(c, errno.ErrUserNotFound, err.Error())
 		return
 	}
-	h.SendResponse(c, nil, CreateResponse{Profile:profile})
+	h.SendResponse(c, nil, CreateResponse{Profile: profile})
 }

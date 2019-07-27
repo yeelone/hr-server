@@ -1,0 +1,9 @@
+二：配置  postgresql
+#sudo adduser postgres
+  password: dbuser123456
+#sudo su - postgres
+=# psql
+  Enter new password: db123456
+psql#   CREATE USER dbuser WITH PASSWORD 123456//创建数据库用户dbuser
+psql#   CREATE DATABASE db_gdrc_hr OWNER dbuser;
+psql#   GRANT ALL PRIVILEGES ON DATABASE db_gdrc_hr to dbuser;

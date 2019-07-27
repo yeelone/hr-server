@@ -1,10 +1,11 @@
 package role
 
 import (
-	h "hrgdrc/handler"
-	"hrgdrc/model"
-	"hrgdrc/pkg/errno"
-	"hrgdrc/util"
+	"fmt"
+	h "hr-server/handler"
+	"hr-server/model"
+	"hr-server/pkg/errno"
+	"hr-server/util"
 
 	"github.com/gin-gonic/gin"
 	"github.com/lexkong/log"
@@ -29,6 +30,7 @@ func Create(c *gin.Context) {
 		h.SendResponse(c, errno.ErrDatabase, nil)
 		return
 	}
+	model.CreateOperateRecord(c, fmt.Sprintf("新建Role, Role：%s", r.Name))
 
 	rsp := CreateResponse{
 		Role: &m,

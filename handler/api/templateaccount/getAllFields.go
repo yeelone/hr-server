@@ -1,13 +1,14 @@
 package templateaccount
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/lexkong/log"
 	"github.com/lexkong/log/lager"
-	h "hrgdrc/handler"
-	"hrgdrc/model"
-	"hrgdrc/pkg/errno"
-	"hrgdrc/util"
+	h "hr-server/handler"
+	"hr-server/model"
+	"hr-server/pkg/errno"
+	"hr-server/util"
 	"strconv"
 )
 
@@ -32,6 +33,9 @@ func GetAccountFields(c *gin.Context) {
 	}
 	//todo 为了随机挑选一个人出来却查询所有的人，这里要优化。目前时间比较紧
 	group, err = model.GetGroupWithProfile(group.ID, true)
+	if err != nil {
+		fmt.Println("err", err)
+	}
 	profiles := []uint64{}
 	if len(group.Profiles) > 0 {
 		profiles = append(profiles, group.Profiles[0].ID)

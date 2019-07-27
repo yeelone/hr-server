@@ -1,9 +1,9 @@
 package role
 
 import (
-	h "hrgdrc/handler"
-	"hrgdrc/model"
-	"hrgdrc/pkg/errno"
+	h "hr-server/handler"
+	"hr-server/model"
+	"hr-server/pkg/errno"
 	"strconv"
 
 	"github.com/gin-gonic/gin"

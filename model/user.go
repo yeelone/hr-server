@@ -7,8 +7,8 @@ import (
 
 	"github.com/spf13/viper"
 
-	"hrgdrc/pkg/auth"
-	"hrgdrc/pkg/constvar"
+	"hr-server/pkg/auth"
+	"hr-server/pkg/constvar"
 
 	validator "gopkg.in/go-playground/validator.v9"
 )

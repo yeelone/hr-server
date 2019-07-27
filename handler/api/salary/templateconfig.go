@@ -7,11 +7,11 @@ import (
 	"github.com/lexkong/log/lager"
 	"github.com/spf13/viper"
 	"gopkg.in/yaml.v2"
-	h "hrgdrc/handler"
-	"hrgdrc/model"
-	"hrgdrc/pkg/errno"
-	"hrgdrc/pkg/template"
-	"hrgdrc/util"
+	h "hr-server/handler"
+	"hr-server/model"
+	"hr-server/pkg/errno"
+	"hr-server/pkg/template"
+	"hr-server/util"
 	"io/ioutil"
 	"os"
 	"strings"
@@ -118,7 +118,7 @@ func TemplateConfig(c *gin.Context) {
 		h.SendResponse(c, errno.ErrDatabase, err.Error())
 		return
 	}
-
+	model.CreateOperateRecord(c, fmt.Sprintf("配置模板,模板名: %s", r.Name))
 	h.SendResponse(c, nil, nil)
 }
 

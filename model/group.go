@@ -4,8 +4,8 @@ import (
 	"errors"
 	"fmt"
 	"github.com/360EntSecGroup-Skylar/excelize"
-	"hrgdrc/pkg/constvar"
-	"hrgdrc/util"
+	"hr-server/pkg/constvar"
+	"hr-server/util"
 	"os"
 	"strconv"
 	"strings"
@@ -384,7 +384,7 @@ func GetGroupWithProfile(id uint64, withProfiles bool) (result Group, err error)
 	err = DB.Self.Select("id,name,code,coefficient,parent,levels").First(&g, id).Error
 	// err = DB.Self.Model(&Group{BaseModel: BaseModel{ID: id}}).First(&result).Error
 	if withProfiles {
-		DB.Self.Model(&result).Select("id").Preload("Profiles").Find(&g.Profiles)
+		DB.Self.Debug().Model(&result).Select("id").Preload("Profiles").Find(&g.Profiles)
 	}
 	return g, err
 }

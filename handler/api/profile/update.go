@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"strconv"
 
-	h "hrgdrc/handler"
-	"hrgdrc/model"
-	"hrgdrc/pkg/errno"
-	"hrgdrc/util"
+	h "hr-server/handler"
+	"hr-server/model"
+	"hr-server/pkg/errno"
+	"hr-server/util"
 
 	"github.com/gin-gonic/gin"
 	"github.com/lexkong/log"
@@ -28,7 +28,7 @@ func Update(c *gin.Context) {
 	profile := r.Profile
 	// We update the record based on the user id.
 	profile.ID = uint64(profileID)
-	oldProfile,_  := model.GetProfile(profile.ID)
+	oldProfile, _ := model.GetProfile(profile.ID)
 	//取出原档案数据 ，跟新的进行对比，判断更新的字段
 	change := util.FindUpdatedField(oldProfile, profile)
 	// Validate the data.
@@ -53,7 +53,7 @@ func Update(c *gin.Context) {
 	body := ""
 	for k, v := range change {
 		if k != "audit_state" && k != "groups" { // 这两个字段不需要进行对比
-			body  = "更新了:" + model.ProfileI18nMap[k] + ";"
+			body = "更新了:" + model.ProfileI18nMap[k] + ";"
 			body += "更新内容:从[" + fmt.Sprint(v["from"]) + "]到[" + fmt.Sprint(v["to"]) + "];"
 		}
 	}
@@ -68,5 +68,6 @@ func Update(c *gin.Context) {
 		return
 	}
 
+	model.CreateOperateRecord(c, fmt.Sprintf("员工信息更新, 员工信息：[ %s ]", profile.Name))
 	h.SendResponse(c, nil, nil)
 }

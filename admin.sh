@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SERVER="hrgdrc"
+SERVER="hr"
 BASE_DIR=$PWD
 INTERVAL=2
 

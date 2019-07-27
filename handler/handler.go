@@ -3,7 +3,7 @@ package handler
 import (
 	"net/http"
 
-	"hrgdrc/pkg/errno"
+	"hr-server/pkg/errno"
 
 	"github.com/gin-gonic/gin"
 )
@@ -26,5 +26,5 @@ func SendResponse(c *gin.Context, err error, data interface{}) {
 }
 
 func Home(c *gin.Context) {
-	c.HTML(http.StatusOK,"index.html", gin.H{})
+	c.HTML(http.StatusOK, "index.html", gin.H{})
 }

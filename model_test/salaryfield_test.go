@@ -2,8 +2,8 @@ package model_test
 
 import (
 	"fmt"
-	"hrgdrc/model"
-	"hrgdrc/util"
+	"hr-server/model"
+	"hr-server/util"
 	"testing"
 )
 

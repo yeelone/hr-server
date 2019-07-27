@@ -7,8 +7,8 @@ import (
 	"regexp"
 	"time"
 
-	"hrgdrc/handler"
-	"hrgdrc/pkg/errno"
+	"hr-server/handler"
+	"hr-server/pkg/errno"
 
 	"github.com/gin-gonic/gin"
 	"github.com/lexkong/log"

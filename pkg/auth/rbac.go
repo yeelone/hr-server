@@ -19,7 +19,7 @@ func GetEnforcer(model, policy string) *casbin.Enforcer {
 }
 
 func RefreshEnforcer() {
-	merge("./conf/permission")
+	MergePermission("./conf/permission")
 	Enforcer.LoadPolicy()
 	// GetEnforcer("conf/authz_model.conf", "conf/authz_policy.csv")
 }
@@ -42,7 +42,7 @@ func getFilelist(path string) (files []string) {
 	return files
 }
 
-func merge(rootPath string) {
+func MergePermission(rootPath string) {
 	outFileName := "./conf/authz_policy.csv"
 	outFile, openErr := os.OpenFile(outFileName, os.O_WRONLY|os.O_TRUNC, 0600)
 	if openErr != nil {

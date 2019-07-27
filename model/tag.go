@@ -4,22 +4,33 @@ import (
 	"errors"
 	"fmt"
 	"github.com/360EntSecGroup-Skylar/excelize"
-	"hrgdrc/pkg/constvar"
-	"hrgdrc/util"
+	"github.com/lib/pq"
+	"hr-server/pkg/constvar"
+	"hr-server/util"
 	"strconv"
 	"strings"
 )
 
 //Tag :
 type Tag struct {
-	ID          uint64    `json:"id" gorm:"primary_key"`
-	Name        string    `json:"name" gorm:"not null;"`
-	Coefficient float64   `json:"coefficient" gorm:"default:0"` //每个群组有一个系数，可用于计算
-	Parent      uint64    `json:"parent" gorm:"column:parent;default:0"`
-	Users       []User    `json:"users" gorm:"many2many:user_tags;"`
-	Profiles    []Profile `json:"profiles" gorm:"many2many:profile_tags;"`
-	Groups      []Group   `json:"groups" gorm:"many2many:group_tags;"`
+	ID                   uint64        `json:"id" gorm:"primary_key"`
+	Name                 string        `json:"name" gorm:"not null;"`
+	Coefficient          float64       `json:"coefficient" gorm:"default:0"` //每个群组有一个系数，可用于计算
+	Parent               uint64        `json:"parent" gorm:"column:parent;default:0"`
+	Users                []User        `json:"users" gorm:"many2many:user_tags;"`
+	Profiles             []Profile     `json:"profiles" gorm:"many2many:profile_tags;"`
+	Groups               []Group       `json:"groups" gorm:"many2many:group_tags;"`
+	CommensalismGroupIds pq.Int64Array `json:"commensalism_group_ids" gorm:"type:integer[]"` //共生组
 }
+
+/*
+CommensalismGroupIds  字段的意义
+	比如操作员手工（记住这里，是手工为员工贴上标签）为员工贴上标签A,在做调动时（比如说调动岗位），目标组（岗位）没有关联标签A且希望你不再持有标签A，此时系统应该如何知道需要自动地去除标签A？
+			解决方法就是，将标签与组进行关联，当调动时，系统以目标组为标准，如果目标组有关联到该标签，则以目标组为准，目标组有该标签，则该标签保留或者更新，否则则为用户去除该标签。
+			打个比方，我们为信贷员工手工添加了《延期支付》的标签，此时我们要为此员工调整岗位，调到办事员组，办事员不需要延期支付，所以应该去除该标签，但是因为《延期支付》这个标签是我们手工为员工添加的，
+		所以系统并不知道，是不是该去掉该标签。此时，我们可以将 《岗位》这个大分类与 《延期支付》这个标签进行关联，如果目标岗位，即办事员岗没有关联《延期支付》的话，就将该员工的延期支付标签去掉。
+
+*/
 
 const TagTableName = "tb_tags"
 
@@ -34,15 +45,14 @@ func GetAllTags(offset, limit int, where string, whereKeyword string) (ts []*Tag
 	if limit == 0 {
 		limit = constvar.NoLimit
 	}
-	fieldsStr := "ID,name,coefficient,parent"
-	err = DB.Self.Select(fieldsStr).Offset(offset).Limit(limit).Find(&ts).Error
+	err = DB.Self.Offset(offset).Limit(limit).Find(&ts).Error
 	err = DB.Self.Model(t).Count(&total).Error
 
 	if len(where) > 0 {
-		err = DB.Self.Select(fieldsStr).Offset(offset).Limit(limit).Where(where+" = ?", whereKeyword).Find(&ts).Error
+		err = DB.Self.Offset(offset).Limit(limit).Where(where+" = ?", whereKeyword).Find(&ts).Error
 		err = DB.Self.Model(t).Where(where+" = ?", whereKeyword).Count(&total).Error
 	} else {
-		err = DB.Self.Select(fieldsStr).Offset(offset).Limit(limit).Find(&ts).Error
+		err = DB.Self.Offset(offset).Limit(limit).Find(&ts).Error
 		err = DB.Self.Model(t).Count(&total).Error
 	}
 

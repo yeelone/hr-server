@@ -7,13 +7,13 @@ import (
 	"github.com/360EntSecGroup-Skylar/excelize"
 	"github.com/gin-gonic/gin"
 	"github.com/lexkong/log"
-	h "hrgdrc/handler"
-	"hrgdrc/model"
-	"hrgdrc/pkg/buildinfunc"
-	"hrgdrc/pkg/errno"
-	"hrgdrc/pkg/formula"
-	"hrgdrc/pkg/template"
-	"hrgdrc/util"
+	h "hr-server/handler"
+	"hr-server/model"
+	"hr-server/pkg/buildinfunc"
+	"hr-server/pkg/errno"
+	"hr-server/pkg/formula"
+	"hr-server/pkg/template"
+	"hr-server/util"
 	"strconv"
 	"time"
 )
@@ -30,6 +30,7 @@ var profiles []model.Profile
 var errMsg = []string{}                           //记录错误信息
 var excelUploadedFields = make(map[string]string) // 记录所有的字段，为后面判断从excel上传的字段是否与系统模板配置的字段一致，不一致则警告
 var allFieldMap = make(map[string]bool)
+var configIdMap = make(map[string]map[uint64]model.SalaryProfileConfig) //记录所有预配置的记录，用field id 作为key ,field id => profile id =>
 
 func Calculate(c *gin.Context) {
 	t1 := time.Now() // get current time
@@ -41,6 +42,22 @@ func Calculate(c *gin.Context) {
 		h.SendResponse(c, errno.ErrBind, err.Error())
 		return
 	}
+
+	// 获取所有特殊用户配置信息，所谓的特殊用户，即有些特殊情况，无法系统性的用规则来计算，可能会存在一些特殊的情况，所以可以在”特殊人员配置“功能里对这些进行配置
+	// 比如有 + - * / 四种操作，对计算后的值进行进一步的计算
+	configList, err := model.GetSalaryProfileConfig()
+	if err != nil {
+		configIdMap = nil
+	}
+
+	for _, item := range configList {
+		if _, ok := configIdMap[item.TemplateFieldId]; !ok {
+			configIdMap[item.TemplateFieldId] = make(map[uint64]model.SalaryProfileConfig)
+
+		}
+		configIdMap[item.TemplateFieldId][item.ProfileId] = item
+	}
+
 	//查询账套信息
 	templateAccount, err = model.GetTemplateAccount(r.TemplateAccountID)
 
@@ -211,6 +228,28 @@ func handleUpload(template string, profiles []model.Profile, fields []template.F
 	return nil
 }
 
+func calculateValueWithConfig(profileId uint64, field template.Field, value float64) (newValue float64) {
+	newValue = value
+
+	if configIdMap != nil {
+		if _, ok := configIdMap[field.ID][profileId]; ok {
+			switch configIdMap[field.ID][profileId].Operate {
+			case "+":
+				newValue = value + configIdMap[field.ID][profileId].Value
+			case "-":
+				newValue = value - configIdMap[field.ID][profileId].Value
+			case "*":
+				newValue = value * configIdMap[field.ID][profileId].Value
+			case "/":
+				v := value / configIdMap[field.ID][profileId].Value
+				newValue = float64(int64(v + 0.5))
+			}
+		}
+	}
+
+	return newValue
+}
+
 //getProfiles 根据客户端指定的组ID获取所有用户档案
 func getProfiles(groups []model.Group) (profiles []model.Profile) {
 	//t1 := time.Now()
@@ -285,7 +324,7 @@ func handleRelateOtherTemplate(template string, fields []template.Field) {
 			} else {
 				salaryField.Value = m.Value
 			}
-
+			salaryField.Value = calculateValueWithConfig(salaryField.ProfileID, field, salaryField.Value)
 			salaryField.Year = wModel.Year
 			salaryField.Month = wModel.Month
 			salaryField.FitIntoYear, salaryField.FitIntoMonth = resolveFitMonth(field, wModel.Year, wModel.Month)
@@ -350,6 +389,8 @@ func handleInput(template string, fields []template.Field) error {
 			} else {
 				salaryField.Value = float64(field.Value.(float64))
 			}
+
+			salaryField.Value = calculateValueWithConfig(salaryField.ProfileID, field, salaryField.Value)
 
 			salaryField.DepartmentGroupID = profileGroupMap["department"][key]
 			salaryField.PostGroupID = profileGroupMap["post"][key]
@@ -417,6 +458,9 @@ func handleCoefficient(templateName string, profiles []model.Profile, coes []tem
 					salaryField.Value = 0.00
 				}
 			}
+
+			salaryField.Value = calculateValueWithConfig(salaryField.ProfileID, field, salaryField.Value)
+
 			if _, ok := profileGroupMap["department"][profile.ID]; ok {
 				salaryField.DepartmentGroupID = profileGroupMap["department"][profile.ID]
 			}
@@ -446,7 +490,7 @@ func handleCoefficient(templateName string, profiles []model.Profile, coes []tem
 				if _, ok := cardIDMap[templateName][profileCardMap[profile.ID]][salaryField.Key]; ok {
 					salaryField.Value = cardIDMap[templateName][profileCardMap[profile.ID]][salaryField.Key]
 				}
-
+				salaryField.Value = calculateValueWithConfig(salaryField.ProfileID, groupMap[g.Parent], salaryField.Value)
 				DataMap[profile.ID][salaryField.Key] = salaryField
 			}
 
@@ -468,6 +512,8 @@ func handleCoefficient(templateName string, profiles []model.Profile, coes []tem
 			if _, ok := cardIDMap[templateName][profileCardMap[profile.ID]][salaryField.Key]; ok {
 				salaryField.Value = cardIDMap[templateName][profileCardMap[profile.ID]][salaryField.Key]
 			}
+
+			salaryField.Value = calculateValueWithConfig(salaryField.ProfileID, tagMap[t.Parent], salaryField.Value)
 			DataMap[profile.ID][salaryField.Key] = salaryField
 		}
 	}
@@ -606,7 +652,7 @@ func handleBuildin(template string, field template.Field) error {
 				salaryField.Value = util.Decimal(float64(v[0].(float64)))
 				//salaryField.Value = util.RoundUp(v[0].(float64), 2)
 			}
-
+			salaryField.Value = calculateValueWithConfig(salaryField.ProfileID, field, salaryField.Value)
 			salaryField.Year = wModel.Year
 			salaryField.Month = wModel.Month
 			salaryField.FitIntoYear, salaryField.FitIntoMonth = resolveFitMonth(field, wModel.Year, wModel.Month)
@@ -649,15 +695,13 @@ func handleFormula(template string, field template.Field) error {
 			salaryField.Value = cardIDMap[template][profileCardMap[profileID]][field.Key]
 		} else {
 			salaryField.Value = util.Decimal(formula.Resolve(field.Formula, values))
-			if field.Key == "绩效、职级薪酬小计（高管专项职级薪酬）" && profileID == 675 {
-				fmt.Println("formula", field.Formula, values)
-				fmt.Println(formula.Resolve(field.Formula, values))
-				fmt.Println("salaryField.Value", salaryField.Value)
-			}
 		}
 		if field.MustRounding { //四舍五入
 			salaryField.Value = float64(int64(salaryField.Value + 0.5))
 		}
+
+		salaryField.Value = calculateValueWithConfig(salaryField.ProfileID, field, salaryField.Value)
+
 		salaryField.FitIntoYear, salaryField.FitIntoMonth = resolveFitMonth(field, wModel.Year, wModel.Month)
 		DataMap[profileID][salaryField.Key] = salaryField
 	}

@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"strconv"
 
-	h "hrgdrc/handler"
-	"hrgdrc/model"
-	"hrgdrc/pkg/errno"
-	"hrgdrc/util"
+	h "hr-server/handler"
+	"hr-server/model"
+	"hr-server/pkg/errno"
+	"hr-server/util"
 
 	"github.com/gin-gonic/gin"
 	"github.com/lexkong/log"
@@ -40,5 +40,8 @@ func Update(c *gin.Context) {
 	if err := record.Create(); err != nil {
 		fmt.Println(err)
 	}
+
+	model.CreateOperateRecord(c, fmt.Sprintf("机构更新, 机构名: %s ", group.Name))
+
 	h.SendResponse(c, nil, nil)
 }

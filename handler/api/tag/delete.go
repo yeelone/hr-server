@@ -1,10 +1,11 @@
 package tag
 
 import (
-	h "hrgdrc/handler"
-	"hrgdrc/model"
-	"hrgdrc/pkg/errno"
-	"hrgdrc/util"
+	"fmt"
+	h "hr-server/handler"
+	"hr-server/model"
+	"hr-server/pkg/errno"
+	"hr-server/util"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
@@ -33,10 +34,12 @@ func DeleteList(c *gin.Context) {
 func Delete(c *gin.Context) {
 	log.Info("tag Create function called.", lager.Data{"X-Request-Id": util.GetReqID(c)})
 	tagID, _ := strconv.Atoi(c.Param("id"))
-	if err := model.DeleteTag(uint64(tagID)); err != nil {
+	tag, _ := model.GetTag(uint64(tagID), false)
+
+	if err := model.DeleteTag(tag.ID); err != nil {
 		h.SendResponse(c, errno.ErrDatabase, err.Error())
 		return
 	}
-
+	model.CreateOperateRecord(c, fmt.Sprintf("删除标签,标签名: %s", tag.Name))
 	h.SendResponse(c, nil, nil)
 }

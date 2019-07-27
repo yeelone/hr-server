@@ -286,10 +286,6 @@
     resource: QUERY_BASE_SALARY
     object : /api/v1/salary/base
     action : GET
-  查询员工工资:
-    resource: QUERY_PROFILE_SALARY
-    object: /api/v1/salary/year/:year/month/:month/profile/:id
-    action: GET
   导入工资条目:
     resource: IMPORT_SALARY_FIELDS
     object : /api/v1/salary/upload
@@ -298,6 +294,18 @@
     resource: EXPORT_SALARY
     object : /api/v1/salary/export
     action : GET
+  特殊人员配置:
+    resource: SALARY_PROFILE_CUSTOM_CONFIG
+    object: /api/v1/salary/profile/config
+    action: POST
+  特殊人员配置列表:
+    resource: SALARY_PROFILE_CUSTOM_CONFIG_LIST
+    object: /api/v1/salary/profile/config
+    action: GET
+  删除特殊人员配置:
+    resource: DELETE_SALARY_PROFILE_CUSTOM_CONFIG
+    object: /api/v1/salary/profile/config/:id
+    action: DELETE
 模板:
   查询所有模板:
     resource: GET_TEMPLATES
@@ -327,10 +335,6 @@
   查询指定账套模板:
     resource: GET_ACCOUNT_TEMPLATE
     object: /api/v1/salary/account/:id/template
-    action: GET
-  查询账套关联所有字段:
-    resource: GET_ACCOUNT_ALL_FIELDS
-    object: /api/v1/salary/account/:id/year/:year/fields
     action: GET
   查询账套模板:
     resource: GET_ACCOUNT_TEMPLATES
@@ -387,7 +391,7 @@
 审核:
   任务:
     resource: LIST_AUDIT
-    object: /api/v1/audit
+    object: /api/v1/audit/list
     action: GET
   审核:
     resource: UPDATE_AUDIT
@@ -414,10 +418,11 @@
     resource: RECORD_LIST
     object: /api/v1/record/list
     action: GET
-  查询员工调动记录:
-    resource: RECORD_TRANSFER
-    object: /api/v1/record/transfer
+  查询管理员操作记录:
+    resource: OPERATE_RECORD_LIST
+    object: /api/v1/record/operation
     action: GET
+
 
 
 

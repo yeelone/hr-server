@@ -5,10 +5,11 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/lexkong/log"
 	"github.com/lexkong/log/lager"
-	h "hrgdrc/handler"
-	"hrgdrc/model"
-	"hrgdrc/pkg/errno"
-	"hrgdrc/util"
+	h "hr-server/handler"
+	"hr-server/model"
+	"hr-server/pkg/errno"
+	"hr-server/util"
+	"strings"
 )
 
 func Freeze(c *gin.Context) {
@@ -26,15 +27,17 @@ func Freeze(c *gin.Context) {
 	//创建的同时需同时创建审核条目
 	userid, _ := c.Get("userid")
 	//查底所有用户资料，记录在audit中
-	profiles,_ := model.GetProfiles(r.Profiles)
+	profiles, _ := model.GetProfiles(r.Profiles)
 	body := ""
 
-	for _,p := range profiles {
-		body += "冻结用户:" + p.Name + ",证件:"+ p.IDCard + "\n"
+	nameList := []string{}
+	for _, p := range profiles {
+		body += "冻结用户:" + p.Name + ",证件:" + p.IDCard + "\n"
+		nameList = append(nameList, p.Name)
 	}
 
 	ids := []int64{}
-	for _,id := range r.Profiles{
+	for _, id := range r.Profiles {
 		ids = append(ids, int64(id))
 	}
 	audit := &model.Audit{}
@@ -43,14 +46,14 @@ func Freeze(c *gin.Context) {
 	audit.Action = model.AUDITUPDATEACTION
 	audit.OrgObjectID = ids
 	audit.State = model.AuditStateWaiting
-	audit.Body = "描述:冻结职工档案;" +body
+	audit.Body = "描述:冻结职工档案;" + body
 	audit.Remark = r.Remark
 
 	if err := audit.Create(); err != nil {
 		h.SendResponse(c, errno.ErrDatabase, err.Error())
 		return
 	}
-
+	model.CreateOperateRecord(c, fmt.Sprintf("冻结员工, 员工信息：[ %s ]", strings.Join(nameList, ",")))
 	h.SendResponse(c, nil, nil)
 }
 
@@ -67,16 +70,17 @@ func UnFreeze(c *gin.Context) {
 		return
 	}
 	//创建的同时需同时创建审核条目
-	profiles,_ := model.GetProfiles(r.Profiles)
+	profiles, _ := model.GetProfiles(r.Profiles)
 	body := ""
-
-	for _,p := range profiles {
-		body += "冻结用户:" + p.Name + ",证件:"+ p.IDCard + "\n"
+	nameList := []string{}
+	for _, p := range profiles {
+		body += "冻结用户:" + p.Name + ",证件:" + p.IDCard + "\n"
+		nameList = append(nameList, p.Name)
 	}
 
 	userid, _ := c.Get("userid")
 	ids := []int64{}
-	for _,id := range r.Profiles{
+	for _, id := range r.Profiles {
 		ids = append(ids, int64(id))
 	}
 	audit := &model.Audit{}
@@ -93,6 +97,6 @@ func UnFreeze(c *gin.Context) {
 		h.SendResponse(c, errno.ErrDatabase, err.Error())
 		return
 	}
-
+	model.CreateOperateRecord(c, fmt.Sprintf("解冻员工, 员工信息：[ %s ]", strings.Join(nameList, ",")))
 	h.SendResponse(c, nil, nil)
 }

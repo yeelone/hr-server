@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"github.com/360EntSecGroup-Skylar/excelize"
 	"gopkg.in/go-playground/validator.v9"
-	"hrgdrc/pkg/constvar"
-	"hrgdrc/util"
+	"hr-server/pkg/constvar"
+	"hr-server/util"
 	"strconv"
 	"strings"
 )
@@ -69,8 +69,7 @@ type Profile struct {
 	IDCard          string  `json:"id_card" gorm:"not null;unique" binding:"required"`
 	Gender          string  `json:"gender"`
 	BirthDay        string  `json:"birth_day" `
-	Status          string  `json:"status" gorm:"not null,default:在职"` //状态 在职，离职，试用期，退体，内退
-	Source          string  `json:"source" `                           //招聘来源
+	Source          string  `json:"source" ` //招聘来源
 	School          string  `json:"school"`
 	GraduationDate  string  `json:"graduation_date"`          //毕业时间
 	Specialty       string  `json:"specialty"`                //专业
@@ -192,7 +191,7 @@ func GetAllProfile() (profiles []*Profile, err error) {
 
 func GetProfileWithGroupAndTag(ids []uint64) (profiles []Profile, err error) {
 	// if err := DB.Self.Preload("Groups").Preload("Tags").Where("id in (?) AND audit_state = ?", ids, 1).Find(&profiles).Error; err != nil {
-	if err := DB.Self.Preload("Groups").Preload("Tags").Where("id in (?)", ids).Find(&profiles).Error; err != nil {
+	if err := DB.Self.Debug().Preload("Groups").Preload("Tags").Where("id in (?)", ids).Find(&profiles).Error; err != nil {
 		return profiles, err
 	}
 
@@ -350,7 +349,7 @@ func importProfileIDToGroup(groupMap map[string]map[string][]string) {
 }
 
 // 利用postgresql \copy的功能来进行批量导入。
-// \copy tb_profile(name,type_card,id_card,bank_card,status) from 'E:\gopath\src\hrgdrc\upload\人员表.csv' with csv;
+// \copy tb_profile(name,type_card,id_card,bank_card,status) from 'E:\gopath\src\hr-server\upload\人员表.csv' with csv;
 // gorm 似乎无法执行 \copy 这个命令，这个函数暂时放弃。
 // func ImportProfileFromCSV(fields, filename string) (err error) {
 // 	p := &Profile{}

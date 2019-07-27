@@ -6,10 +6,10 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/lexkong/log"
 	"github.com/lexkong/log/lager"
-	h "hrgdrc/handler"
-	"hrgdrc/model"
-	"hrgdrc/pkg/errno"
-	"hrgdrc/util"
+	h "hr-server/handler"
+	"hr-server/model"
+	"hr-server/pkg/errno"
+	"hr-server/util"
 	"strconv"
 )
 
@@ -71,6 +71,8 @@ func DetailQuery(c *gin.Context) {
 		h.SendResponse(c, errno.ErrWriteExcel, err.Error())
 		return
 	}
+	model.CreateOperateRecord(c, fmt.Sprintf("查询员工收入情况"))
+
 	h.SendResponse(c, nil, CreateResponse{File: filename})
 	return
 

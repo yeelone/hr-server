@@ -2,9 +2,9 @@ package buildinfunc
 
 import (
 	"fmt"
-	"hrgdrc/model"
-	"hrgdrc/pkg/formula"
-	"hrgdrc/util"
+	"hr-server/model"
+	"hr-server/pkg/formula"
+	"hr-server/util"
 	"io/ioutil"
 	"math"
 	"strconv"

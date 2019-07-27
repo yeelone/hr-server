@@ -1,7 +1,7 @@
 package model
 
 import (
-	"hrgdrc/util"
+	"hr-server/util"
 	"strconv"
 )
 

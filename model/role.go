@@ -2,8 +2,8 @@ package model
 
 import (
 	"errors"
-	"hrgdrc/pkg/constvar"
-	"hrgdrc/util"
+	"hr-server/pkg/constvar"
+	"hr-server/util"
 	"strconv"
 	"strings"
 )

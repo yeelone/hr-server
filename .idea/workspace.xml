@@ -1,0 +1,830 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="166c2398-854f-4efb-bc20-8ddd07dc2e5e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/yljck.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handler/api/profile/getDetail.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handler/api/record/operation.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handler/api/salary/profileConfig.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/operaterecord.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/salaryProfileConfig.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin.sh" beforeDir="false" afterPath="$PROJECT_DIR$/admin.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/icon_small.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backup/sql/backup-2019_05_13_16_58.sql" beforeDir="false" afterPath="$PROJECT_DIR$/docs/db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backup/sql/backup-2019_05_13_17_02.sql" beforeDir="false" afterPath="$PROJECT_DIR$/docs/更新记录文档/2019-05-16" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conf/authz_policy.backup.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/conf/authz_policy.csv" beforeDir="false" afterPath="$PROJECT_DIR$/conf/authz_policy.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conf/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/conf/config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conf/func_list.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/conf/func_list.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conf/permission/permission.1.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/conf/permission/permission.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/conf/permission/permission.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conf/permission/操作岗.csv" beforeDir="false" afterPath="$PROJECT_DIR$/conf/permission/操作岗.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conf/permission/查询岗.csv" beforeDir="false" afterPath="$PROJECT_DIR$/conf/permission/查询岗.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conf/permission/管理岗.csv" beforeDir="false" afterPath="$PROJECT_DIR$/conf/permission/管理岗.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/权限分配" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/audit/audit.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/audit/audit.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/audit/list.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/audit/list.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/audit/state.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/audit/state.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/group/create.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/group/create.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/group/delete.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/group/delete.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/group/get.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/group/get.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/group/group.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/group/group.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/group/import.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/group/import.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/group/importTags.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/group/importTags.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/group/list.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/group/list.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/group/move.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/group/move.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/group/relate.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/group/relate.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/group/status.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/group/status.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/group/update.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/group/update.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/grouptransfer/create.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/grouptransfer/create.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/grouptransfer/list.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/grouptransfer/list.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/grouptransfer/transfer.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/grouptransfer/transfer.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/permission/create.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/permission/create.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/permission/get.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/permission/get.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/permission/permission.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/permission/permission.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/profile/create.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/profile/create.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/profile/delete.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/profile/delete.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/profile/freeze.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/profile/freeze.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/profile/get.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/profile/get.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/profile/import.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/profile/import.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/profile/list.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/profile/list.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/profile/listTags.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/profile/listTags.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/profile/profile.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/profile/profile.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/profile/relate.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/profile/relate.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/profile/transfer.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/profile/transfer.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/profile/update.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/profile/update.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/record/list.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/record/list.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/record/record.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/record/record.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/role/create.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/role/create.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/role/delete.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/role/delete.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/role/list.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/role/list.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/role/relate.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/role/relate.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/role/role.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/role/role.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/role/update.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/role/update.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/salary/baseconfig.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/salary/baseconfig.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/salary/calculate.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/salary/calculate.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/salary/deleteTemplate.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/salary/deleteTemplate.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/salary/export.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/salary/export.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/salary/getbase.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/salary/getbase.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/salary/getprofile.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/salary/getprofile.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/salary/gettemplate.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/salary/gettemplate.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/salary/import.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/salary/import.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/salary/listtemplate.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/salary/listtemplate.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/salary/payroll.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/salary/payroll.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/salary/preDeductionRate.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/salary/preDeductionRate.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/salary/salary.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/salary/salary.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/salary/taxconfig.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/salary/taxconfig.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/salary/templateconfig.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/salary/templateconfig.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/salary/templateorder.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/salary/templateorder.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/salary/upload.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/salary/upload.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/sd/check.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/sd/check.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/statistics/department.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/statistics/department.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/statistics/detail.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/statistics/detail.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/statistics/income.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/statistics/income.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/statistics/statistics.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/statistics/statistics.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/tag/create.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/tag/create.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/tag/delete.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/tag/delete.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/tag/get.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/tag/get.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/tag/import.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/tag/import.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/tag/list.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/tag/list.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/tag/relate.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/tag/relate.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/tag/tag.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/tag/tag.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/tag/update.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/tag/update.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/tag/userList.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/tag/userList.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/templateaccount/create.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/templateaccount/create.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/templateaccount/delete.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/templateaccount/delete.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/templateaccount/get.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/templateaccount/get.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/templateaccount/getAllFields.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/templateaccount/getAllFields.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/templateaccount/getTemplates.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/templateaccount/getTemplates.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/templateaccount/list.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/templateaccount/list.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/templateaccount/listTemplateWithFields.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/templateaccount/listTemplateWithFields.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/templateaccount/templateaccount.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/templateaccount/templateaccount.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/tool/backup.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/tool/backup.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/tool/func.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/tool/func.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/user/create.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/user/create.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/user/delete.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/user/delete.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/user/get.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/user/get.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/user/list.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/user/list.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/user/login.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/user/login.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/user/reset.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/user/reset.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/user/state.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/user/state.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/user/update.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/user/update.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/user/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/user/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/usergroup/create.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/usergroup/create.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/usergroup/delete.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/usergroup/delete.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/usergroup/group.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/usergroup/group.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/usergroup/list.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/usergroup/list.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/usergroup/relate.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/usergroup/relate.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/usergroup/update.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/usergroup/update.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/handler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/gdrc_hr.log" beforeDir="false" afterPath="$PROJECT_DIR$/log/gdrc_hr.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/Statistics.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/Statistics.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/audit.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/audit.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/group.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/group.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/grouptransfer.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/grouptransfer.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/init.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/init.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/permissions.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/permissions.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/profile.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/profile.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/record.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/record.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/role.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/role.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/salary.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/salary.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/salaryconfig.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/salaryconfig.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/salaryfield.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/salaryfield.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/tag.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/tag.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/tax.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/tax.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/template.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/template.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/templateaccount.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/templateaccount.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/usergroup.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/usergroup.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model_test/salaryfield_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/model_test/salaryfield_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/auth/rbac.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/auth/rbac.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/buildinfunc/buildin.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/buildinfunc/buildin.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/buildinfunc/buildinfunc.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/buildinfunc/buildinfunc.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/constvar/constvar.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/constvar/constvar.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/context/context.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/context/context.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/template/compared.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/template/compared.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/template/fields.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/template/fields.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/token/token.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/token/token.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/router/middleware/auth.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/middleware/auth.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/router/middleware/authority.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/middleware/authority.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/router/middleware/cors.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/middleware/cors.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/router/middleware/logging.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/middleware/logging.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/router/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/router.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/coefficient.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/coefficient.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/upload.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/upload.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/util.go" beforeDir="false" afterPath="$PROJECT_DIR$/util/util.go" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="1111443794">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="4" />
+          <entry key="project.open.time.0" value="4" />
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.12" value="1" />
+          <entry key="project.open.time.8" value="1" />
+          <entry key="project.open.time.9" value="1" />
+          <entry key="project.opened" value="8" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="2019-05-16" value="1" />
+          <entry key="conf" value="1" />
+          <entry key="csv" value="8" />
+          <entry key="db" value="1" />
+          <entry key="go" value="112" />
+          <entry key="log" value="1" />
+          <entry key="md" value="1" />
+          <entry key="png" value="5" />
+          <entry key="txt" value="1" />
+          <entry key="yaml" value="10" />
+          <entry key="权限分配" value="1" />
+          <entry key="清空所有表数据" value="2" />
+          <entry key="编译" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="CSV" value="8" />
+          <entry key="Go" value="112" />
+          <entry key="Image" value="5" />
+          <entry key="Log" value="1" />
+          <entry key="PLAIN_TEXT" value="9" />
+          <entry key="YAML" value="10" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="2019-05-16" value="137" />
+          <entry key="csv" value="10" />
+          <entry key="go" value="2517" />
+          <entry key="md" value="243" />
+          <entry key="yaml" value="120" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="CSV" value="10" />
+          <entry key="Go" value="2517" />
+          <entry key="PLAIN_TEXT" value="380" />
+          <entry key="YAML" value="120" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/router/router.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="95">
+              <caret line="198" column="84" selection-start-line="198" selection-start-column="84" selection-end-line="198" selection-end-column="84" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>file</find>
+      <find>/api/v1/audit/:id</find>
+      <find>/api/v1/salary/account</find>
+      <find>p, 超级管理员, /api/v1/salary/account, GET</find>
+      <find>/api/v1/audit/list</find>
+      <find>超级管理员, /api/v1/audit/list, GET</find>
+      <find>超级管理员</find>
+      <find>GET</find>
+      <find>RefreshEnforcer</find>
+      <find>audit</find>
+      <find>GetEnforcer</find>
+      <find>profile</find>
+      <find>record</find>
+      <find>Order</find>
+      <find>topTagMap</find>
+      <find>GetAllTags</find>
+      <find>hr-server</find>
+    </findStrings>
+  </component>
+  <component name="GOROOT" path="D:/Go" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/model/group.go" />
+        <option value="$PROJECT_DIR$/handler/api/templateaccount/getAllFields.go" />
+        <option value="$PROJECT_DIR$/handler/api/sd/check.go" />
+        <option value="$PROJECT_DIR$/model/record.go" />
+        <option value="$PROJECT_DIR$/handler/api/user/create.go" />
+        <option value="$PROJECT_DIR$/handler/api/audit/state.go" />
+        <option value="$PROJECT_DIR$/handler/api/user/login.go" />
+        <option value="$PROJECT_DIR$/handler/api/user/delete.go" />
+        <option value="$PROJECT_DIR$/handler/api/user/reset.go" />
+        <option value="$PROJECT_DIR$/handler/api/user/state.go" />
+        <option value="$PROJECT_DIR$/handler/api/user/update.go" />
+        <option value="$PROJECT_DIR$/handler/api/group/create.go" />
+        <option value="$PROJECT_DIR$/handler/api/group/delete.go" />
+        <option value="$PROJECT_DIR$/handler/api/group/import.go" />
+        <option value="$PROJECT_DIR$/handler/api/group/importTags.go" />
+        <option value="$PROJECT_DIR$/handler/api/group/move.go" />
+        <option value="$PROJECT_DIR$/handler/api/group/update.go" />
+        <option value="$PROJECT_DIR$/handler/api/grouptransfer/create.go" />
+        <option value="$PROJECT_DIR$/handler/api/permission/create.go" />
+        <option value="$PROJECT_DIR$/handler/api/profile/delete.go" />
+        <option value="$PROJECT_DIR$/handler/api/profile/create.go" />
+        <option value="$PROJECT_DIR$/handler/api/profile/freeze.go" />
+        <option value="$PROJECT_DIR$/handler/api/profile/import.go" />
+        <option value="$PROJECT_DIR$/handler/api/profile/relate.go" />
+        <option value="$PROJECT_DIR$/handler/api/profile/update.go" />
+        <option value="$PROJECT_DIR$/handler/api/role/create.go" />
+        <option value="$PROJECT_DIR$/handler/api/role/delete.go" />
+        <option value="$PROJECT_DIR$/handler/api/salary/deleteTemplate.go" />
+        <option value="$PROJECT_DIR$/handler/api/salary/templateconfig.go" />
+        <option value="$PROJECT_DIR$/handler/api/statistics/department.go" />
+        <option value="$PROJECT_DIR$/handler/api/statistics/detail.go" />
+        <option value="$PROJECT_DIR$/handler/api/tag/delete.go" />
+        <option value="$PROJECT_DIR$/handler/api/record/record.go" />
+        <option value="$PROJECT_DIR$/handler/api/record/operation.go" />
+        <option value="$PROJECT_DIR$/handler/api/permission/get.go" />
+        <option value="$PROJECT_DIR$/model/operaterecord.go" />
+        <option value="$PROJECT_DIR$/conf/config.yaml" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/handler/api/tag/create.go" />
+        <option value="$PROJECT_DIR$/handler/api/tag/tag.go" />
+        <option value="$PROJECT_DIR$/handler/api/tag/update.go" />
+        <option value="$PROJECT_DIR$/model/audit.go" />
+        <option value="$PROJECT_DIR$/model/tag.go" />
+        <option value="$PROJECT_DIR$/util/util.go" />
+        <option value="$PROJECT_DIR$/conf/permission/permission.yaml" />
+        <option value="$PROJECT_DIR$/handler/api/salary/calculate.go" />
+        <option value="$PROJECT_DIR$/handler/api/salary/salary.go" />
+        <option value="$PROJECT_DIR$/model/init.go" />
+        <option value="$PROJECT_DIR$/model/salaryProfileConfig.go" />
+        <option value="$PROJECT_DIR$/router/router.go" />
+        <option value="$PROJECT_DIR$/handler/api/salary/profileConfig.go" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="y" value="20" />
+    <option name="width" value="1920" />
+    <option name="height" value="980" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="hr-server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hr-server" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hr-server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hr-server" type="462c0819:PsiDirectoryNode" />
+              <item name="conf" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hr-server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hr-server" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hr-server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hr-server" type="462c0819:PsiDirectoryNode" />
+              <item name="router" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hr-server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hr-server" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultGoTemplateProperty" value="Go File" />
+    <property name="go.gopath.indexing.explicitly.defined" value="true" />
+    <property name="go.sdk.automatically.set" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../hrgdrc" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\gopath\src\hr-server\handler\api\record" />
+      <recent name="E:\gopath\src\hr-server\model" />
+      <recent name="E:\gopath\src\hr-server\handler\api\profile" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="go build main.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="hr-server" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/main.go" />
+      <package value="hr-server" />
+      <directory value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Build.go build main.go" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="848" extended-state="7" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2727882" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.34379458" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="GraphQL" order="11" weight="0.36091298" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2600536" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.34379458" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.md" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/handler/api/group/get.go">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/api/group/group.go">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/api/group/import.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="56" column="10" lean-forward="true" selection-start-line="56" selection-start-column="4" selection-end-line="56" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/api/group/importTags.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="552">
+          <caret line="54" column="58" selection-start-line="54" selection-start-column="58" selection-end-line="54" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/group.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-329">
+          <caret line="86" column="25" selection-start-line="86" selection-start-column="17" selection-end-line="86" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/router/middleware/auth.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="381">
+          <caret line="18" column="9" lean-forward="true" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pkg/auth/auth.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/api/group/move.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" selection-start-line="30" selection-end-line="30" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/api/group/relate.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-966" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/api/group/status.go">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/api/group/update.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="565">
+          <caret line="43" column="68" selection-start-line="43" selection-start-column="68" selection-end-line="43" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/api/permission/create.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-414">
+          <caret line="30" column="4" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/api/permission/permission.go">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/api/profile/delete.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="47" column="50" selection-start-line="47" selection-start-column="50" selection-end-line="47" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/api/profile/import.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1265">
+          <caret line="45" column="27" lean-forward="true" selection-start-line="45" selection-start-column="27" selection-end-line="45" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/api/profile/freeze.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="99" column="20" lean-forward="true" selection-start-line="99" selection-end-line="100" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/api/profile/create.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="69" column="50" selection-start-line="69" selection-start-column="50" selection-end-line="69" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/api/profile/update.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="70" selection-start-line="70" selection-end-line="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/api/profile/relate.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="45" column="87" lean-forward="true" selection-start-line="45" selection-start-column="4" selection-end-line="45" selection-end-column="87" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/api/role/create.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="32" column="4" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/api/role/delete.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/api/role/update.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-221" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/api/salary/baseconfig.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/api/salary/templateconfig.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-207">
+          <caret line="120" column="4" selection-start-line="120" selection-start-column="4" selection-end-line="120" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/api/tag/delete.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="42" column="4" selection-start-line="42" selection-start-column="4" selection-end-line="42" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/api/statistics/detail.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="73" lean-forward="true" selection-start-line="73" selection-end-line="73" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/api/statistics/department.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="69" column="4" selection-start-line="69" selection-start-column="4" selection-end-line="69" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/api/record/record.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="20" column="1" lean-forward="true" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/config.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="15" selection-start-column="15" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.go">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="11" column="6" lean-forward="true" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/api/permission/get.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="552">
+          <caret line="40" column="1" selection-start-line="40" selection-start-column="1" selection-end-line="40" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/api/profile/transfer.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="13" column="36" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/api/grouptransfer/create.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="23" column="21" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/grouptransfer.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="12" column="18" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/operaterecord.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="43" column="57" selection-start-line="43" selection-start-column="57" selection-end-line="43" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/api/record/operation.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="29" column="1" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
+          <folding>
+            <element signature="e#16#146#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/api/tag/create.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="27" column="38" lean-forward="true" selection-start-line="27" selection-start-column="38" selection-end-line="27" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/api/tag/tag.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="15" column="56" selection-start-line="15" selection-start-column="56" selection-end-line="15" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/api/tag/update.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="94">
+          <caret line="30" column="37" lean-forward="true" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/audit.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="692">
+          <caret line="267" selection-start-line="267" selection-end-line="267" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/api/salary/deleteTemplate.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/api/salary/calculate.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-92">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+          <folding>
+            <element signature="e#16#341#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/api/salary/profileConfig.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="12" column="11" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/api/salary/salary.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="851">
+          <caret line="37" column="1" selection-start-line="37" selection-start-column="1" selection-end-line="37" selection-end-column="1" />
+          <folding>
+            <element signature="e#16#71#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/permission/permission.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-21">
+          <caret line="300" column="11" selection-start-line="300" selection-start-column="11" selection-end-line="300" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/util/util.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="623">
+          <caret line="392" selection-start-line="392" selection-end-line="392" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/tag.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1242">
+          <caret line="54" column="21" selection-start-line="54" selection-start-column="21" selection-end-line="54" selection-end-column="21" />
+          <folding>
+            <element signature="e#15#153#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/salaryProfileConfig.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="9" column="26" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/init.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2184">
+          <caret line="95" column="46" selection-start-line="95" selection-start-column="46" selection-end-line="95" selection-end-column="46" />
+          <folding>
+            <element signature="e#15#205#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/router/router.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="198" column="84" selection-start-line="198" selection-start-column="84" selection-end-line="198" selection-end-column="84" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

@@ -2,7 +2,7 @@ package model
 
 import (
 	"errors"
-	"hrgdrc/pkg/constvar"
+	"hr-server/pkg/constvar"
 	"time"
 
 	_ "github.com/jinzhu/gorm/dialects/postgres"

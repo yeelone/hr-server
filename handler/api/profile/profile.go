@@ -1,34 +1,34 @@
 package profile
 
 import (
-	"hrgdrc/model"
+	"hr-server/model"
 )
 
 type CreateRequest struct {
 	Profile model.Profile `json:"profile"`
-	Remark string `json:"remark"`
+	Remark  string        `json:"remark"`
 }
 
 type RelateTagsRequest struct {
-	Profile uint64 `json:"profile"`
+	Profile uint64   `json:"profile"`
 	Tags    []uint64 `json:"tags"`
 }
 
-type DeleteRequest struct{
+type DeleteRequest struct {
 	Profiles []uint64 `json:"profiles"`
-	Remark string `json:"remark"`
+	Remark   string   `json:"remark"`
 }
 
 type FreezeRequest struct {
 	Profiles []uint64 `json:"profiles"`
-	Remark string `json:"remark"`
+	Remark   string   `json:"remark"`
 }
 
 type CreateResponse struct {
-	Name string `json:"name"`
+	Name    string        `json:"name"`
 	Profile model.Profile `json:"profile"`
-	File string `json:"file"`
-	Error string `json:"error"`
+	File    string        `json:"file"`
+	Error   string        `json:"error"`
 }
 
 type ListTagsResponse struct {
@@ -37,18 +37,18 @@ type ListTagsResponse struct {
 }
 
 type TagResponse struct {
-	Tag  model.Tag `json:"tag"`
+	Tag      model.Tag   `json:"tag"`
 	Children []model.Tag `json:"children"`
 }
 
 type ListRequest struct {
-	Name   string `form:"name"`
-	IDCard string `form:"id_card"`
-	Key    string `form:"key"`
-	Value  string `form:"value"`
-	Offset int    `form:"offset"`
-	Limit  int    `form:"limit"`
-	Freezed bool `form:"freezed"`
+	Name    string `form:"name"`
+	IDCard  string `form:"id_card"`
+	Key     string `form:"key"`
+	Value   string `form:"value"`
+	Offset  int    `form:"offset"`
+	Limit   int    `form:"limit"`
+	Freezed bool   `form:"freezed"`
 }
 
 type ListResponse struct {
@@ -57,5 +57,5 @@ type ListResponse struct {
 }
 
 type TransferResponse struct {
-	Transfer  []model.GroupTransfer `json:"transfer"`
+	Transfer []model.GroupTransfer `json:"transfer"`
 }

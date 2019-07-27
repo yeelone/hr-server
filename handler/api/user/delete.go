@@ -1,9 +1,10 @@
 package user
 
 import (
-	h "hrgdrc/handler"
-	"hrgdrc/model"
-	"hrgdrc/pkg/errno"
+	"fmt"
+	h "hr-server/handler"
+	"hr-server/model"
+	"hr-server/pkg/errno"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
@@ -19,10 +20,11 @@ import (
 // @Router /user/{id} [delete]
 func Delete(c *gin.Context) {
 	userId, _ := strconv.Atoi(c.Param("id"))
-	if err := model.DeleteUser(uint64(userId)); err != nil {
+	user, _ := model.GetUser(uint64(userId))
+	if err := model.DeleteUser(user.ID); err != nil {
 		h.SendResponse(c, errno.ErrDatabase, err.Error())
 		return
 	}
-
+	model.CreateOperateRecord(c, fmt.Sprintf("删除用户:  %s ", user.Username))
 	h.SendResponse(c, nil, nil)
 }

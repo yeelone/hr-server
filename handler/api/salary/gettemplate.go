@@ -1,11 +1,11 @@
 package salary
 
 import (
-	h "hrgdrc/handler"
-	"hrgdrc/model"
-	"hrgdrc/pkg/errno"
-	"hrgdrc/pkg/template"
-	"hrgdrc/util"
+	h "hr-server/handler"
+	"hr-server/model"
+	"hr-server/pkg/errno"
+	"hr-server/pkg/template"
+	"hr-server/util"
 	"strconv"
 
 	"github.com/gin-gonic/gin"

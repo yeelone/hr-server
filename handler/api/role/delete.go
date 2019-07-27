@@ -1,12 +1,13 @@
 package role
 
 import (
+	"fmt"
 	"strconv"
 
-	h "hrgdrc/handler"
-	"hrgdrc/model"
-	"hrgdrc/pkg/errno"
-	"hrgdrc/util"
+	h "hr-server/handler"
+	"hr-server/model"
+	"hr-server/pkg/errno"
+	"hr-server/util"
 
 	"github.com/gin-gonic/gin"
 	"github.com/lexkong/log"
@@ -17,10 +18,12 @@ import (
 func Delete(c *gin.Context) {
 	log.Info("role Delete function called.", lager.Data{"X-Request-Id": util.GetReqID(c)})
 	rid, _ := strconv.Atoi(c.Param("id"))
-	if err := model.DeleteRole(uint64(rid)); err != nil {
+	role, _ := model.GetRole(uint64(rid), false)
+	if err := model.DeleteRole(role.ID); err != nil {
 		h.SendResponse(c, errno.ErrDatabase, nil)
 		return
 	}
 
+	model.CreateOperateRecord(c, fmt.Sprintf("删除Role, Role：%s", role.Name))
 	h.SendResponse(c, nil, nil)
 }

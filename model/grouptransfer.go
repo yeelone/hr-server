@@ -4,7 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/lib/pq"
-	"hrgdrc/util"
+	"hr-server/util"
 	"regexp"
 	"time"
 )

@@ -6,10 +6,10 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/lexkong/log"
 	"github.com/lexkong/log/lager"
-	h "hrgdrc/handler"
-	"hrgdrc/model"
-	"hrgdrc/pkg/errno"
-	"hrgdrc/util"
+	h "hr-server/handler"
+	"hr-server/model"
+	"hr-server/pkg/errno"
+	"hr-server/util"
 	"strconv"
 )
 
@@ -18,17 +18,17 @@ func Income(c *gin.Context) {
 
 }
 
-func EmployeeAnnualIncome(c *gin.Context){
+func EmployeeAnnualIncome(c *gin.Context) {
 	log.Info("EmployeeAnnualIncome function called.", lager.Data{"X-Request-Id": util.GetReqID(c)})
 	var r CreateRequest
 	if err := c.Bind(&r); err != nil {
-		fmt.Println("annual error",err)
+		fmt.Println("annual error", err)
 		h.SendResponse(c, errno.ErrBind, nil)
 		return
 	}
 	var result []model.Statistics
 	var err error
-	if result,err = model.FetchAnnualIncome(r.Year,r.ProfileID) ; err != nil {
+	if result, err = model.FetchAnnualIncome(r.Year, r.ProfileID); err != nil {
 		h.SendResponse(c, errno.ErrAnnulIncome, nil)
 		return
 	}
@@ -40,12 +40,12 @@ func EmployeeAnnualIncome(c *gin.Context){
 	})
 }
 
-func DepartmentAnnualIncome(c *gin.Context){
+func DepartmentAnnualIncome(c *gin.Context) {
 	log.Info("DepartmentAnnualIncome function called.", lager.Data{"X-Request-Id": util.GetReqID(c)})
 	var r CreateRequest
 	if err := c.Bind(&r); err != nil {
-		fmt.Println("annual error",err)
-		h.SendResponse(c, errno.ErrBind,  err.Error())
+		fmt.Println("annual error", err)
+		h.SendResponse(c, errno.ErrBind, err.Error())
 		return
 	}
 	h.SendResponse(c, nil, nil)
@@ -64,7 +64,7 @@ func writeExcel(sf []model.Statistics) string {
 	//	"value": 8,
 	//}
 
-	xlsx.SetCellValue("Sheet1", "A1" , "姓名")
+	xlsx.SetCellValue("Sheet1", "A1", "姓名")
 	xlsx.SetCellValue("Sheet1", "B1", "身份证")
 	xlsx.SetCellValue("Sheet1", "C1", "部门")
 	xlsx.SetCellValue("Sheet1", "D1", "时间")
@@ -73,11 +73,11 @@ func writeExcel(sf []model.Statistics) string {
 	row := 2
 
 	for _, s := range sf {
-		xlsx.SetCellValue("Sheet1", "A" + strconv.Itoa(row), s.Profile)
-		xlsx.SetCellValue("Sheet1", "B" + strconv.Itoa(row), s.IDCard)
-		xlsx.SetCellValue("Sheet1", "C" + strconv.Itoa(row), s.Department)
-		xlsx.SetCellValue("Sheet1", "D" + strconv.Itoa(row), s.Year)
-		xlsx.SetCellValue("Sheet1", "E" + strconv.Itoa(row), s.Total)
+		xlsx.SetCellValue("Sheet1", "A"+strconv.Itoa(row), s.Profile)
+		xlsx.SetCellValue("Sheet1", "B"+strconv.Itoa(row), s.IDCard)
+		xlsx.SetCellValue("Sheet1", "C"+strconv.Itoa(row), s.Department)
+		xlsx.SetCellValue("Sheet1", "D"+strconv.Itoa(row), s.Year)
+		xlsx.SetCellValue("Sheet1", "E"+strconv.Itoa(row), s.Total)
 		row++
 	}
 
@@ -89,4 +89,3 @@ func writeExcel(sf []model.Statistics) string {
 	}
 	return filename
 }
-

@@ -1,10 +1,11 @@
 package tag
 
 import (
-	h "hrgdrc/handler"
-	"hrgdrc/model"
-	"hrgdrc/pkg/errno"
-	"hrgdrc/util"
+	"fmt"
+	h "hr-server/handler"
+	"hr-server/model"
+	"hr-server/pkg/errno"
+	"hr-server/util"
 
 	"github.com/gin-gonic/gin"
 	"github.com/lexkong/log"
@@ -21,9 +22,10 @@ func Create(c *gin.Context) {
 	}
 
 	m := model.Tag{
-		Name:        r.Name,
-		Coefficient: r.Coefficient,
-		Parent:      r.Parent,
+		Name:                 r.Name,
+		Coefficient:          r.Coefficient,
+		Parent:               r.Parent,
+		CommensalismGroupIds: util.Uint64ArrayToInt64Array(r.GroupIds),
 	}
 
 	// Insert the group to the database.
@@ -35,7 +37,7 @@ func Create(c *gin.Context) {
 	rsp := CreateResponse{
 		Tag: &m,
 	}
-
+	model.CreateOperateRecord(c, fmt.Sprintf("创建标签,标签名: %s", r.Name))
 	// Show the tag information.
 	h.SendResponse(c, nil, rsp)
 }

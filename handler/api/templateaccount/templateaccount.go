@@ -1,8 +1,8 @@
 package templateaccount
 
 import (
-	"hrgdrc/model"
-	"hrgdrc/pkg/template"
+	"hr-server/model"
+	"hr-server/pkg/template"
 )
 
 type CreateRequest struct {

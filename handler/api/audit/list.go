@@ -1,9 +1,9 @@
 package audit
 
 import (
-	h "hrgdrc/handler"
-	"hrgdrc/model"
-	"hrgdrc/pkg/errno"
+	h "hr-server/handler"
+	"hr-server/model"
+	"hr-server/pkg/errno"
 
 	"github.com/gin-gonic/gin"
 	"github.com/lexkong/log"

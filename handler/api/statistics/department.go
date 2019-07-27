@@ -6,19 +6,20 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/lexkong/log"
 	"github.com/lexkong/log/lager"
-	h "hrgdrc/handler"
-	"hrgdrc/model"
-	"hrgdrc/pkg/errno"
-	"hrgdrc/util"
+	h "hr-server/handler"
+	"hr-server/model"
+	"hr-server/pkg/errno"
+	"hr-server/util"
 	"strconv"
 )
 
 var departmentNameMap map[uint64]string
+
 func DepartmentIncomeQuery(c *gin.Context) {
 	log.Info("DepartmentIncomeQuery function called.", lager.Data{"X-Request-Id": util.GetReqID(c)})
 	var r DetailRequest
 	if err := c.Bind(&r); err != nil {
-		h.SendResponse(c, errno.ErrBind,  err.Error())
+		h.SendResponse(c, errno.ErrBind, err.Error())
 		return
 	}
 	currentYear = r.Year
@@ -33,7 +34,7 @@ func DepartmentIncomeQuery(c *gin.Context) {
 	salaries, err := model.GetSalaryByAccountAndTemplate(r.Year, r.Account, ts)
 	if err != nil {
 		fmt.Println("GetSalaryByAccountAndTemplate error :", err.Error())
-		h.SendResponse(c, errno.ErrBind,  err.Error())
+		h.SendResponse(c, errno.ErrBind, err.Error())
 		return
 	}
 
@@ -44,7 +45,7 @@ func DepartmentIncomeQuery(c *gin.Context) {
 		year = year + 1
 		salaries, err = model.GetSalaryByAccountAndTemplate(strconv.Itoa(year), r.Account, ts)
 		if err != nil {
-			h.SendResponse(c, errno.ErrBind,  err.Error())
+			h.SendResponse(c, errno.ErrBind, err.Error())
 			return
 		}
 	}
@@ -58,15 +59,16 @@ func DepartmentIncomeQuery(c *gin.Context) {
 
 	result, err := model.GetDepartmentTotalIncome(r.Year, sMap)
 	if err != nil {
-		h.SendResponse(c, errno.ErrDatabase,  err.Error())
+		h.SendResponse(c, errno.ErrDatabase, err.Error())
 		return
 	}
 
 	filename, err := writeDepartmentIntoExcel(result)
 	if err != nil {
-		h.SendResponse(c, errno.ErrWriteExcel,  err.Error())
+		h.SendResponse(c, errno.ErrWriteExcel, err.Error())
 		return
 	}
+	model.CreateOperateRecord(c, fmt.Sprintf("查询部门收入情况"))
 	h.SendResponse(c, nil, CreateResponse{File: filename})
 	return
 

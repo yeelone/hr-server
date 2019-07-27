@@ -1,7 +1,7 @@
 package service
 
 import (
-	"hrgdrc/model"
+	"hr-server/model"
 )
 
 // ListUserCoefficient

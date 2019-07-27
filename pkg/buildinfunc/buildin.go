@@ -4,7 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"gopkg.in/yaml.v2"
-	"hrgdrc/util"
+	"hr-server/util"
 	"io/ioutil"
 	"reflect"
 	"strings"

@@ -390,3 +390,12 @@ func UnzipDir(zipFile string, dir string) {
 		}()
 	}
 }
+
+func Uint64ArrayToInt64Array(a []uint64) []int64 {
+	arr := make([]int64, len(a))
+
+	for i := range a {
+		arr[i] = int64(a[i])
+	}
+	return arr
+}

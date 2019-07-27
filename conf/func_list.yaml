@@ -23,15 +23,6 @@ Taxable:
   NeedRequired: true
   Params: []
   Return: 应缴个税
-Taxable2019:
-  Name: Taxable2019
-  Alias: 个税计算器
-  NeedParams: true
-  Method: 传入应纳税金额
-  Required: []
-  NeedRequired: true
-  Params: [Key]
-  Return: 应缴个税
 Range:
   Name: Range
   Alias: 区间计算
@@ -58,49 +49,4 @@ IF:
   NeedRequired: true
   NeedParams: true
   Params: [判断表达式, 真值表达式, 假值表达式 ]
-  Return: 值
-IFTransferMonthEqualCurrentMonth:
-  Name: IFTransferMonthEqualCurrentMonth
-  Alias: 判断加入群组时间与当前年月是否相同
-  Method: 要求 参数1:群组名;参数2:为真时值; 参数3:为假时值;
-  Required: []
-  NeedRequired: true
-  NeedParams: true
-  Params: [群组名, 真值, 假值 ]
-  Return: 值
-IFGroupEqual:
-  Name: IFGroupEqual
-  Alias: 如果用户在该组里
-  Method: 要求 参数1:群组名;参数2:为真时表达式; 参数3:为假时值表达式;
-  Required: []
-  NeedRequired: true
-  NeedParams: true
-  Params: [组名, 真值表达式, 假值表达式 ]
-  Return: 值
-IFTagEqual:
-  Name: IFTagEqual
-  Alias: 如果用户在该标签里
-  Method: 要求 参数1:标签名;参数2:为真时表达式; 参数3:为假时值表达式;
-  Required: []
-  NeedRequired: true
-  NeedParams: true
-  Params: [组名, 真值表达式, 假值表达式 ]
-  Return: 值
-Addup:
-  Name: Addup
-  Alias: 累计，即将今年的当前月份之前的几个月份进行合计，注意，只会合计到当前月的上一个月。因为当月数据还未生成。
-  Method: 要求 参数1:key ;参数2:从哪个月开始; 参数3:到哪个月结束
-  Required: []
-  NeedRequired: false
-  NeedParams: true
-  Params: [key, 开始月,结束月 ]
-  Return: 值
-LastMonthValue:
-  Name: LastMonthValue
-  Alias: 取得指定Key的上一个月份的数据,注意,如果是1月份，是不会取得上一个年度12月份的数据的。不支持跨年取数。
-  Method: 要求 参数1:key
-  Required: []
-  NeedRequired: False
-  NeedParams: true
-  Params: [key]
   Return: 值

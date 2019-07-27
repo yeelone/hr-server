@@ -1,7 +1,12 @@
 package model
 
 import (
+	"bufio"
 	"fmt"
+	"github.com/lexkong/log"
+	"hr-server/pkg/auth"
+	"os"
+	"strings"
 
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
@@ -86,7 +91,9 @@ func initTable() {
 	var permissions Permissions
 	var usergroup UserGroup
 	var record Record
-	DB.Self.AutoMigrate(&user, &g, &template, &gt, &record, &profile, &tas, &audit, &usergroup, &permissions, &role, &sf, &s, &t, &tas, &sc)
+	var operate OperateRecord
+	var salaryProfileConfig SalaryProfileConfig
+	DB.Self.AutoMigrate(&salaryProfileConfig, &t, &operate, &user, &g, &template, &gt, &record, &profile, &tas, &audit, &usergroup, &permissions, &role, &sf, &s, &tas, &sc)
 	initAdmin()
 	initDefaultGroup()
 	initDefaultUserGroup()
@@ -107,6 +114,71 @@ func initAdmin() {
 		u.Password = viper.GetString("admin.password")
 		u.Save()
 	}
+
+	//查看是否存在
+	role := Role{}
+	err = DB.Self.Where("name = ?", viper.GetString("admin.role")).First(&role).Error
+	if err != nil {
+		m := Role{
+			Name: viper.GetString("admin.role"),
+		}
+		m.Create()
+	}
+
+	users := []uint64{u.ID}
+	if err = AddRoleUsers(role.ID, users); err != nil {
+		log.Fatal("cannot add user to role ", err)
+	}
+
+	// 超级管理员拥有所有的权限
+	filename := "conf/permission/" + role.Name + ".csv"
+	err = os.Remove(filename) //删除文件test.txt
+	if err != nil {
+		//如果删除失败则输出 file remove Error!
+		fmt.Println("file remove Error!  ", err)
+	} else {
+		//如果删除成功则输出 file remove OK!
+		fmt.Println("file remove OK!")
+	}
+
+	file, err := os.Create(filename)
+	if err != nil {
+		log.Fatal("Cannot create permission file ", err)
+	}
+	defer file.Close()
+
+	runtimeViper := viper.New()
+	runtimeViper.AddConfigPath("conf/permission") // 如果没有指定配置文件，则解析默认的配置文件
+	runtimeViper.SetConfigName("permission")
+
+	runtimeViper.SetConfigType("yaml")                  // 设置配置文件格式为YAML
+	if err := runtimeViper.ReadInConfig(); err != nil { // viper解析配置文件
+		fmt.Println(err)
+		return
+	}
+
+	writer := bufio.NewWriter(file)
+	defer writer.Flush()
+
+	uni := make(map[string]struct{})
+	for _, key := range runtimeViper.AllKeys() {
+		keyStr := strings.Split(key, ".")
+		if len(keyStr) == 3 {
+			subject := role.Name
+			object := runtimeViper.GetString(keyStr[0] + "." + keyStr[1] + ".object")
+			action := runtimeViper.GetString(keyStr[0] + "." + keyStr[1] + ".action")
+			s := "p" + ", " + subject + ", " + object + ", " + action + "\n"
+
+			if _, ok := uni[s]; !ok {
+				uni[s] = struct{}{}
+				writer.Write([]byte(s))
+			}
+		}
+	}
+
+	writer.Flush()
+
+	auth.MergePermission("./conf/permission")
 }
 
 func initDefaultUserGroup() {
@@ -127,20 +199,19 @@ func initDefaultGroup() {
 	depart := Group{}
 	err := DB.Self.Where("name = ?", "部门").First(&depart).Error
 	if err != nil {
-		m := Group{
+		depart = Group{
 			Name:        "部门",
 			Code:        0,
 			Parent:      0,
 			Coefficient: 0,
 			Locked:      true,
 		}
-		m.Create()
+		depart.Create()
 	}
-
-	err = DB.Self.Where("name = ?", "空部门").First(&Group{}).Error
+	err = DB.Self.Where("name = ?", "默认部门").First(&Group{}).Error
 	if err != nil {
 		m := Group{
-			Name:        "空部门",
+			Name:        "默认部门",
 			Code:        0,
 			Parent:      depart.ID,
 			Coefficient: 0,
@@ -153,20 +224,20 @@ func initDefaultGroup() {
 	g := Group{}
 	err = DB.Self.Where("name = ?", "学历").First(&g).Error
 	if err != nil {
-		m := Group{
+		g = Group{
 			Name:        "学历",
 			Code:        0,
 			Parent:      0,
 			Coefficient: 0,
 			Locked:      true,
 		}
-		m.Create()
+		g.Create()
 	}
 
-	err = DB.Self.Where("name = ?", "无学历").First(&Group{}).Error
+	err = DB.Self.Where("name = ?", "默认学历").First(&Group{}).Error
 	if err != nil {
 		m := Group{
-			Name:        "无学历",
+			Name:        "默认学历",
 			Code:        0,
 			Parent:      g.ID,
 			Coefficient: 0,
@@ -179,20 +250,20 @@ func initDefaultGroup() {
 	g = Group{}
 	err = DB.Self.Where("name = ?", "岗位").First(&g).Error
 	if err != nil {
-		m := Group{
+		g = Group{
 			Name:        "岗位",
 			Code:        0,
 			Parent:      0,
 			Coefficient: 0,
 			Locked:      true,
 		}
-		m.Create()
+		g.Create()
 	}
 
-	err = DB.Self.Where("name = ?", "空岗位").First(&Group{}).Error
+	err = DB.Self.Where("name = ?", "默认岗位").First(&Group{}).Error
 	if err != nil {
 		m := Group{
-			Name:        "空岗位",
+			Name:        "默认岗位",
 			Code:        0,
 			Parent:      g.ID,
 			Coefficient: 0,
@@ -205,19 +276,19 @@ func initDefaultGroup() {
 	g = Group{}
 	err = DB.Self.Where("name = ?", "职称").First(&g).Error
 	if err != nil {
-		m := Group{
+		g = Group{
 			Name:        "职称",
 			Code:        0,
 			Parent:      0,
 			Coefficient: 0,
 			Locked:      true,
 		}
-		m.Create()
+		g.Create()
 	}
-	err = DB.Self.Where("name = ?", "无职称").First(&Group{}).Error
+	err = DB.Self.Where("name = ?", "默认职称").First(&Group{}).Error
 	if err != nil {
 		m := Group{
-			Name:        "无职称",
+			Name:        "默认职称",
 			Code:        0,
 			Parent:      g.ID,
 			Coefficient: 0,
@@ -230,19 +301,19 @@ func initDefaultGroup() {
 	g = Group{}
 	err = DB.Self.Where("name = ?", "状态").First(&g).Error
 	if err != nil {
-		m := Group{
+		g = Group{
 			Name:        "状态",
 			Code:        0,
 			Parent:      0,
 			Coefficient: 0,
 			Locked:      true,
 		}
-		m.Create()
+		g.Create()
 	}
-	err = DB.Self.Where("name = ?", "无状态").First(&Group{}).Error
+	err = DB.Self.Where("name = ?", "默认状态").First(&Group{}).Error
 	if err != nil {
 		m := Group{
-			Name:        "无状态",
+			Name:        "默认状态",
 			Code:        0,
 			Parent:      g.ID,
 			Coefficient: 0,

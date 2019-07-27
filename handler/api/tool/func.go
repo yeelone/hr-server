@@ -1,8 +1,8 @@
 package tool
 
 import (
-	h "hrgdrc/handler"
-	"hrgdrc/pkg/buildinfunc"
+	h "hr-server/handler"
+	"hr-server/pkg/buildinfunc"
 
 	"github.com/gin-gonic/gin"
 )

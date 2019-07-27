@@ -4,10 +4,10 @@ import (
 	"errors"
 	"fmt"
 	"github.com/360EntSecGroup-Skylar/excelize"
-	h "hrgdrc/handler"
-	"hrgdrc/model"
-	"hrgdrc/pkg/errno"
-	"hrgdrc/util"
+	h "hr-server/handler"
+	"hr-server/model"
+	"hr-server/pkg/errno"
+	"hr-server/util"
 	"strconv"
 	"time"
 
@@ -33,23 +33,23 @@ func Import(c *gin.Context) {
 		return
 	}
 	newFile := "/export/importTagResult.xlsx"
-	if errs,err := model.ImportTagFromExcel(newFilename); len(errs) > 0 {
+	if errs, err := model.ImportTagFromExcel(newFilename); len(errs) > 0 {
 
-		fmt.Println("errs",errs)
+		fmt.Println("errs", errs)
 		if err != nil {
 			h.SendResponse(c, errors.New("导入数据库之后发现错误，请下载错误文件"), CreateResponse{File: "", Error: "无法将错误信息写入文件"})
 			return
 		}
 		xlsx := excelize.NewFile()
-		for i, err := range errs{
-			xlsx.SetCellValue("Sheet1","A" + strconv.Itoa(i+1), err)
+		for i, err := range errs {
+			xlsx.SetCellValue("Sheet1", "A"+strconv.Itoa(i+1), err)
 		}
-		err = xlsx.SaveAs("."+newFile)
+		err = xlsx.SaveAs("." + newFile)
 		if err != nil {
-			h.SendResponse(c, errno.ErrImport, CreateResponse{File: "", Error:err.Error()})
+			h.SendResponse(c, errno.ErrImport, CreateResponse{File: "", Error: err.Error()})
 			return
 		}
-		h.SendResponse(c, errno.ErrImport, CreateResponse{File: "importTagResult.xlsx", Error:""})
+		h.SendResponse(c, errno.ErrImport, CreateResponse{File: "importTagResult.xlsx", Error: ""})
 		return
 	}
 
@@ -57,4 +57,3 @@ func Import(c *gin.Context) {
 
 	h.SendResponse(c, nil, rsp)
 }
-

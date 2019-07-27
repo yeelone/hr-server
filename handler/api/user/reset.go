@@ -2,10 +2,10 @@ package user
 
 import (
 	"fmt"
-	h "hrgdrc/handler"
-	"hrgdrc/model"
-	"hrgdrc/pkg/errno"
-	"hrgdrc/util"
+	h "hr-server/handler"
+	"hr-server/model"
+	"hr-server/pkg/errno"
+	"hr-server/util"
 
 	"github.com/gin-gonic/gin"
 	"github.com/lexkong/log"
@@ -25,7 +25,6 @@ func ResetPassword(c *gin.Context) {
 		h.SendResponse(c, errno.ErrDatabase, err.Error())
 		return
 	}
-
 	h.SendResponse(c, nil, nil)
 }
 

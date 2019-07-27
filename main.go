@@ -9,11 +9,11 @@ import (
 	"os"
 	"time"
 
-	"hrgdrc/config"
-	"hrgdrc/model"
-	v "hrgdrc/pkg/version"
-	"hrgdrc/router"
-	"hrgdrc/router/middleware"
+	"hr-server/config"
+	"hr-server/model"
+	v "hr-server/pkg/version"
+	"hr-server/router"
+	"hr-server/router/middleware"
 
 	"github.com/gin-gonic/contrib/sessions"
 	"github.com/gin-gonic/gin"
@@ -23,13 +23,13 @@ import (
 )
 
 var (
-	cfg     = pflag.StringP("config", "c", "", "hrgdrc config file path.")
+	cfg     = pflag.StringP("config", "c", "", "hr-server config file path.")
 	version = pflag.BoolP("version", "v", false, "show version info.")
 )
 
-// @title hrgdrc Example API
+// @title hr-server Example API
 // @version 1.0
-// @description hrgdrc demo
+// @description hr-server demo
 
 // @contact.name lkong
 // @contact.url http://www.swagger.io/support
@@ -73,8 +73,7 @@ func main() {
 	router.Load(
 		// Cores.
 		g,
-
-		// Middlwares.
+		// Middlewares.
 		middleware.Logging(),
 		middleware.RequestId(),
 

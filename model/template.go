@@ -3,7 +3,7 @@ package model
 import (
 	"errors"
 	"fmt"
-	"hrgdrc/util"
+	"hr-server/util"
 	"strings"
 )
 

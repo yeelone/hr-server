@@ -1,36 +1,18 @@
-# hrgdrc-server
+# hr-server
 
-#### Description
-{**When you're done, you can delete the content in this README and update the file with details for others getting started with your repository**}
+# 版本
+1.0.1
 
-#### Software Architecture
-Software architecture description
+# 日期
+ 2019-07-17
 
-#### Installation
+# 问题描述
+ 在批量上传标签并关联用户时,比如为用户加上延期支付的标签，此时将用户调至不需要延时支付的岗位时，系统并不知道是不是需要去掉将延期支付的标签。这会造成在调整时出现错误。
 
-1. xxxx
-2. xxxx
-3. xxxx
+ #解决办法
+ 1、在管理台调动界面增加用户标签选择，操作员可以调整
+GroupTransfer
 
-#### Instructions
-
-1. xxxx
-2. xxxx
-3. xxxx
-
-#### Contribution
-
-1. Fork the project
-2. Create Feat_xxx branch
-3. Commit your code
-4. Create Pull Request
-
-
-#### Gitee Feature
-
-1. You can use Readme\_XXX.md to support different languages, such as Readme\_en.md, Readme\_zh.md
-2. Gitee blog [blog.gitee.com](https://blog.gitee.com)
-3. Explore open source project [https://gitee.com/explore](https://gitee.com/explore)
-4. The most valuable open source project [GVP](https://gitee.com/gvp)
-5. The manual of Gitee [http://git.mydoc.io/](http://git.mydoc.io/)
-6. The most popular members  [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+# 更新日志
+1、增加版本号
+2、

@@ -2,10 +2,10 @@ package role
 
 import (
 	"fmt"
-	h "hrgdrc/handler"
-	"hrgdrc/model"
-	"hrgdrc/pkg/errno"
-	"hrgdrc/util"
+	h "hr-server/handler"
+	"hr-server/model"
+	"hr-server/pkg/errno"
+	"hr-server/util"
 
 	"github.com/gin-gonic/gin"
 	"github.com/lexkong/log"
@@ -13,7 +13,7 @@ import (
 )
 
 func RelateUsers(c *gin.Context) {
-	log.Info("group relateprofiles function called.", lager.Data{"X-Request-Id": util.GetReqID(c)})
+	log.Info("RelateUsers function called.", lager.Data{"X-Request-Id": util.GetReqID(c)})
 	var r CreateRequest
 	if err := c.Bind(&r); err != nil {
 		h.SendResponse(c, errno.ErrBind, nil)

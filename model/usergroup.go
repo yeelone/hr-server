@@ -3,8 +3,8 @@ package model
 import (
 	"errors"
 	"fmt"
-	"hrgdrc/pkg/constvar"
-	"hrgdrc/util"
+	"hr-server/pkg/constvar"
+	"hr-server/util"
 	"strconv"
 	"strings"
 

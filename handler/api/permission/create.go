@@ -3,10 +3,11 @@ package permission
 import (
 	"bufio"
 	"fmt"
-	h "hrgdrc/handler"
-	"hrgdrc/pkg/auth"
-	"hrgdrc/pkg/errno"
-	"hrgdrc/util"
+	h "hr-server/handler"
+	"hr-server/model"
+	"hr-server/pkg/auth"
+	"hr-server/pkg/errno"
+	"hr-server/util"
 	"os"
 
 	"github.com/gin-gonic/gin"
@@ -27,7 +28,7 @@ func Create(c *gin.Context) {
 	saveCSV(r)
 	auth.RefreshEnforcer()
 	rsp := CreateResponse{}
-
+	model.CreateOperateRecord(c, fmt.Sprintf("权限更新 , Role: %s ", r.RoleName))
 	// Show the user information.
 	h.SendResponse(c, nil, rsp)
 

@@ -1,7 +1,7 @@
 package audit
 
 import (
-	"hrgdrc/model"
+	"hr-server/model"
 )
 
 type CreateRequest struct {

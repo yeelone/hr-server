@@ -1,8 +1,8 @@
 package salary
 
 import (
-	h "hrgdrc/handler"
-	"hrgdrc/pkg/errno"
+	h "hr-server/handler"
+	"hr-server/pkg/errno"
 	"path"
 	"strconv"
 	"strings"

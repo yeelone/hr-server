@@ -1,7 +1,7 @@
 package tag
 
 import (
-	"hrgdrc/model"
+	"hr-server/model"
 )
 
 type CreateRequest struct {
@@ -12,13 +12,14 @@ type CreateRequest struct {
 	Coefficient float64  `json:"coefficient"`
 	Users       []uint64 `json:"user_id_list"`
 	Profiles    []uint64 `json:"profile_id_list"`
-	Remark string `json:"remark"`
+	Remark      string   `json:"remark"`
+	GroupIds    []uint64 `json:"commensalism_group_ids"`
 }
 
 type CreateResponse struct {
-	Tag *model.Tag `json:"tag"`
-	File string `json:"file"`
-	Error string `json:"error"`
+	Tag   *model.Tag `json:"tag"`
+	File  string     `json:"file"`
+	Error string     `json:"error"`
 }
 
 type ListResponse struct {

@@ -2,7 +2,7 @@ package template
 
 import (
 	"fmt"
-	"hrgdrc/util"
+	"hr-server/util"
 	"strings"
 )
 

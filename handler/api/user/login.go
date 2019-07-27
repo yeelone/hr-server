@@ -1,11 +1,11 @@
 package user
 
 import (
-	h "hrgdrc/handler"
-	"hrgdrc/model"
-	"hrgdrc/pkg/auth"
-	"hrgdrc/pkg/errno"
-	"hrgdrc/pkg/token"
+	h "hr-server/handler"
+	"hr-server/model"
+	"hr-server/pkg/auth"
+	"hr-server/pkg/errno"
+	"hr-server/pkg/token"
 
 	"github.com/gin-gonic/gin"
 	"github.com/lexkong/log"
@@ -57,6 +57,13 @@ func Login(c *gin.Context) {
 	d.Password = ""
 	c.Set("CurrentUsername", d.Username)
 	c.Set("CurrentUserID", d.ID)
+
+	record := &model.OperateRecord{
+		Body: d.Username + " 登录系统",
+	}
+	if err := record.Create(); err != nil {
+	}
+
 	h.SendResponse(c, nil, model.Token{
 		Token: t,
 		User:  d,

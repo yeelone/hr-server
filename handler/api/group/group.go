@@ -1,7 +1,7 @@
 package group
 
 import (
-	"hrgdrc/model"
+	"hr-server/model"
 )
 
 type CreateRequest struct {
@@ -11,14 +11,14 @@ type CreateRequest struct {
 	Code        int      `json:"code"`
 	Coefficient float64  `json:"coefficient"`
 	Profiles    []uint64 `json:"profile_id_list"`
-	Remark string `json:"remark"`
+	Remark      string   `json:"remark"`
 }
 
 type CreateResponse struct {
 	Group *model.Group `json:"group"`
-	Rules []string `json:"rules"`
-	File string `json:"file"`
-	Error string `json:"error"`
+	Rules []string     `json:"rules"`
+	File  string       `json:"file"`
+	Error string       `json:"error"`
 }
 
 type ListResponse struct {
@@ -42,7 +42,7 @@ type SwaggerListResponse struct {
 }
 
 type RelateTagsRequest struct {
-	Group uint64 `json:"group"`
-	Tags    []uint64 `json:"tags"`
-	Rules    []string `json:"rules"`
+	Group uint64   `json:"group"`
+	Tags  []uint64 `json:"tags"`
+	Rules []string `json:"rules"`
 }
