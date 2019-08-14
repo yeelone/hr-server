@@ -48,6 +48,7 @@ func PreDeductionRateSetting(c *gin.Context) {
 		}
 	}
 	record := model.Record{}
+	record.Object = "salary"
 	record.Body = "预扣率有发生变更,请仔细检查！"
 	if err := record.Create(); err != nil {
 

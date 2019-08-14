@@ -184,6 +184,7 @@ func handleProfile(a *Audit, state int) error {
 		return nil
 	}
 	if a.Action == AUDITMOVEACTION {
+		fmt.Println("move action")
 		// 员工移动之后
 		// 第一步，查询调动表得到调动信息
 		m, err := GetTransfer(uint64(a.DestObjectID[0]))
@@ -245,12 +246,8 @@ func handleProfile(a *Audit, state int) error {
 					associatedGroupIds = parentTagMap[ptag.Parent].CommensalismGroupIds
 				}
 
-				fmt.Println("ptag", util.PrettyJson(ptag))
-				fmt.Println("associatedGroupIds", associatedGroupIds)
-
 				//标签共生组的情况下，如果目标组有该标签，则为用户加上该标签，如果没有该标签，则将该标签删除，类似共生体
 				for _, gid := range associatedGroupIds {
-					fmt.Println("uint64(gid) == newGroup.Parent", uint64(gid), newGroup.Parent)
 					if uint64(gid) == newGroup.Parent { //如果标签有关联到这个组
 						hasTag := false
 						//看看这个组是不是有关联该标签
@@ -375,6 +372,7 @@ func handleProfile(a *Audit, state int) error {
 				fmt.Println("transfer update error", err)
 			}
 			record := Record{}
+			record.Body = "profile"
 			record.Body = "描述:职工调动; 姓名：" + profile.Name + ";身份证号码:" + profile.IDCard + ";从：" + oldGroup.Name + "; 到 :" + newGroup.Name + ";"
 			record.Body += "调动数值变化, 从：" + fmt.Sprint(oldGroup.Coefficient) + ";到:" + fmt.Sprint(newGroup.Coefficient) + ";"
 			if len(deleteTagRecord) > 0 {
@@ -386,7 +384,7 @@ func handleProfile(a *Audit, state int) error {
 			if len(addTagErrRecord) > 0 {
 				record.Body += addTagErrRecord
 			}
-
+			fmt.Println("move action",record.Body)
 			if err = record.Create(); err != nil {
 				return errors.New("删除职工档案审核通过，但无法将新增职工信息添加到记录表里，错误信息:" + err.Error())
 			}

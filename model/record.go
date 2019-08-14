@@ -7,6 +7,7 @@ type Record struct {
 	ID        uint64    `gorm:"primary_key;AUTO_INCREMENT;column:id" json:"id"`
 	CreatedAt time.Time `gorm:"column:createdAt" `
 	Body      string    `json:"body"`
+	Object    string    `json:"object"`
 }
 
 const RecordTableName = "tb_record"

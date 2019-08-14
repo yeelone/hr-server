@@ -48,9 +48,10 @@ func Update(c *gin.Context) {
 		return
 	}
 	record := model.Record{}
-	record.Body = "描述:系数变更; 系数名：" + parentTag.Name + ";"
-	record.Body += "系数变化 ，原系数名：" + oldTag.Name + "; 原系数：" + fmt.Sprint(oldTag.Coefficient) + ";"
-	record.Body += "系数变化 ，新系数名：" + m.Name + "; 新系数：" + fmt.Sprint(m.Coefficient) + ";"
+	record.Object = "tag"
+	record.Body = "描述:系数变更; 系数名:" + parentTag.Name + ";"
+	record.Body += "系数变化,原系数名:" + oldTag.Name + "; 原系数:" + fmt.Sprint(oldTag.Coefficient) + ";"
+	record.Body += "系数变化,新系数名:" + m.Name + "; 新系数:" + fmt.Sprint(m.Coefficient) + ";"
 
 	if err := record.Create(); err != nil {
 		fmt.Println(err)

@@ -28,9 +28,10 @@ func RelateProfiles(c *gin.Context) {
 	pTag, _ := model.GetTagParent(r.ID)
 	tag, _ := model.GetTag(r.ID, false)
 	record := model.Record{}
-	record.Body = "描述:职工档案关联系数; 系数名：[" + pTag.Name + "-" + tag.Name + "];系数：" + fmt.Sprint(tag.Coefficient) + ";"
+	record.Object = "tag"
+	record.Body = "描述:职工档案关联系数; 系数名:[" + pTag.Name + "-" + tag.Name + "];系数:" + fmt.Sprint(tag.Coefficient) + ";"
 	for _, p := range profiles {
-		record.Body += "系数变化,涉及职工：" + p.Name + ",身份证：" + p.IDCard + ";"
+		record.Body += "系数变化,涉及职工:" + p.Name + ",身份证:" + p.IDCard + ";"
 	}
 
 	if err := record.Create(); err != nil {
@@ -56,9 +57,10 @@ func RemoveRelateProfiles(c *gin.Context) {
 	profiles, _ := model.GetProfiles(r.Profiles)
 	tag, _ := model.GetTagParent(r.ID)
 	record := model.Record{}
-	record.Body = "描述:取消职工与系数的关联; 系数名：" + tag.Name + ";系数：" + fmt.Sprint(tag.Coefficient) + ";"
+	record.Object = "tag"
+	record.Body = "描述:取消职工与系数的关联; 系数名:" + tag.Name + ";系数:" + fmt.Sprint(tag.Coefficient) + ";"
 	for _, p := range profiles {
-		record.Body += "系数变化,涉及职工：" + p.Name + ",身份证：" + p.IDCard + ";"
+		record.Body += "系数变化,涉及职工:" + p.Name + ",身份证:" + p.IDCard + ";"
 	}
 
 	if err := record.Create(); err != nil {

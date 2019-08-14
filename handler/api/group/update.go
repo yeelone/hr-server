@@ -35,7 +35,8 @@ func Update(c *gin.Context) {
 	}
 	group, _ := model.GetGroup(p.ID, false)
 	record := model.Record{}
-	record.Body = "描述:组发生了变更; 组名：" + group.Name + ";变更后的系数:" + fmt.Sprint(group.Coefficient) + ";"
+	record.Object = "group"
+	record.Body = "描述:组发生了变更; 组名:" + group.Name + ";变更后的系数:" + fmt.Sprint(group.Coefficient) + ";"
 
 	if err := record.Create(); err != nil {
 		fmt.Println(err)

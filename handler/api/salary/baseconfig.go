@@ -29,6 +29,7 @@ func BaseConfig(c *gin.Context) {
 		return
 	}
 	record := model.Record{}
+	record.Object = "salary"
 	record.Body = "基本工资发生变更, 变更为[" + fmt.Sprint(r.BaseSalary) + "],请仔细核对！"
 	if err := record.Create(); err != nil {
 

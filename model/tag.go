@@ -235,16 +235,23 @@ func AddProfileTags(pid uint64, tids []uint64) (err error) {
 		deleteStr = append(deleteStr, "(profile_id="+util.Uint2Str(pid)+" and tag_id="+util.Uint2Str(id)+")")
 		insertStr = append(insertStr, "("+util.Uint2Str(pid)+", "+util.Uint2Str(id)+")")
 	}
-	err = tx.Debug().Exec(" delete from profile_tags where " + strings.Join(deleteStr, " OR ") + " ;").Error
-	if err != nil {
-		tx.Rollback()
-		return err
+
+	if len(deleteStr) > 0 {
+		err = tx.Debug().Exec(" delete from profile_tags where " + strings.Join(deleteStr, " OR ") + " ;").Error
+		if err != nil {
+			tx.Rollback()
+			return err
+		}
 	}
-	err = tx.Debug().Exec(" insert into profile_tags(profile_id,tag_id) values" + strings.Join(insertStr, ",") + ";").Error
-	if err != nil {
-		tx.Rollback()
-		return err
+
+	if len(insertStr)>0 {
+		err = tx.Debug().Exec(" insert into profile_tags(profile_id,tag_id) values" + strings.Join(insertStr, ",") + ";").Error
+		if err != nil {
+			tx.Rollback()
+			return err
+		}
 	}
+
 	tx.Commit()
 	return err
 }

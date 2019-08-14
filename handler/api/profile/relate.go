@@ -2,13 +2,14 @@ package profile
 
 import (
 	"fmt"
-	"github.com/gin-gonic/gin"
-	"github.com/lexkong/log"
-	"github.com/lexkong/log/lager"
 	h "hr-server/handler"
 	"hr-server/model"
 	"hr-server/pkg/errno"
 	"hr-server/util"
+
+	"github.com/gin-gonic/gin"
+	"github.com/lexkong/log"
+	"github.com/lexkong/log/lager"
 )
 
 var tempProfile = model.Profile{}
@@ -36,9 +37,10 @@ func RelateTags(c *gin.Context) {
 	}
 	addTagStr, _ := writeProfileRecord(topTagMap, r.Profile)
 	record := model.Record{}
-	record.Body = "描述:职工调动; 姓名：" + tempProfile.Name + ";身份证号码:" + tempProfile.IDCard + ";"
-	record.Body += "系数变化 ，删除了以下系数：" + removeTagStr + ";"
-	record.Body += "系数变化 ，新增了以下系数：" + addTagStr + ";"
+	record.Object = "profile"
+	record.Body = "描述:职工调动; 姓名:" + tempProfile.Name + ";身份证号码:" + tempProfile.IDCard + ";"
+	record.Body += "系数变化,删除了以下系数:" + removeTagStr + ";"
+	record.Body += "系数变化,新增了以下系数:" + addTagStr + ";"
 
 	if err := record.Create(); err != nil {
 		fmt.Println(err)

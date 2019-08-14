@@ -2,19 +2,20 @@ package group
 
 import (
 	"fmt"
-	"github.com/gin-gonic/gin"
-	"github.com/lexkong/log"
-	"github.com/lexkong/log/lager"
 	h "hr-server/handler"
 	"hr-server/model"
 	"hr-server/pkg/errno"
 	"hr-server/util"
 	"os"
 	"strings"
+
+	"github.com/gin-gonic/gin"
+	"github.com/lexkong/log"
+	"github.com/lexkong/log/lager"
 )
 
 func RelateProfiles(c *gin.Context) {
-	log.Info("group relateprofiles function called.", lager.Data{"X-Request-Id": util.GetReqID(c)})
+	log.Info("group relate profiles function called.", lager.Data{"X-Request-Id": util.GetReqID(c)})
 	var r CreateRequest
 	if err := c.Bind(&r); err != nil {
 		h.SendResponse(c, errno.ErrBind, nil)
@@ -28,9 +29,10 @@ func RelateProfiles(c *gin.Context) {
 	group, _ := model.GetGroup(r.ID, false)
 	profiles, _ := model.GetProfiles(r.Profiles)
 	record := model.Record{}
-	record.Body = "描述:组关联人员; 组名：" + group.Name + ";新添加人员："
+	record.Object = "group"
+	record.Body = "描述:组关联人员; 组名:" + group.Name + ";新添加人员:;"
 	for _, p := range profiles {
-		record.Body += p.Name + ",身份证：" + p.IDCard + ";"
+		record.Body += "姓名:[" + p.Name + "],身份证:[" + p.IDCard + "];"
 	}
 
 	if err := record.Create(); err != nil {
@@ -54,9 +56,10 @@ func RemoveRelateProfiles(c *gin.Context) {
 	group, _ := model.GetGroup(r.ID, false)
 	profiles, _ := model.GetProfiles(r.Profiles)
 	record := model.Record{}
-	record.Body = "描述:移除组与人员的关联; 组名：" + group.Name + ";移除人员包括："
+	record.Object = "group"
+	record.Body = "描述:移除组与人员的关联; 组名:" + group.Name + ";移除人员包括:;"
 	for _, p := range profiles {
-		record.Body += p.Name + ",身份证：" + p.IDCard + ";"
+		record.Body +="姓名:[" + p.Name + "],身份证:[" + p.IDCard + "];"
 	}
 
 	if err := record.Create(); err != nil {
@@ -66,18 +69,12 @@ func RemoveRelateProfiles(c *gin.Context) {
 	h.SendResponse(c, nil, nil)
 }
 
+// 将组与标签进行关联
 func RelateTags(c *gin.Context) {
 	log.Info("RelateTags function called.", lager.Data{"X-Request-Id": util.GetReqID(c)})
 	var r RelateTagsRequest
 	if err := c.Bind(&r); err != nil {
 		h.SendResponse(c, errno.ErrBind, nil)
-		return
-	}
-
-	if err := model.ClearThenAddGroupTags(r.Group, r.Tags); err != nil {
-		e := errno.ErrDatabase
-		e.Message = e.Message + ";" + err.Error()
-		h.SendResponse(c, e, nil)
 		return
 	}
 
@@ -88,12 +85,27 @@ func RelateTags(c *gin.Context) {
 		topTagMap[tag.ID] = tag.Name
 	}
 
-	group, _ := model.GetGroup(r.Group, false)
-	tags, _ := model.GetTagsByIDList(r.Tags)
 	record := model.Record{}
-	record.Body = "描述:群组与标签的关联发化变更; 组名：" + group.Name + ";现所关联系数："
+	record.Object = "group"
+	group, _ := model.GetGroup(r.Group, false)
+	record.Body = "描述:群组与标签的关联发化变更; 组名:" + group.Name + ";"
+	record.Body += "原先关联的标签:;"
+
+	for _, t := range group.Tags {
+		record.Body +="["  + topTagMap[t.Parent] + "] ,系数:" + fmt.Sprint(t.Coefficient) + ";"
+	}
+
+	if err := model.ClearThenAddGroupTags(r.Group, r.Tags); err != nil {
+		e := errno.ErrDatabase
+		e.Message = e.Message + ";" + err.Error()
+		h.SendResponse(c, e, nil)
+		return
+	}
+
+	tags, _ := model.GetTagsByIDList(r.Tags)
+	record.Body += "现所关联系数:;"
 	for _, t := range tags {
-		record.Body += topTagMap[t.Parent] + ",系数：" + fmt.Sprint(t.Coefficient) + ";"
+		record.Body +="["  + topTagMap[t.Parent] + "] ,系数:" + fmt.Sprint(t.Coefficient) + ";"
 	}
 
 	if err := record.Create(); err != nil {

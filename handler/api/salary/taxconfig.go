@@ -48,6 +48,7 @@ func TaxSetting(c *gin.Context) {
 		}
 	}
 	record := model.Record{}
+	record.Object = "salary"
 	record.Body = "个税起征点有发生变更,请仔细检查！"
 	if err := record.Create(); err != nil {
 
