@@ -4544,3 +4544,134 @@
 2019-08-14 09:21:59.960 INFO audit/state.go:18 Update audit state function called.
 2019-08-14 09:22:01.528 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/audit/list?offset=0&limit=20&state=-1  
 2019-08-14 09:22:01.531 INFO audit/list.go:13 Audit List function called.
+2019-08-14 09:27:59.563 INFO hr-server/main.go:96 Start to listening the incoming requests on https address: :8081
+2019-08-14 09:27:59.563 INFO hr-server/main.go:101 Start to listening the incoming requests on http address: :8080
+2019-08-14 09:28:00.066 INFO hr-server/main.go:88 The router has been deployed successfully.
+2019-08-14 09:28:56.468 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/profile?freezed=false&offset=0&limit=10  
+2019-08-14 09:28:56.469 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/group  
+2019-08-14 09:28:56.473 INFO profile/list.go:13 List function called.
+2019-08-14 09:28:56.519 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/group?where_key=parent&where_value=0  
+2019-08-14 09:28:56.691 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/group?where_key=parent&where_value=0  
+2019-08-14 09:28:56.835 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/group?where_key=parent&where_value=0  
+2019-08-14 09:28:56.976 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/group?where_key=parent&where_value=0  
+2019-08-14 09:28:58.987 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/profile/1133  
+2019-08-14 09:29:01.071 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/group?where_key=parent&where_value=129  
+2019-08-14 09:29:06.472 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/profile/transfer  
+2019-08-14 09:29:06.475 INFO grouptransfer/create.go:17 group transfer Create function called.
+2019-08-14 09:29:10.570 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/audit/list?offset=0&limit=20&state=-1  
+2019-08-14 09:29:10.572 INFO audit/list.go:13 Audit List function called.
+2019-08-14 09:29:14.949 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/audit/328  
+2019-08-14 09:29:14.951 INFO audit/state.go:18 Update audit state function called.
+2019-08-14 09:29:16.702 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/audit/list?offset=0&limit=20&state=-1  
+2019-08-14 09:29:16.705 INFO audit/list.go:13 Audit List function called.
+2019-08-14 09:29:19.612 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/salary/account  
+2019-08-14 09:29:19.618 INFO record/list.go:13 Audit List function called.
+2019-08-14 09:29:19.762 INFO record/list.go:13 Audit List function called.
+2019-08-14 09:32:34.995 INFO record/operation.go:13 Operation List function called.
+2019-08-14 09:33:34.977 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/group?where_key=parent&where_value=0  
+2019-08-14 09:33:35.010 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/tag?where_key=parent&where_value=0  
+2019-08-14 09:33:35.012 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/group  
+2019-08-14 09:33:35.153 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/group?where_key=parent&where_value=0  
+2019-08-14 09:33:35.170 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/group?where_key=parent&where_value=127  
+2019-08-14 09:33:35.226 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/group  
+2019-08-14 09:33:35.421 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/tag?where_key=parent&where_value=0  
+2019-08-14 09:33:39.676 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/group  
+2019-08-14 09:33:39.676 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/profile?freezed=false&offset=0&limit=10  
+2019-08-14 09:33:39.680 INFO profile/list.go:13 List function called.
+2019-08-14 09:33:39.686 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/group?where_key=parent&where_value=0  
+2019-08-14 09:33:39.894 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/group?where_key=parent&where_value=0  
+2019-08-14 09:33:40.033 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/group?where_key=parent&where_value=0  
+2019-08-14 09:33:40.267 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/group?where_key=parent&where_value=0  
+2019-08-14 09:33:45.329 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/tag  
+2019-08-14 09:33:45.371 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/group  
+2019-08-14 09:33:45.379 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/group?where_key=parent&where_value=0  
+2019-08-14 09:33:58.668 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/salary/base  
+2019-08-14 09:33:58.668 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/salary/tax/config  
+2019-08-14 09:33:58.668 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/salary/pre_deduction_rate/config  
+2019-08-14 09:33:58.673 INFO salary/getbase.go:14 GetBaseSalary query function called.
+2019-08-14 09:34:02.926 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/salary/template  
+2019-08-14 09:34:04.812 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/salary/template/1  
+2019-08-14 09:34:04.816 INFO salary/gettemplate.go:17 GetTemplate query function called.
+2019-08-14 09:34:04.855 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/group?where_key=parent&where_value=0  
+2019-08-14 09:34:04.855 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/tag?where_key=parent&where_value=0  
+2019-08-14 09:34:04.915 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/salary/account  
+2019-08-14 09:34:10.081 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/tag  
+2019-08-14 09:34:10.118 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/group  
+2019-08-14 09:34:10.135 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/group?where_key=parent&where_value=0  
+2019-08-14 09:34:11.497 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/salary/base  
+2019-08-14 09:34:11.498 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/salary/tax/config  
+2019-08-14 09:34:11.498 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/salary/pre_deduction_rate/config  
+2019-08-14 09:34:11.501 INFO salary/getbase.go:14 GetBaseSalary query function called.
+2019-08-14 09:34:13.760 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/salary/account  
+2019-08-14 09:34:17.909 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/salary/account  
+2019-08-14 09:38:45.082 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/salary/account/1/year/2019/fields  
+2019-08-14 09:38:45.084 INFO templateaccount/getAllFields.go:18 GetAccountFields  function called.
+2019-08-14 09:40:14.947 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/salary/account  
+2019-08-14 09:40:31.692 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/salary/account  
+2019-08-14 09:41:21.425 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/salary/account  
+2019-08-14 09:41:25.499 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/salary/account/1/year/2019/fields  
+2019-08-14 09:41:25.504 INFO templateaccount/getAllFields.go:18 GetAccountFields  function called.
+2019-08-14 09:43:01.489 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/salary/account  
+2019-08-14 09:43:05.126 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/salary/account/1/year/2019/fields  
+2019-08-14 09:43:05.128 INFO templateaccount/getAllFields.go:18 GetAccountFields  function called.
+2019-08-14 09:45:03.410 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/salary/account  
+2019-08-14 09:45:09.494 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/salary/account/1/year/2019/fields  
+2019-08-14 09:45:09.497 INFO templateaccount/getAllFields.go:18 GetAccountFields  function called.
+2019-08-14 09:49:27.197 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/salary/account  
+2019-08-14 09:49:52.620 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/salary/account  
+2019-08-14 09:49:56.536 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/salary/account/1/year/2019/fields  
+2019-08-14 09:49:56.539 INFO templateaccount/getAllFields.go:18 GetAccountFields  function called.
+2019-08-14 09:51:01.837 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/salary/account  
+2019-08-14 09:51:12.277 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/salary/account  
+2019-08-14 09:51:26.840 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/salary/account/1/year/2019/fields  
+2019-08-14 09:51:26.842 INFO templateaccount/getAllFields.go:18 GetAccountFields  function called.
+2019-08-14 09:51:53.918 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/salary/account  
+2019-08-14 09:52:02.743 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/salary/account/1/year/2019/fields  
+2019-08-14 09:52:02.746 INFO templateaccount/getAllFields.go:18 GetAccountFields  function called.
+2019-08-14 09:52:41.198 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/salary/account  
+2019-08-14 09:52:57.480 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/salary/account  
+2019-08-14 09:53:03.608 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/salary/account/1/year/2019/fields  
+2019-08-14 09:53:03.612 INFO templateaccount/getAllFields.go:18 GetAccountFields  function called.
+2019-08-14 09:53:49.445 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/salary/account  
+2019-08-14 09:56:53.496 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/salary/account/1/year/2019/fields  
+2019-08-14 09:56:53.499 INFO templateaccount/getAllFields.go:18 GetAccountFields  function called.
+2019-08-14 09:59:16.781 INFO statistics/detail.go:21 Detail function called.
+2019-08-14 16:37:55.008 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/salary/account  
+2019-08-14 16:37:55.015 INFO record/list.go:13 Audit List function called.
+2019-08-14 16:37:55.221 INFO record/list.go:13 Audit List function called.
+2019-08-15 08:41:20.531 INFO record/list.go:13 Audit List function called.
+2019-08-15 08:42:32.848 INFO record/operation.go:13 Operation List function called.
+2019-08-15 08:42:40.558 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/group?where_key=parent&where_value=0  
+2019-08-15 08:42:40.589 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/tag?where_key=parent&where_value=0  
+2019-08-15 08:42:40.590 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/group  
+2019-08-15 08:42:40.755 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/group?where_key=parent&where_value=0  
+2019-08-15 08:42:40.785 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/group?where_key=parent&where_value=127  
+2019-08-15 08:42:40.790 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/group  
+2019-08-15 08:42:41.035 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/tag?where_key=parent&where_value=0  
+2019-08-15 08:42:43.482 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/group  
+2019-08-15 08:42:43.483 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/profile?freezed=false&offset=0&limit=10  
+2019-08-15 08:42:43.489 INFO profile/list.go:13 List function called.
+2019-08-15 08:42:43.492 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/group?where_key=parent&where_value=0  
+2019-08-15 08:42:43.747 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/group?where_key=parent&where_value=0  
+2019-08-15 08:42:43.890 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/group?where_key=parent&where_value=0  
+2019-08-15 08:42:44.042 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/group?where_key=parent&where_value=0  
+2019-08-15 08:42:44.852 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/tag  
+2019-08-15 08:42:44.898 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/group  
+2019-08-15 08:42:44.914 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/group?where_key=parent&where_value=0  
+2019-08-15 08:42:45.838 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/salary/base  
+2019-08-15 08:42:45.839 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/salary/tax/config  
+2019-08-15 08:42:45.844 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/salary/pre_deduction_rate/config  
+2019-08-15 08:42:45.847 INFO salary/getbase.go:14 GetBaseSalary query function called.
+2019-08-15 08:42:56.083 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/salary/account  
+2019-08-15 08:42:58.376 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/salary/base  
+2019-08-15 08:42:58.377 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/salary/tax/config  
+2019-08-15 08:42:58.380 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/salary/pre_deduction_rate/config  
+2019-08-15 08:42:58.382 INFO salary/getbase.go:14 GetBaseSalary query function called.
+2019-08-15 08:42:59.469 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/salary/template  
+2019-08-15 08:43:08.599 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/salary/base  
+2019-08-15 08:43:08.600 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/salary/tax/config  
+2019-08-15 08:43:08.600 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/salary/pre_deduction_rate/config  
+2019-08-15 08:43:08.604 INFO salary/getbase.go:14 GetBaseSalary query function called.
+2019-08-15 08:43:09.875 INFO middleware/auth.go:20 user have passed authenticated and trying to access resource . ID: 1 | username: admin | resource: /api/v1/salary/account  
+2019-08-15 08:43:09.882 INFO record/list.go:13 Audit List function called.
+2019-08-15 08:43:10.058 INFO record/list.go:13 Audit List function called.
