@@ -15,7 +15,7 @@ type Role struct {
 	Permissions []Permissions `json:"permissions" gorm:"many2many:permissions_roles;"`
 }
 
-const RoleTableName = "tb_role"
+const RoleTableName = "tb_roles"
 
 // TableName :
 func (r *Role) TableName() string {

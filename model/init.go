@@ -93,7 +93,7 @@ func initTable() {
 	var record Record
 	var operate OperateRecord
 	var salaryProfileConfig SalaryProfileConfig
-	DB.Self.AutoMigrate(&record,&salaryProfileConfig, &t, &operate, &user, &g, &template, &gt,  &profile, &tas, &audit, &usergroup, &permissions, &role, &sf, &s, &tas, &sc)
+	DB.Self.AutoMigrate(&role, &record,&salaryProfileConfig, &t, &operate, &user, &g, &template, &gt,  &profile, &tas, &audit, &usergroup, &permissions, &sf, &s, &tas, &sc)
 	initAdmin()
 	initDefaultGroup()
 	initDefaultUserGroup()
@@ -123,7 +123,11 @@ func initAdmin() {
 			Name: viper.GetString("admin.role"),
 		}
 		m.Create()
+
+		role = m
 	}
+
+	fmt.Println("error", err)
 
 	users := []uint64{u.ID}
 	if err = AddRoleUsers(role.ID, users); err != nil {

@@ -29,7 +29,7 @@ import (
 
 // Load loads the middlewares, routes, handlers.
 func Load(g *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
-	g.LoadHTMLGlob("templates/*")
+	//g.LoadHTMLGlob("templates/*")
 
 	// Middlewares.
 	g.Use(gin.Recovery())
