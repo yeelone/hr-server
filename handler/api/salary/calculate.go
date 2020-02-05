@@ -727,7 +727,7 @@ func handleUploadExcel(filepath string) (data map[string]map[string]map[string]f
 	}
 
 	for sheet := range data {
-		rows := xlsx.GetRows(nameMap[sheet]) //nameMap 就是为了这里
+		rows,_ := xlsx.GetRows(nameMap[sheet]) //nameMap 就是为了这里
 		nameRow := []string{}
 
 		//记录身份证号码所在col

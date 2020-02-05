@@ -196,7 +196,7 @@ func writeSummaryExcel(fieldMap map[uint64]map[string]interface{}, cols []string
 	sheet := sheetName
 
 	nameIndex := make(map[string]int)
-	rows := xlsx.GetRows(sheet)
+	rows,_ := xlsx.GetRows(sheet)
 	for i, colCell := range rows[0] {
 		nameIndex[util.Strip(colCell)] = i + 1
 	}

@@ -3,6 +3,7 @@ package router
 import (
 	"hr-server/handler/api/record"
 	"hr-server/handler/api/statistics"
+	"hr-server/handler/api/summary"
 	"hr-server/pkg/auth"
 	"net/http"
 
@@ -266,6 +267,10 @@ func Load(g *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 		svcd.GET("/cpu", sd.CPUCheck)
 		svcd.GET("/ram", sd.RAMCheck)
 	}
+
+	g.GET("/api/summary", summary.Summary)
+
+
 
 	return g
 }

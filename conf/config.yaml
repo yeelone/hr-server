@@ -25,13 +25,13 @@ db:
   name: db_hr
   addr: 127.0.0.1
   port: 5432
-  username: dbuser
+  username: postgres
   password: 123456
 docker_db:
   name: db_hr
   addr: 127.0.0.1
   port: 5432
-  username: dbuser
+  username: postgres
   password: 123456
 admin:
   email: 'admin@admin.com'

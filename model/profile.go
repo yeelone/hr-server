@@ -146,6 +146,12 @@ func (p *Profile) UpdateState(state int) (err error) {
 	return err
 }
 
+func CountProfile() (count int , err error ){
+	err = DB.Self.Model(&Profile{}).Count(&count).Error
+	return count , err
+}
+
+
 //GetAllProfileWidthGroupAndTag :
 func GetAllProfileWidthGroupAndTag() (profiles []*Profile, err error) {
 	//if err := DB.Self.Preload("Groups").Preload("Tags").Where("audit_state = ?", 1).Find(&profiles).Error; err != nil {
@@ -269,7 +275,7 @@ func ImportProfileFromExcel(filepath string) (file string, err error) {
 		return "", err
 	}
 
-	rows := xlsx.GetRows("Sheet1")
+	rows,_ := xlsx.GetRows("Sheet1")
 	cols := []string{}
 
 	pidIndex := 0

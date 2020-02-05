@@ -483,7 +483,7 @@ func ImportTagFromExcel(filepath string) (errs []string, err error) {
 		return nil, err
 	}
 
-	rows := xlsx.GetRows("Sheet1")
+	rows,_ := xlsx.GetRows("Sheet1")
 	tagMap := make(map[string]map[string][]string, 0) //记录标签所含成员
 	coeMap := make(map[string]map[string]float64, 0)  //记录系数
 

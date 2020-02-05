@@ -53,6 +53,12 @@ func DeleteUser(id uint64) error {
 	return DB.Self.Delete(&user).Error
 }
 
+func CountUser() (count int , err error ){
+	err = DB.Self.Model(&User{}).Count(&count).Error
+	return count , err
+}
+
+
 // Update updates an user account information.
 func (u *User) Update() (err error) {
 	tx := DB.Self.Begin()

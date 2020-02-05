@@ -98,6 +98,13 @@ func (a *Audit) Update() (err error) {
 	return err
 }
 
+func CountAudit() (count int , err error ){
+	err = DB.Self.Model(&Audit{}).Where("state  = ? ", 0).Count(&count).Error
+	return count , err
+}
+
+
+
 func ListAudit(state int, offset, limit int) (audits []Audit, total uint64, err error) {
 	if limit == 0 {
 		limit = constvar.DefaultLimit

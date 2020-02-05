@@ -49,7 +49,7 @@ func handleUploadedExcel(filename string) (fields string, err error) {
 		return "", err
 	}
 
-	rows := xlsx.GetRows("Sheet1")
+	rows,_ := xlsx.GetRows("Sheet1")
 	cols := make([]string, len(rows[0]))
 	for index, colCell := range rows[0] {
 		cols[index] = model.ProfileI18nMap[colCell]
@@ -71,7 +71,7 @@ func readDataFromExcel(filename string) (dataRows []map[string]interface{}) {
 	dataRows = make([]map[string]interface{}, 0)
 	dataMap := make(map[string]map[string]interface{}) // profile , sheet , column , value
 	for _, sheet := range xlsx.GetSheetMap() {
-		rows := xlsx.GetRows(sheet)
+		rows,_ := xlsx.GetRows(sheet)
 		for _, row := range rows[2:] {
 			idCard := row[0]
 			if _, ok := dataMap[idCard]; !ok {

@@ -106,7 +106,7 @@ func handleUploadedExcel(filename string) (fields string, err error) {
 		return "", err
 	}
 
-	rows := xlsx.GetRows("Sheet1")
+	rows,_ := xlsx.GetRows("Sheet1")
 	cols := make([]string, len(rows[0]))
 	for index, colCell := range rows[0] {
 		cols[index] = model.ProfileI18nMap[colCell]
