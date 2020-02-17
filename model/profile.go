@@ -4,9 +4,11 @@ import (
 	"errors"
 	"fmt"
 	"github.com/360EntSecGroup-Skylar/excelize"
+	"github.com/lexkong/log"
 	"gopkg.in/go-playground/validator.v9"
 	"hr-server/pkg/constvar"
 	"hr-server/util"
+	"os"
 	"strconv"
 	"strings"
 )
@@ -135,7 +137,6 @@ func (p *Profile) Update() (err error) {
 
 func (p *Profile) UpdateState(state int) (err error) {
 	tx := DB.Self.Begin()
-	fmt.Println("profile id", p.ID, state)
 	if err = tx.Model(&p).Update(map[string]interface{}{"audit_state": state}).Error; err != nil {
 		tx.Rollback()
 		return errors.New("无法更新")
@@ -150,7 +151,6 @@ func CountProfile() (count int , err error ){
 	err = DB.Self.Model(&Profile{}).Count(&count).Error
 	return count , err
 }
-
 
 //GetAllProfileWidthGroupAndTag :
 func GetAllProfileWidthGroupAndTag() (profiles []*Profile, err error) {
@@ -267,7 +267,7 @@ func GetProfiles(ids []uint64) (ps []Profile, err error) {
 	return ps, d.Error
 }
 
-func ImportProfileFromExcel(filepath string) (file string, err error) {
+func ImportProfileFromExcel(filepath string,operatorId uint64) (file string, err error) {
 	//分析第一行
 	xlsx, err := excelize.OpenFile(filepath)
 	if err != nil {
@@ -313,29 +313,72 @@ func ImportProfileFromExcel(filepath string) (file string, err error) {
 		}
 
 		if len(str) > 0 {
-			values = append(values, "("+strings.Join(str, ",")+",1,false)")
+			values = append(values, "("+strings.Join(str, ",")+",0,false)")
 		}
 	}
 
+	type insertResult struct {
+		Id uint64
+		Name string
+		IDCard string
+	}
+
+	newProfile := insertResult{}
 	errs := []string{}
 	//一行一行的插入，如果遇到错误，则写入到excel中。
 	for i, v := range values {
-		s := sql + v
-		err = DB.Self.Exec(s).Error
+		s := sql + v + "  returning id, name,id_card"
+		execrows, _ := DB.Self.Raw(s).Rows()
+
+		for execrows.Next() {
+			if err := execrows.Scan(&newProfile.Id,&newProfile.Name,&newProfile.IDCard); err != nil {
+				log.Error("批量插入新档案失败：" , err )
+			}
+		}
+
 		if err != nil {
-			errs = append(errs, "第"+strconv.Itoa(i+1)+"行出现错误，请检查该行数据是否有重复")
-			xlsx.SetCellValue("Sheet1", util.ConvertToNumberingScheme(len(rows[0])+1)+strconv.Itoa(i+2), "请检查该行数据是否有重复")
+			errs = append(errs, "第"+strconv.Itoa(i+1)+"行出现错误,提示：" + err.Error() )
+			log.Error("批量插入新档案失败：" , err )
+			xlsx.SetCellValue("Sheet1", util.ConvertToNumberingScheme(len(rows[0])+1)+strconv.Itoa(i+2), err.Error())
+		}else{
+
+			//// 添加审核条目
+			////创建的同时需同时创建审核条目
+			audit := &Audit{}
+			audit.OperatorID = operatorId
+			audit.Object = ProfileAuditObject
+			audit.Action = AUDITCREATEACTION
+			audit.OrgObjectID = []int64{int64(newProfile.Id)}
+			audit.State = AuditStateWaiting
+			audit.Body = "描述:创建职工档案;" +
+				"档案ID:" + util.Uint2Str(newProfile.Id) + "; " +
+				"员工姓名:" + newProfile.Name + ";" +
+				"身份证号码:" + newProfile.IDCard + ";"
+
+			if err := audit.Create(); err != nil {
+				fmt.Println(err)
+			}
 		}
 	}
 	// Save xlsx file by the given path.
-	newFile := "/export/importResult.xlsx"
-	err = xlsx.SaveAs("." + newFile)
+	exportPath := "/export/"
+	newFile := "importResult.xlsx"
+
+	if !util.Exists("export/") {
+		os.MkdirAll("export/",os.ModePerm) //创建文件
+	}
+
+	err = xlsx.SaveAs("." + exportPath + newFile)
 	if err != nil {
 		fmt.Println(err)
 	}
 	importProfileIDToGroup(groupMap)
-	return newFile, errors.New(strings.Join(errs, ";"))
 
+	if len(errs) > 0 {
+		return newFile, errors.New(strings.Join(errs, ";"))
+	}
+
+	return newFile, nil
 }
 
 func importProfileIDToGroup(groupMap map[string]map[string][]string) {

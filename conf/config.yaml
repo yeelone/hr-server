@@ -7,7 +7,7 @@ max_ping_count: 10           # pingServer函数try的次数
 jwt_secret: Rtg8BPKNEf2mB4mgvKONGPZZQSaJWNLijxR42qRgq0iBb5
 default_password : '000000'
 company: 
-  name: "揭东农商银行"
+  name: "新阶段"
 tls:
   addr: :8081
   cert: conf/server.crt

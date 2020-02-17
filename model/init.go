@@ -127,8 +127,6 @@ func initAdmin() {
 		role = m
 	}
 
-	fmt.Println("error", err)
-
 	users := []uint64{u.ID}
 	if err = AddRoleUsers(role.ID, users); err != nil {
 		log.Fatal("cannot add user to role ", err)
@@ -212,18 +210,6 @@ func initDefaultGroup() {
 		}
 		depart.Create()
 	}
-	err = DB.Self.Where("name = ?", "默认部门").First(&Group{}).Error
-	if err != nil {
-		m := Group{
-			Name:        "默认部门",
-			Code:        0,
-			Parent:      depart.ID,
-			Coefficient: 0,
-			Locked:      true,
-			IsDefault:   true,
-		}
-		m.Create()
-	}
 
 	g := Group{}
 	err = DB.Self.Where("name = ?", "学历").First(&g).Error
@@ -238,17 +224,122 @@ func initDefaultGroup() {
 		g.Create()
 	}
 
-	err = DB.Self.Where("name = ?", "默认学历").First(&Group{}).Error
+	g1 := Group{}
+	err = DB.Self.Where("name = ?", "博士后").First(&g1).Error
 	if err != nil {
-		m := Group{
-			Name:        "默认学历",
+		g1 = Group{
+			Name:        "博士后",
 			Code:        0,
 			Parent:      g.ID,
 			Coefficient: 0,
-			Locked:      true,
+			Locked:      false,
+		}
+		g1.Create()
+	}
+
+	g1 = Group{}
+	err = DB.Self.Where("name = ?", "博士").First(&g1).Error
+	if err != nil {
+		g1 = Group{
+			Name:        "博士",
+			Code:        0,
+			Parent:      g.ID,
+			Coefficient: 0,
+			Locked:      false,
+		}
+		g1.Create()
+	}
+
+	g1 = Group{}
+	err = DB.Self.Where("name = ?", "研究生").First(&g1).Error
+	if err != nil {
+		g1 = Group{
+			Name:        "研究生",
+			Code:        0,
+			Parent:      g.ID,
+			Coefficient: 0,
+			Locked:      false,
+		}
+		g1.Create()
+	}
+
+	g1 = Group{}
+	err = DB.Self.Where("name = ?", "本科").First(&g1).Error
+	if err != nil {
+		g1 = Group{
+			Name:        "本科",
+			Code:        0,
+			Parent:      g.ID,
+			Coefficient: 0,
+			Locked:      false,
 			IsDefault:   true,
 		}
-		m.Create()
+		g1.Create()
+	}
+
+	g1 = Group{}
+	err = DB.Self.Where("name = ?", "大专").First(&g1).Error
+	if err != nil {
+		g1 = Group{
+			Name:        "大专",
+			Code:        0,
+			Parent:      g.ID,
+			Coefficient: 0,
+			Locked:      false,
+		}
+		g1.Create()
+	}
+
+	g1 = Group{}
+	err = DB.Self.Where("name = ?", "高中").First(&g1).Error
+	if err != nil {
+		g1 = Group{
+			Name:        "高中",
+			Code:        0,
+			Parent:      g.ID,
+			Coefficient: 0,
+			Locked:      false,
+		}
+		g1.Create()
+	}
+
+	g1 = Group{}
+	err = DB.Self.Where("name = ?", "中专").First(&g1).Error
+	if err != nil {
+		g1 = Group{
+			Name:        "中专",
+			Code:        0,
+			Parent:      g.ID,
+			Coefficient: 0,
+			Locked:      false,
+		}
+		g1.Create()
+	}
+
+	g1 = Group{}
+	err = DB.Self.Where("name = ?", "初中").First(&g1).Error
+	if err != nil {
+		g1 = Group{
+			Name:        "初中",
+			Code:        0,
+			Parent:      g.ID,
+			Coefficient: 0,
+			Locked:      false,
+		}
+		g1.Create()
+	}
+
+	g1 = Group{}
+	err = DB.Self.Where("name = ?", "小学").First(&g1).Error
+	if err != nil {
+		g1 = Group{
+			Name:        "小学",
+			Code:        0,
+			Parent:      g.ID,
+			Coefficient: 0,
+			Locked:      false,
+		}
+		g1.Create()
 	}
 
 	g = Group{}
@@ -264,19 +355,6 @@ func initDefaultGroup() {
 		g.Create()
 	}
 
-	err = DB.Self.Where("name = ?", "默认岗位").First(&Group{}).Error
-	if err != nil {
-		m := Group{
-			Name:        "默认岗位",
-			Code:        0,
-			Parent:      g.ID,
-			Coefficient: 0,
-			Locked:      true,
-			IsDefault:   true,
-		}
-		m.Create()
-	}
-
 	g = Group{}
 	err = DB.Self.Where("name = ?", "职称").First(&g).Error
 	if err != nil {
@@ -289,18 +367,7 @@ func initDefaultGroup() {
 		}
 		g.Create()
 	}
-	err = DB.Self.Where("name = ?", "默认职称").First(&Group{}).Error
-	if err != nil {
-		m := Group{
-			Name:        "默认职称",
-			Code:        0,
-			Parent:      g.ID,
-			Coefficient: 0,
-			Locked:      true,
-			IsDefault:   true,
-		}
-		m.Create()
-	}
+
 
 	g = Group{}
 	err = DB.Self.Where("name = ?", "状态").First(&g).Error
@@ -314,10 +381,10 @@ func initDefaultGroup() {
 		}
 		g.Create()
 	}
-	err = DB.Self.Where("name = ?", "默认状态").First(&Group{}).Error
+	err = DB.Self.Where("name = ?", "在职").First(&Group{}).Error
 	if err != nil {
 		m := Group{
-			Name:        "默认状态",
+			Name:        "在职",
 			Code:        0,
 			Parent:      g.ID,
 			Coefficient: 0,
@@ -326,6 +393,31 @@ func initDefaultGroup() {
 		}
 		m.Create()
 	}
+
+	err = DB.Self.Where("name = ?", "离职").First(&Group{}).Error
+	if err != nil {
+		m := Group{
+			Name:        "离职",
+			Code:        0,
+			Parent:      g.ID,
+			Coefficient: 0,
+			Locked:      true,
+		}
+		m.Create()
+	}
+
+	err = DB.Self.Where("name = ?", "退休").First(&Group{}).Error
+	if err != nil {
+		m := Group{
+			Name:        "退休",
+			Code:        0,
+			Parent:      g.ID,
+			Coefficient: 0,
+			Locked:      true,
+		}
+		m.Create()
+	}
+
 }
 
 func initDefaultRole() {

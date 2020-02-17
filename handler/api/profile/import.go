@@ -6,6 +6,7 @@ import (
 	"hr-server/model"
 	"hr-server/pkg/errno"
 	"hr-server/util"
+	"os"
 	"strings"
 	"time"
 
@@ -23,6 +24,13 @@ func Import(c *gin.Context) {
 		return
 	}
 
+	userid, ok := c.Get("userid")
+	if !ok {
+		h.SendResponse(c, errno.StatusUnauthorized, nil)
+		return
+	}
+
+
 	filename, subffix := util.ExtractFileName(file.Filename)
 
 	// if subffix != ".csv" {
@@ -31,14 +39,19 @@ func Import(c *gin.Context) {
 	// 	return
 	// }
 
+	if !util.Exists("upload/import/") {
+		os.MkdirAll("upload/import/",os.ModePerm) //创建文件
+	}
+
 	newFilename := "upload/import/" + filename + "-" + time.Now().Format("20060102150405") + subffix
 	if err := c.SaveUploadedFile(file, newFilename); err != nil {
+		log.Error("上传文件出现错误:", err)
 		h.SendResponse(c, errno.ErrTemplateInvalid, nil)
 		return
 	}
 
-	if f, err := model.ImportProfileFromExcel(newFilename); err != nil {
-		fmt.Println("err", err.Error())
+	if f, err := model.ImportProfileFromExcel(newFilename,userid.(uint64)); err != nil {
+		log.Error("导入失败:", err)
 		h.SendResponse(c, errno.ErrImport, CreateResponse{File: f, Error: err.Error()})
 		return
 	}
