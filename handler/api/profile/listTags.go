@@ -18,6 +18,7 @@ func ListProfileTags(c *gin.Context) {
 	log.Info("ListProfileTags function called.", lager.Data{"X-Request-Id": util.GetReqID(c)})
 
 	pid, err := strconv.ParseUint(c.Param("id"), 10, 64)
+	fmt.Println(pid)
 	if err != nil {
 		h.SendResponse(c, errno.ErrQueryParams, nil)
 		return

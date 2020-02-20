@@ -61,6 +61,11 @@ func TemplateConfig(c *gin.Context) {
 		return
 	}
 
+	if !util.Exists("conf/templates/") {
+		os.MkdirAll("conf/templates/",os.ModePerm) //创建文件
+	}
+
+
 	//不管是创建还是更新，都会创建一个 模板名 + ID ，例如 "绩效模板-12.yaml" 的新配置文件，如审核通过，会将这个文件改名为 "绩效模板.yaml" 成为最终可用模板
 	filename := "conf/templates/" + r.Name + "-" + util.Uint2Str(m.ID) + ".yaml"
 

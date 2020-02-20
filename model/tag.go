@@ -168,7 +168,7 @@ func AddTagProfiles(tid uint64, IDList []uint64) (err error) {
 	var profiles []*Profile
 	for _, id := range IDList {
 		profile := &Profile{}
-		profile.BaseModel.ID = id
+		profile.ID = id
 		profiles = append(profiles, profile)
 	}
 

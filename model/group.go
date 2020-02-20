@@ -301,7 +301,7 @@ func AddGroupProfiles(gid uint64, IDList []uint64) (err error) {
 	tx := DB.Self.Begin()
 	var profiles []Profile
 	for _, id := range IDList {
-		profiles = append(profiles, Profile{BaseModel: BaseModel{ID: id}})
+		profiles = append(profiles, Profile{ID: id})
 	}
 
 	// tx.Model(&g).Association("Profiles").Clear()

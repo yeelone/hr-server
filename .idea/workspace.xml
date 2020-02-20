@@ -2,14 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="166c2398-854f-4efb-bc20-8ddd07dc2e5e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/util/hash.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/conf/authz_policy.csv" beforeDir="false" afterPath="$PROJECT_DIR$/conf/authz_policy.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/conf/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/conf/config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conf/permission/permission.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/conf/permission/permission.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/conf/permission/超级管理员.csv" beforeDir="false" afterPath="$PROJECT_DIR$/conf/permission/超级管理员.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/api/profile/import.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/profile/import.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/api/salary/import.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/salary/import.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/init.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/init.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/profile/list.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/profile/list.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/profile/listTags.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/profile/listTags.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/salary/templateconfig.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/salary/templateconfig.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/group.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/group.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/profile.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/profile.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/tag.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/tag.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,30 +108,30 @@
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
     <state x="555" y="168" width="802" height="699" key="#GOROOT/0.0.1920.1013@0.0.1920.1013" timestamp="1580705911027" />
-    <state width="1868" height="143" key="GridCell.Tab.0.bottom" timestamp="1581903692924">
+    <state width="1868" height="162" key="GridCell.Tab.0.bottom" timestamp="1582187436575">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
-    <state width="1868" height="143" key="GridCell.Tab.0.bottom/0.0.1920.1013@0.0.1920.1013" timestamp="1581903692924" />
-    <state width="1868" height="143" key="GridCell.Tab.0.center" timestamp="1581903692923">
+    <state width="1868" height="162" key="GridCell.Tab.0.bottom/0.0.1920.1013@0.0.1920.1013" timestamp="1582187436575" />
+    <state width="1868" height="162" key="GridCell.Tab.0.center" timestamp="1582187436575">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
-    <state width="1868" height="143" key="GridCell.Tab.0.center/0.0.1920.1013@0.0.1920.1013" timestamp="1581903692923" />
-    <state width="1868" height="143" key="GridCell.Tab.0.left" timestamp="1581903692922">
+    <state width="1868" height="162" key="GridCell.Tab.0.center/0.0.1920.1013@0.0.1920.1013" timestamp="1582187436575" />
+    <state width="1868" height="162" key="GridCell.Tab.0.left" timestamp="1582187436574">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
-    <state width="1868" height="143" key="GridCell.Tab.0.left/0.0.1920.1013@0.0.1920.1013" timestamp="1581903692922" />
-    <state width="1868" height="143" key="GridCell.Tab.0.right" timestamp="1581903692923">
+    <state width="1868" height="162" key="GridCell.Tab.0.left/0.0.1920.1013@0.0.1920.1013" timestamp="1582187436574" />
+    <state width="1868" height="162" key="GridCell.Tab.0.right" timestamp="1582187436575">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
-    <state width="1868" height="143" key="GridCell.Tab.0.right/0.0.1920.1013@0.0.1920.1013" timestamp="1581903692923" />
+    <state width="1868" height="162" key="GridCell.Tab.0.right/0.0.1920.1013@0.0.1920.1013" timestamp="1582187436575" />
     <state x="535" y="105" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1580916529973">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
     <state x="535" y="105" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1013@0.0.1920.1013" timestamp="1580916529973" />
-    <state x="576" y="56" width="768" height="900" key="find.popup" timestamp="1581643343652">
+    <state x="576" y="56" width="768" height="900" key="find.popup" timestamp="1581917734163">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
-    <state x="576" y="56" width="768" height="900" key="find.popup/0.0.1920.1013@0.0.1920.1013" timestamp="1581643343652" />
+    <state x="576" y="56" width="768" height="900" key="find.popup/0.0.1920.1013@0.0.1920.1013" timestamp="1581917734163" />
     <state x="608" y="222" width="701" height="678" key="search.everywhere.popup" timestamp="1581492527822">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>

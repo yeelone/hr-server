@@ -352,6 +352,10 @@
     resource: DELETE_ACCOUNT
     object : /api/v1/salary/account/:id
     action : DELETE
+  获取指定月份账套的模板以及所有字段:
+    resource: GET_ACCOUNT_TEMPLATEs_AND_FIELDS_BY_YEAR
+    object: /api/v1/salary/account/:id/year/:year/fields
+    action: GET
 系统功能:
   工资核算辅助函数:
     resource: GET_BUILDIN_FUNC

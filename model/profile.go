@@ -11,6 +11,7 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"time"
 )
 
 //prevent sql injection
@@ -63,7 +64,11 @@ var ProfileTableName = TableNames["Profile"]
 const ProfileAuditObject = "Profile"
 
 type Profile struct {
-	BaseModel
+	ID        uint64     `gorm:"primary_key;AUTO_INCREMENT;column:id" json:"id"`
+	CreatedAt time.Time  `gorm:"column:createdAt" json:"-"`
+	UpdatedAt time.Time  `gorm:"column:updatedAt" json:"-"`
+	DeletedAt *time.Time `gorm:"column:deletedAt" sql:"index" json:"-"`
+	UUID            string `gorm:"-"`
 	Name            string  `json:"name" gorm:"column:name;not null" binding:"required"`
 	JobNumber       string  `json:"job_number" `
 	TypeCard        string  `json:"type_card"`
@@ -126,7 +131,7 @@ func (p *Profile) Create() error {
 // DeleteProfile deletes the user by the user identifier.
 func DeleteProfile(id uint64) error {
 	profile := Profile{}
-	profile.BaseModel.ID = id
+	profile.ID = id
 	return DB.Self.Delete(&profile).Error
 }
 
@@ -438,3 +443,4 @@ func (p *Profile) Validate() error {
 	validate := validator.New()
 	return validate.Struct(p)
 }
+
