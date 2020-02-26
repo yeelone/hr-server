@@ -244,7 +244,7 @@ func AddProfileTags(pid uint64, tids []uint64) (err error) {
 		}
 	}
 
-	if len(insertStr)>0 {
+	if len(insertStr) > 0 {
 		err = tx.Debug().Exec(" insert into profile_tags(profile_id,tag_id) values" + strings.Join(insertStr, ",") + ";").Error
 		if err != nil {
 			tx.Rollback()
@@ -483,7 +483,7 @@ func ImportTagFromExcel(filepath string) (errs []string, err error) {
 		return nil, err
 	}
 
-	rows,_ := xlsx.GetRows("Sheet1")
+	rows, _ := xlsx.GetRows("Sheet1")
 	tagMap := make(map[string]map[string][]string, 0) //记录标签所含成员
 	coeMap := make(map[string]map[string]float64, 0)  //记录系数
 

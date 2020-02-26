@@ -1,7 +1,9 @@
 package salary
 
 import (
+	"errors"
 	"fmt"
+	"github.com/360EntSecGroup-Skylar/excelize"
 	"github.com/gin-gonic/gin"
 	"github.com/lexkong/log"
 	"github.com/lexkong/log/lager"
@@ -22,7 +24,6 @@ func TemplateConfig(c *gin.Context) {
 	log.Info("TemplateConfig Create function called.", lager.Data{"X-Request-Id": util.GetReqID(c)})
 	var r CreateRequest
 	if err := c.Bind(&r); err != nil {
-		fmt.Println("bind error ", err)
 		h.SendResponse(c, errno.ErrBind, nil)
 		return
 	}
@@ -54,6 +55,30 @@ func TemplateConfig(c *gin.Context) {
 	//	return
 	//}
 
+	//
+
+
+	name, keys, err := findUploadKeys(r.InitData)
+	if name != m.Name {
+		h.SendResponse(c, errno.ErrCreateTemplate, errors.New("上传文件中的模板名不符合要求,必须跟模板一致"))
+		return
+	}
+
+	errmsg := make([]string,0)
+	// 将上传的文件跟模板中的key一一对比，为了防止上传了不存在的字段导致计算错误
+	for _, key := range keys {
+		if _, ok  := r.Body[key]; !ok {
+			errmsg = append(errmsg, key + "不存在于模板["+m.Name+"]中")
+		}
+	}
+
+	fmt.Println(errmsg)
+
+	if len(errmsg) > 0 {
+		h.SendResponse(c, errno.ErrCreateTemplate, strings.Join(errmsg,", "))
+		return
+	}
+
 	//创建一个新的模板，待审核通过之后，会迁移到这个模板。删除旧模板
 	if err := m.Create(); err != nil {
 		fmt.Println("create error", err)
@@ -62,9 +87,8 @@ func TemplateConfig(c *gin.Context) {
 	}
 
 	if !util.Exists("conf/templates/") {
-		os.MkdirAll("conf/templates/",os.ModePerm) //创建文件
+		os.MkdirAll("conf/templates/", os.ModePerm) //创建文件
 	}
-
 
 	//不管是创建还是更新，都会创建一个 模板名 + ID ，例如 "绩效模板-12.yaml" 的新配置文件，如审核通过，会将这个文件改名为 "绩效模板.yaml" 成为最终可用模板
 	filename := "conf/templates/" + r.Name + "-" + util.Uint2Str(m.ID) + ".yaml"
@@ -125,6 +149,38 @@ func TemplateConfig(c *gin.Context) {
 	}
 	model.CreateOperateRecord(c, fmt.Sprintf("配置模板,模板名: %s", r.Name))
 	h.SendResponse(c, nil, nil)
+}
+
+func findUploadKeys(filepath string) (name string, keys []string, err error) {
+	//t1 := time.Now()
+	xlsx, err := excelize.OpenFile(filepath)
+	if err != nil {
+		fmt.Println("handleUploadData open file error ", err)
+		return "", keys, err
+	}
+
+	//客户传上来的数据可能会有sheet名不小心有空格的情况。所以这里要处理这个问题
+	nameMap := make(map[string]string) //去掉空格的和加有空格的进行映射
+	for _, sheetName := range xlsx.GetSheetMap() {
+		stripName := util.Strip(sheetName)
+		nameMap[stripName] = sheetName
+		name = stripName
+	}
+
+	rows, _ := xlsx.GetRows(nameMap[name]) //nameMap 就是为了这里
+
+	//先取出字段名
+	for _, colCell := range rows[0] {
+		cellName := util.Strip(colCell)
+		if _, ok := model.ProfileI18nMap[colCell]; ok {
+			cellName = model.ProfileI18nMap[colCell]
+		}
+		keys = append(keys, cellName)
+	}
+
+	//elapsed := time.Since(t1)
+	//fmt.Println("handleUploadExcel", elapsed)
+	return name, keys, nil
 }
 
 func findKeys(excludeFile string) (keys []string) {

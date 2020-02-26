@@ -270,7 +270,5 @@ func Load(g *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 
 	g.GET("/api/summary", summary.Summary)
 
-
-
 	return g
 }

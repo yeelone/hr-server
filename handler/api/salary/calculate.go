@@ -24,7 +24,7 @@ var templateAccount *model.TemplateAccount
 var profileGroupMap map[string]map[uint64]uint64 //用户与部门、岗位之间进行映射以供调用,比如[部门][用户ID][业务部] [岗位][用户ID][安全岗]
 var department = "部门"
 var post = "岗位"
-var cardIDMap map[string]map[string]map[string]float64 //从上传的文件中取出数据 ，按模板名- 身份证号码 - 字段key- 值 进行存储
+var cardIDMap map[string]map[string]map[string]float64 = make(map[string]map[string]map[string]float64)//从上传的文件中取出数据 ，按模板名- 身份证号码 - 字段key- 值 进行存储
 var profileCardMap map[uint64]string                   // 身份证跟ID的映射
 var profiles []model.Profile
 var errMsg = []string{}                           //记录错误信息
@@ -53,7 +53,6 @@ func Calculate(c *gin.Context) {
 	for _, item := range configList {
 		if _, ok := configIdMap[item.TemplateFieldId]; !ok {
 			configIdMap[item.TemplateFieldId] = make(map[uint64]model.SalaryProfileConfig)
-
 		}
 		configIdMap[item.TemplateFieldId][item.ProfileId] = item
 	}
@@ -70,7 +69,7 @@ func Calculate(c *gin.Context) {
 	}
 
 	profiles = getProfiles(templateAccount.Groups)
-	if len(r.InitData) > 0 { //移到下面
+	if len(r.InitData) > 0 { // 移到下面
 		cardIDMap, err = handleUploadExcel(r.InitData)
 	}
 
@@ -84,8 +83,7 @@ func Calculate(c *gin.Context) {
 	for _, i := range templateAccount.Order {
 		t := templateMap[uint64(i)]
 		if len(t.InitData) > 0 { //固定的导入数据
-			cardIDMap2, _ := handleUploadExcel(t.InitData)
-			log.Error("处理固定上传数据出现错误:", err)
+			cardIDMap2,_ := handleUploadExcel(t.InitData)
 			//要对两个map进行合并
 			for temp, v := range cardIDMap2 {
 				if _, ok := cardIDMap[temp]; !ok {
@@ -718,7 +716,7 @@ func handleUploadExcel(filepath string) (data map[string]map[string]map[string]f
 		return data, err
 	}
 	//客户传上来的数据可能会有sheet名不小心有空格的情况。所以这里要处理这个问题
-	nameMap := make(map[string]string) //去掉空格的还加有空格的进行映射
+	nameMap := make(map[string]string) //去掉空格的和加有空格的进行映射
 	data = make(map[string]map[string]map[string]float64)
 	for _, name := range xlsx.GetSheetMap() {
 		stripName := util.Strip(name)
@@ -727,7 +725,7 @@ func handleUploadExcel(filepath string) (data map[string]map[string]map[string]f
 	}
 
 	for sheet := range data {
-		rows,_ := xlsx.GetRows(nameMap[sheet]) //nameMap 就是为了这里
+		rows, _ := xlsx.GetRows(nameMap[sheet]) //nameMap 就是为了这里
 		nameRow := []string{}
 
 		//记录身份证号码所在col

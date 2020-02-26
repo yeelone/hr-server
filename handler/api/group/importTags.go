@@ -7,6 +7,7 @@ import (
 	"hr-server/model"
 	"hr-server/pkg/errno"
 	"hr-server/util"
+	"os"
 	"strconv"
 	"time"
 
@@ -25,6 +26,11 @@ func ImportTags(c *gin.Context) {
 		h.SendResponse(c, errno.ErrTemplateInvalid, err.Error())
 		return
 	}
+
+	if !util.Exists("upload/temporary/") {
+		os.MkdirAll("upload/temporary/", os.ModePerm) //创建文件
+	}
+
 	filename, subffix := util.ExtractFileName(file.Filename)
 	newFilename := "upload/temporary/" + filename + "-" + time.Now().Format("20060102150405") + subffix
 	if err := c.SaveUploadedFile(file, newFilename); err != nil {

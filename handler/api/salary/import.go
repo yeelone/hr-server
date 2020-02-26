@@ -30,7 +30,7 @@ func Import(c *gin.Context) {
 	newfilename := "upload/salary/" + filename + "-" + time.Now().Format("20060102150405") + subffix
 
 	if !util.Exists("upload/salary/") {
-		os.MkdirAll("upload/salary/",os.ModePerm) //创建文件
+		os.MkdirAll("upload/salary/", os.ModePerm) //创建文件
 	}
 
 	if err := c.SaveUploadedFile(file, newfilename); err != nil {
@@ -39,10 +39,10 @@ func Import(c *gin.Context) {
 	}
 	//上传成功之后，要对数据进行处理，比如在上传的表中，[sheet1]模板记录张三被扣罚300，[sheet2]模板记录张三其它收入1000，将这两条分散的数据归集到一起，再返回给客户端，
 	//供操作员确认上传数据是否正确.
-	salaryDataMap := readDataFromExcel(newfilename)
+	//salaryDataMap := readDataFromExcel(newfilename)
 	rsp := UploadResponse{}
 	rsp.UploadFile = newfilename
-	rsp.DataPreview = salaryDataMap
+	//rsp.DataPreview = salaryDataMap
 	// Show the user information.
 	h.SendResponse(c, nil, rsp)
 }
@@ -55,7 +55,7 @@ func handleUploadedExcel(filename string) (fields string, err error) {
 		return "", err
 	}
 
-	rows,_ := xlsx.GetRows("Sheet1")
+	rows, _ := xlsx.GetRows("Sheet1")
 	cols := make([]string, len(rows[0]))
 	for index, colCell := range rows[0] {
 		cols[index] = model.ProfileI18nMap[colCell]
@@ -77,7 +77,7 @@ func readDataFromExcel(filename string) (dataRows []map[string]interface{}) {
 	dataRows = make([]map[string]interface{}, 0)
 	dataMap := make(map[string]map[string]interface{}) // profile , sheet , column , value
 	for _, sheet := range xlsx.GetSheetMap() {
-		rows,_ := xlsx.GetRows(sheet)
+		rows, _ := xlsx.GetRows(sheet)
 		for _, row := range rows[2:] {
 			idCard := row[0]
 			if _, ok := dataMap[idCard]; !ok {

@@ -30,7 +30,6 @@ func Import(c *gin.Context) {
 		return
 	}
 
-
 	filename, subffix := util.ExtractFileName(file.Filename)
 
 	// if subffix != ".csv" {
@@ -40,7 +39,7 @@ func Import(c *gin.Context) {
 	// }
 
 	if !util.Exists("upload/import/") {
-		os.MkdirAll("upload/import/",os.ModePerm) //创建文件
+		os.MkdirAll("upload/import/", os.ModePerm) //创建文件
 	}
 
 	newFilename := "upload/import/" + filename + "-" + time.Now().Format("20060102150405") + subffix
@@ -50,7 +49,7 @@ func Import(c *gin.Context) {
 		return
 	}
 
-	if f, err := model.ImportProfileFromExcel(newFilename,userid.(uint64)); err != nil {
+	if f, err := model.ImportProfileFromExcel(newFilename, userid.(uint64)); err != nil {
 		log.Error("导入失败:", err)
 		h.SendResponse(c, errno.ErrImport, CreateResponse{File: f, Error: err.Error()})
 		return
@@ -119,7 +118,7 @@ func handleUploadedExcel(filename string) (fields string, err error) {
 		return "", err
 	}
 
-	rows,_ := xlsx.GetRows("Sheet1")
+	rows, _ := xlsx.GetRows("Sheet1")
 	cols := make([]string, len(rows[0]))
 	for index, colCell := range rows[0] {
 		cols[index] = model.ProfileI18nMap[colCell]

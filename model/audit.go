@@ -98,12 +98,10 @@ func (a *Audit) Update() (err error) {
 	return err
 }
 
-func CountAudit() (count int , err error ){
+func CountAudit() (count int, err error) {
 	err = DB.Self.Model(&Audit{}).Where("state  = ? ", 0).Count(&count).Error
-	return count , err
+	return count, err
 }
-
-
 
 func ListAudit(state int, offset, limit int) (audits []Audit, total uint64, err error) {
 	if limit == 0 {
@@ -391,7 +389,7 @@ func handleProfile(a *Audit, state int) error {
 			if len(addTagErrRecord) > 0 {
 				record.Body += addTagErrRecord
 			}
-			fmt.Println("move action",record.Body)
+			fmt.Println("move action", record.Body)
 			if err = record.Create(); err != nil {
 				return errors.New("删除职工档案审核通过，但无法将新增职工信息添加到记录表里，错误信息:" + err.Error())
 			}

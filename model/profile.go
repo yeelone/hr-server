@@ -64,35 +64,35 @@ var ProfileTableName = TableNames["Profile"]
 const ProfileAuditObject = "Profile"
 
 type Profile struct {
-	ID        uint64     `gorm:"primary_key;AUTO_INCREMENT;column:id" json:"id"`
-	CreatedAt time.Time  `gorm:"column:createdAt" json:"-"`
-	UpdatedAt time.Time  `gorm:"column:updatedAt" json:"-"`
-	DeletedAt *time.Time `gorm:"column:deletedAt" sql:"index" json:"-"`
-	UUID            string `gorm:"-"`
-	Name            string  `json:"name" gorm:"column:name;not null" binding:"required"`
-	JobNumber       string  `json:"job_number" `
-	TypeCard        string  `json:"type_card"`
-	Phone           string  `json:"phone"`
-	IDCard          string  `json:"id_card" gorm:"not null;unique" binding:"required"`
-	Gender          string  `json:"gender"`
-	BirthDay        string  `json:"birth_day" `
-	Source          string  `json:"source" ` //招聘来源
-	School          string  `json:"school"`
-	GraduationDate  string  `json:"graduation_date"`          //毕业时间
-	Specialty       string  `json:"specialty"`                //专业
-	LastCompany     string  `json:"last_company"`             //上一家公司
-	FirstJobDate    string  `json:"first_job_date"`           //第一分工作时间
-	WorkAge         int     `json:"workage" gorm:"default:0"` //工龄
-	Nation          string  `json:"nation"`                   //民族
-	MaritalStatus   string  `json:"marital_status"`           //婚姻状况
-	AccountLocation string  `json:"account_location"`         //户口所在地
-	Address         string  `json:"address"`
-	BankCard        string  `json:"bank_card"`      //银行卡
-	OnBoardDate     string  `json:"on_board_date" ` //入职日期
-	Tags            []Tag   `json:"tags" gorm:"many2many:profile_tags;"`
-	Groups          []Group `json:"groups" gorm:"many2many:profile_groups;"`
-	Freezed         bool    `json:"freezed"`
-	AuditState      int     `json:"audit_state" gorm:"audit_state"` //审核结果
+	ID              uint64     `gorm:"primary_key;AUTO_INCREMENT;column:id" json:"id"`
+	CreatedAt       time.Time  `gorm:"column:createdAt" json:"-"`
+	UpdatedAt       time.Time  `gorm:"column:updatedAt" json:"-"`
+	DeletedAt       *time.Time `gorm:"column:deletedAt" sql:"index" json:"-"`
+	UUID            string     `gorm:"-"`
+	Name            string     `json:"name" gorm:"column:name;not null" binding:"required"`
+	JobNumber       string     `json:"job_number" `
+	TypeCard        string     `json:"type_card"`
+	Phone           string     `json:"phone"`
+	IDCard          string     `json:"id_card" gorm:"not null;unique" binding:"required"`
+	Gender          string     `json:"gender"`
+	BirthDay        string     `json:"birth_day" `
+	Source          string     `json:"source" ` //招聘来源
+	School          string     `json:"school"`
+	GraduationDate  string     `json:"graduation_date"`          //毕业时间
+	Specialty       string     `json:"specialty"`                //专业
+	LastCompany     string     `json:"last_company"`             //上一家公司
+	FirstJobDate    string     `json:"first_job_date"`           //第一分工作时间
+	WorkAge         int        `json:"workage" gorm:"default:0"` //工龄
+	Nation          string     `json:"nation"`                   //民族
+	MaritalStatus   string     `json:"marital_status"`           //婚姻状况
+	AccountLocation string     `json:"account_location"`         //户口所在地
+	Address         string     `json:"address"`
+	BankCard        string     `json:"bank_card"`      //银行卡
+	OnBoardDate     string     `json:"on_board_date" ` //入职日期
+	Tags            []Tag      `json:"tags" gorm:"many2many:profile_tags;"`
+	Groups          []Group    `json:"groups" gorm:"many2many:profile_groups;"`
+	Freezed         bool       `json:"freezed"`
+	AuditState      int        `json:"audit_state" gorm:"audit_state"` //审核结果
 }
 
 func SelectUsers(fields []string) (profiles []*Profile, total uint64, err error) {
@@ -152,9 +152,9 @@ func (p *Profile) UpdateState(state int) (err error) {
 	return err
 }
 
-func CountProfile() (count int , err error ){
+func CountProfile() (count int, err error) {
 	err = DB.Self.Model(&Profile{}).Count(&count).Error
-	return count , err
+	return count, err
 }
 
 //GetAllProfileWidthGroupAndTag :
@@ -272,7 +272,7 @@ func GetProfiles(ids []uint64) (ps []Profile, err error) {
 	return ps, d.Error
 }
 
-func ImportProfileFromExcel(filepath string,operatorId uint64) (file string, err error) {
+func ImportProfileFromExcel(filepath string, operatorId uint64) (file string, err error) {
 	//分析第一行
 	xlsx, err := excelize.OpenFile(filepath)
 	if err != nil {
@@ -280,7 +280,7 @@ func ImportProfileFromExcel(filepath string,operatorId uint64) (file string, err
 		return "", err
 	}
 
-	rows,_ := xlsx.GetRows("Sheet1")
+	rows, _ := xlsx.GetRows("Sheet1")
 	cols := []string{}
 
 	pidIndex := 0
@@ -323,8 +323,8 @@ func ImportProfileFromExcel(filepath string,operatorId uint64) (file string, err
 	}
 
 	type insertResult struct {
-		Id uint64
-		Name string
+		Id     uint64
+		Name   string
 		IDCard string
 	}
 
@@ -336,16 +336,16 @@ func ImportProfileFromExcel(filepath string,operatorId uint64) (file string, err
 		execrows, _ := DB.Self.Raw(s).Rows()
 
 		for execrows.Next() {
-			if err := execrows.Scan(&newProfile.Id,&newProfile.Name,&newProfile.IDCard); err != nil {
-				log.Error("批量插入新档案失败：" , err )
+			if err := execrows.Scan(&newProfile.Id, &newProfile.Name, &newProfile.IDCard); err != nil {
+				log.Error("批量插入新档案失败：", err)
 			}
 		}
 
 		if err != nil {
-			errs = append(errs, "第"+strconv.Itoa(i+1)+"行出现错误,提示：" + err.Error() )
-			log.Error("批量插入新档案失败：" , err )
+			errs = append(errs, "第"+strconv.Itoa(i+1)+"行出现错误,提示："+err.Error())
+			log.Error("批量插入新档案失败：", err)
 			xlsx.SetCellValue("Sheet1", util.ConvertToNumberingScheme(len(rows[0])+1)+strconv.Itoa(i+2), err.Error())
-		}else{
+		} else {
 
 			//// 添加审核条目
 			////创建的同时需同时创建审核条目
@@ -370,7 +370,7 @@ func ImportProfileFromExcel(filepath string,operatorId uint64) (file string, err
 	newFile := "importResult.xlsx"
 
 	if !util.Exists("export/") {
-		os.MkdirAll("export/",os.ModePerm) //创建文件
+		os.MkdirAll("export/", os.ModePerm) //创建文件
 	}
 
 	err = xlsx.SaveAs("." + exportPath + newFile)
@@ -443,4 +443,3 @@ func (p *Profile) Validate() error {
 	validate := validator.New()
 	return validate.Struct(p)
 }
-

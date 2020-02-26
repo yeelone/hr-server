@@ -20,7 +20,7 @@ func Authority(e *casbin.Enforcer) gin.HandlerFunc {
 		fmt.Println("sub,obj,act", sub, obj, act)
 		c.Set("userid", body.ID)
 
-		result , _ := e.Enforce(sub, obj, act)
+		result, _ := e.Enforce(sub, obj, act)
 		if result == true {
 			// permit alice to read data1
 			c.Next()

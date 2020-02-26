@@ -31,12 +31,13 @@ var (
 	ErrValidGroup    = &Errno{Code: 10305, Message: "The group cannot valid."}
 
 	//template errors
-	ErrTemplateInvalid       = &Errno{Code: 10401, Message: "The template was invalid,plaease check the file"}
-	ErrUploadFileTypeInvalid = &Errno{Code: 10402, Message: "The file type was invalid,plaease reupload the file"}
+	ErrTemplateInvalid       = &Errno{Code: 10401, Message: "The template was invalid,please check the file"}
+	ErrUploadFileTypeInvalid = &Errno{Code: 10402, Message: "The file type was invalid,please upload the file again"}
 	ErrListTemplate          = &Errno{Code: 10403, Message: "Cannot query template list"}
 	ErrGetTemplate           = &Errno{Code: 10404, Message: "Cannot query template"}
 	ErrGetTemplateAccount    = &Errno{Code: 10405, Message: "Cannot query template account"}
 	ErrCreateTemplateAccount = &Errno{Code: 10406, Message: "Cannot create template account"}
+	ErrCreateTemplate = &Errno{Code: 10407, Message: "Cannot create template"}
 
 	//tag errors
 	ErrTagNoFount = &Errno{Code: 10501, Message: "Tag not found"}

@@ -14,7 +14,7 @@ import (
 var Enforcer *casbin.Enforcer
 
 func GetEnforcer(model, policy string) *casbin.Enforcer {
-	Enforcer,_ = casbin.NewEnforcer(model, policy)
+	Enforcer, _ = casbin.NewEnforcer(model, policy)
 	return Enforcer
 }
 

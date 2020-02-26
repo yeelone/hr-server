@@ -59,12 +59,10 @@ func (g *UserGroup) Update() error {
 	return nil
 }
 
-
-func CountUserGroup() (count int , err error ){
+func CountUserGroup() (count int, err error) {
 	err = DB.Self.Model(&UserGroup{}).Count(&count).Error
-	return count , err
+	return count, err
 }
-
 
 //GetAllUserGroup :
 func ListUserGroup(offset, limit int, where string, whereKeyword string) (gs []*UserGroup, total int, err error) {

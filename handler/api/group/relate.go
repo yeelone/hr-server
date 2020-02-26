@@ -59,7 +59,7 @@ func RemoveRelateProfiles(c *gin.Context) {
 	record.Object = "group"
 	record.Body = "描述:移除组与人员的关联; 组名:" + group.Name + ";移除人员包括:;"
 	for _, p := range profiles {
-		record.Body +="姓名:[" + p.Name + "],身份证:[" + p.IDCard + "];"
+		record.Body += "姓名:[" + p.Name + "],身份证:[" + p.IDCard + "];"
 	}
 
 	if err := record.Create(); err != nil {
@@ -92,7 +92,7 @@ func RelateTags(c *gin.Context) {
 	record.Body += "原先关联的标签:;"
 
 	for _, t := range group.Tags {
-		record.Body +="["  + topTagMap[t.Parent] + "] ,系数:" + fmt.Sprint(t.Coefficient) + ";"
+		record.Body += "[" + topTagMap[t.Parent] + "] ,系数:" + fmt.Sprint(t.Coefficient) + ";"
 	}
 
 	if err := model.ClearThenAddGroupTags(r.Group, r.Tags); err != nil {
@@ -105,7 +105,7 @@ func RelateTags(c *gin.Context) {
 	tags, _ := model.GetTagsByIDList(r.Tags)
 	record.Body += "现所关联系数:;"
 	for _, t := range tags {
-		record.Body +="["  + topTagMap[t.Parent] + "] ,系数:" + fmt.Sprint(t.Coefficient) + ";"
+		record.Body += "[" + topTagMap[t.Parent] + "] ,系数:" + fmt.Sprint(t.Coefficient) + ";"
 	}
 
 	if err := record.Create(); err != nil {

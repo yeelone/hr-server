@@ -2,18 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="166c2398-854f-4efb-bc20-8ddd07dc2e5e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/util/hash.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/conf/authz_policy.csv" beforeDir="false" afterPath="$PROJECT_DIR$/conf/authz_policy.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conf/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/conf/config.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conf/permission/permission.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/conf/permission/permission.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/conf/permission/超级管理员.csv" beforeDir="false" afterPath="$PROJECT_DIR$/conf/permission/超级管理员.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/api/profile/list.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/profile/list.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/api/profile/listTags.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/profile/listTags.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conf/templates/基本工资模板.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/conf/templates/基本工资模板.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/group/importTags.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/group/importTags.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/group/relate.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/group/relate.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/profile/import.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/profile/import.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/salary/calculate.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/salary/calculate.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/salary/export.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/salary/export.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/salary/import.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/salary/import.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/handler/api/salary/templateconfig.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/salary/templateconfig.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/summary/base.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/summary/base.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/summary/summary.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/summary/summary.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/audit.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/audit.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/group.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/group.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/init.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/init.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/profile.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/profile.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/tag.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/tag.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/usergroup.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/usergroup.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/auth/rbac.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/auth/rbac.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/errno/code.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/errno/code.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/router/middleware/authority.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/middleware/authority.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/router/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/router.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/hash.go" beforeDir="false" afterPath="$PROJECT_DIR$/util/hash.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +65,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
@@ -108,30 +122,30 @@
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
     <state x="555" y="168" width="802" height="699" key="#GOROOT/0.0.1920.1013@0.0.1920.1013" timestamp="1580705911027" />
-    <state width="1868" height="162" key="GridCell.Tab.0.bottom" timestamp="1582187436575">
+    <state width="1868" height="278" key="GridCell.Tab.0.bottom" timestamp="1582616188831">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
-    <state width="1868" height="162" key="GridCell.Tab.0.bottom/0.0.1920.1013@0.0.1920.1013" timestamp="1582187436575" />
-    <state width="1868" height="162" key="GridCell.Tab.0.center" timestamp="1582187436575">
+    <state width="1868" height="278" key="GridCell.Tab.0.bottom/0.0.1920.1013@0.0.1920.1013" timestamp="1582616188831" />
+    <state width="1868" height="278" key="GridCell.Tab.0.center" timestamp="1582616188830">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
-    <state width="1868" height="162" key="GridCell.Tab.0.center/0.0.1920.1013@0.0.1920.1013" timestamp="1582187436575" />
-    <state width="1868" height="162" key="GridCell.Tab.0.left" timestamp="1582187436574">
+    <state width="1868" height="278" key="GridCell.Tab.0.center/0.0.1920.1013@0.0.1920.1013" timestamp="1582616188830" />
+    <state width="1868" height="278" key="GridCell.Tab.0.left" timestamp="1582616188830">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
-    <state width="1868" height="162" key="GridCell.Tab.0.left/0.0.1920.1013@0.0.1920.1013" timestamp="1582187436574" />
-    <state width="1868" height="162" key="GridCell.Tab.0.right" timestamp="1582187436575">
+    <state width="1868" height="278" key="GridCell.Tab.0.left/0.0.1920.1013@0.0.1920.1013" timestamp="1582616188830" />
+    <state width="1868" height="278" key="GridCell.Tab.0.right" timestamp="1582616188831">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
-    <state width="1868" height="162" key="GridCell.Tab.0.right/0.0.1920.1013@0.0.1920.1013" timestamp="1582187436575" />
+    <state width="1868" height="278" key="GridCell.Tab.0.right/0.0.1920.1013@0.0.1920.1013" timestamp="1582616188831" />
     <state x="535" y="105" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1580916529973">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
     <state x="535" y="105" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1013@0.0.1920.1013" timestamp="1580916529973" />
-    <state x="576" y="56" width="768" height="900" key="find.popup" timestamp="1581917734163">
+    <state x="576" y="56" width="768" height="900" key="find.popup" timestamp="1582534953427">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
-    <state x="576" y="56" width="768" height="900" key="find.popup/0.0.1920.1013@0.0.1920.1013" timestamp="1581917734163" />
+    <state x="576" y="56" width="768" height="900" key="find.popup/0.0.1920.1013@0.0.1920.1013" timestamp="1582534953427" />
     <state x="608" y="222" width="701" height="678" key="search.everywhere.popup" timestamp="1581492527822">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>

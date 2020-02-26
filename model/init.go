@@ -93,7 +93,7 @@ func initTable() {
 	var record Record
 	var operate OperateRecord
 	var salaryProfileConfig SalaryProfileConfig
-	DB.Self.AutoMigrate(&role, &record,&salaryProfileConfig, &t, &operate, &user, &g, &template, &gt,  &profile, &tas, &audit, &usergroup, &permissions, &sf, &s, &tas, &sc)
+	DB.Self.AutoMigrate(&role, &record, &salaryProfileConfig, &t, &operate, &user, &g, &template, &gt, &profile, &tas, &audit, &usergroup, &permissions, &sf, &s, &tas, &sc)
 	initAdmin()
 	initDefaultGroup()
 	initDefaultUserGroup()
@@ -367,7 +367,6 @@ func initDefaultGroup() {
 		}
 		g.Create()
 	}
-
 
 	g = Group{}
 	err = DB.Self.Where("name = ?", "状态").First(&g).Error

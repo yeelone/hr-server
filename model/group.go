@@ -514,7 +514,7 @@ func ImportGroupTagRelationshipFromExcel(file string) (errs []string, err error)
 		return nil, err
 	}
 
-	rows,_ := xlsx.GetRows("Sheet1")
+	rows, _ := xlsx.GetRows("Sheet1")
 	deleteValues := []string{}
 	insertValues := []string{}
 	rules := []string{}
@@ -608,7 +608,7 @@ func ImportGroupFromExcel(filepath string) (errs []string, err error) {
 		return nil, err
 	}
 
-	rows,_ := xlsx.GetRows("Sheet1")
+	rows, _ := xlsx.GetRows("Sheet1")
 	gMap := make(map[string]map[string][]string, 0)  //记录标签所含成员
 	coeMap := make(map[string]map[string]float64, 0) //记录系数
 

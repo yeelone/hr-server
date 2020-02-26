@@ -24,5 +24,3 @@ func HashIDDecode(data string) int {
 	e, _ := h.DecodeWithError(data)
 	return e[0]
 }
-
-
