@@ -2,7 +2,7 @@ package salary
 
 import (
 	"fmt"
-	"github.com/360EntSecGroup-Skylar/excelize"
+	"github.com/360EntSecGroup-Skylar/excelize/v2"
 	"github.com/gin-gonic/gin"
 	"github.com/lexkong/log"
 	"github.com/lexkong/log/lager"
@@ -37,17 +37,22 @@ func TemplateConfig(c *gin.Context) {
 		AuditState: model.AuditStateWaiting,
 	}
 
-	oldTemplate, err := model.GetTemplate(r.ID)
-	if err != nil {
-		h.SendResponse(c, errno.ErrBind, err.Error())
-		return
+	oldTemplate := &model.Template{}
+	var err error
+	if r.ID > 0 {
+		oldTemplate, err = model.GetTemplate(r.ID)
+		if err != nil {
+			h.SendResponse(c, errno.ErrBind, err.Error())
+			return
+		}
+
+		// 模板的状态是正在审核中，在审核之前不能再做修改
+		if oldTemplate.AuditState == model.AuditStateWaiting {
+			h.SendResponse(c, errno.ErrBind, "模板正在审核中，在审核之前不能再做修改")
+			return
+		}
 	}
 
-	// 模板的状态是正在审核中，在审核之前不能再做修改
-	if oldTemplate.AuditState == model.AuditStateWaiting {
-		h.SendResponse(c, errno.ErrBind, "模板正在审核中，在审核之前不能再做修改")
-		return
-	}
 
 	////要判断key是唯一的
 	// remark: 之前考虑到key是全系统唯一，因为key要从配置文件中去解析，后来想了想，改成在查询明细时从数据库里解析key ，这样就不会存在key冲突的问题，一个key是跟相应有日期绑定在一起的
@@ -71,20 +76,20 @@ func TemplateConfig(c *gin.Context) {
 	if len(r.InitData) > 0 {
 		name, keys, _ := findUploadKeys(r.InitData)
 		if name != m.Name {
-			h.SendResponse(c, errno.ErrCreateTemplate,"上传文件中的模板名不符合要求,必须跟模板一致")
+			h.SendResponse(c, errno.ErrCreateTemplate, "上传文件中的模板名不符合要求,必须跟模板一致")
 			return
 		}
 
-		errmsg := make([]string,0)
+		errmsg := make([]string, 0)
 		// 将上传的文件跟模板中的key一一对比，为了防止上传了不存在的字段导致计算错误
 		for _, key := range keys {
-			if _, ok  := r.Body[key]; !ok {
-				errmsg = append(errmsg, key + "不存在于模板["+m.Name+"]中")
+			if _, ok := r.Body[key]; !ok {
+				errmsg = append(errmsg, key+"不存在于模板["+m.Name+"]中")
 			}
 		}
 
 		if len(errmsg) > 0 {
-			h.SendResponse(c, errno.ErrCreateTemplate, strings.Join(errmsg,", "))
+			h.SendResponse(c, errno.ErrCreateTemplate, strings.Join(errmsg, ", "))
 			return
 		}
 	}
@@ -138,8 +143,8 @@ func TemplateConfig(c *gin.Context) {
 
 			if r.InitData == "" {
 				change = "固定初始数据发化变化:操作员取消了固定初始数据;"
-			}else{
-				change = "固定初始数据发化变化,新上传文件:(file)["+r.InitData+"];"
+			} else {
+				change = "固定初始数据发化变化,新上传文件:(file)[" + r.InitData + "];"
 			}
 		}
 		if err != nil {

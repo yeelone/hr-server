@@ -3,15 +3,16 @@ package model
 import (
 	"errors"
 	"fmt"
-	"github.com/360EntSecGroup-Skylar/excelize"
-	"github.com/lexkong/log"
-	"gopkg.in/go-playground/validator.v9"
 	"hr-server/pkg/constvar"
 	"hr-server/util"
 	"os"
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/360EntSecGroup-Skylar/excelize/v2"
+	"github.com/lexkong/log"
+	"gopkg.in/go-playground/validator.v9"
 )
 
 //prevent sql injection

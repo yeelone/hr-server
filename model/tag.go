@@ -3,12 +3,13 @@ package model
 import (
 	"errors"
 	"fmt"
-	"github.com/360EntSecGroup-Skylar/excelize"
-	"github.com/lib/pq"
 	"hr-server/pkg/constvar"
 	"hr-server/util"
 	"strconv"
 	"strings"
+
+	"github.com/360EntSecGroup-Skylar/excelize/v2"
+	"github.com/lib/pq"
 )
 
 //Tag :

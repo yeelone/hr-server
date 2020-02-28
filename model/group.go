@@ -3,12 +3,13 @@ package model
 import (
 	"errors"
 	"fmt"
-	"github.com/360EntSecGroup-Skylar/excelize"
 	"hr-server/pkg/constvar"
 	"hr-server/util"
 	"os"
 	"strconv"
 	"strings"
+
+	"github.com/360EntSecGroup-Skylar/excelize/v2"
 )
 
 // Group :

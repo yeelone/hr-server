@@ -2,7 +2,7 @@ package grouptransfer
 
 import (
 	"fmt"
-	"github.com/360EntSecGroup-Skylar/excelize"
+	"github.com/360EntSecGroup-Skylar/excelize/v2"
 	"github.com/gin-gonic/gin"
 	h "hr-server/handler"
 	"hr-server/model"

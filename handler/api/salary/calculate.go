@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/360EntSecGroup-Skylar/excelize"
+	"github.com/360EntSecGroup-Skylar/excelize/v2"
 	"github.com/gin-gonic/gin"
 	"github.com/lexkong/log"
 	h "hr-server/handler"
@@ -24,8 +24,8 @@ var templateAccount *model.TemplateAccount
 var profileGroupMap map[string]map[uint64]uint64 //用户与部门、岗位之间进行映射以供调用,比如[部门][用户ID][业务部] [岗位][用户ID][安全岗]
 var department = "部门"
 var post = "岗位"
-var cardIDMap map[string]map[string]map[string]float64 = make(map[string]map[string]map[string]float64)//从上传的文件中取出数据 ，按模板名- 身份证号码 - 字段key- 值 进行存储
-var profileCardMap map[uint64]string                   // 身份证跟ID的映射
+var cardIDMap map[string]map[string]map[string]float64 = make(map[string]map[string]map[string]float64) //从上传的文件中取出数据 ，按模板名- 身份证号码 - 字段key- 值 进行存储
+var profileCardMap map[uint64]string                                                                    // 身份证跟ID的映射
 var profiles []model.Profile
 var errMsg = []string{}                           //记录错误信息
 var excelUploadedFields = make(map[string]string) // 记录所有的字段，为后面判断从excel上传的字段是否与系统模板配置的字段一致，不一致则警告
@@ -83,7 +83,7 @@ func Calculate(c *gin.Context) {
 	for _, i := range templateAccount.Order {
 		t := templateMap[uint64(i)]
 		if len(t.InitData) > 0 { //固定的导入数据
-			cardIDMap2,_ := handleUploadExcel(t.InitData)
+			cardIDMap2, _ := handleUploadExcel(t.InitData)
 			//要对两个map进行合并
 			for temp, v := range cardIDMap2 {
 				if _, ok := cardIDMap[temp]; !ok {

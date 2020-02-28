@@ -2,7 +2,7 @@ package middleware
 
 import (
 	"fmt"
-	"github.com/casbin/casbin"
+	"github.com/casbin/casbin/v2"
 	"github.com/gin-gonic/gin"
 	"hr-server/handler"
 	"hr-server/pkg/errno"
@@ -20,7 +20,7 @@ func Authority(e *casbin.Enforcer) gin.HandlerFunc {
 		fmt.Println("sub,obj,act", sub, obj, act)
 		c.Set("userid", body.ID)
 
-		result, _ := e.Enforce(sub, obj, act)
+		result,_ := e.Enforce(sub, obj, act)
 		if result == true {
 			// permit alice to read data1
 			c.Next()
