@@ -33,7 +33,6 @@ func DepartmentIncomeQuery(c *gin.Context) {
 	}
 	salaries, err := model.GetSalaryByAccountAndTemplate(r.Year, r.Account, ts)
 	if err != nil {
-		fmt.Println("GetSalaryByAccountAndTemplate error :", err.Error())
 		h.SendResponse(c, errno.ErrBind, err.Error())
 		return
 	}

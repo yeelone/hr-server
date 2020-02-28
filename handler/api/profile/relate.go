@@ -32,16 +32,23 @@ func RelateTags(c *gin.Context) {
 	removeTagStr, _ := writeProfileRecord(topTagMap, r.Profile)
 
 	if err := model.ClearThenAddProfileTags(r.Profile, r.Tags); err != nil {
-		h.SendResponse(c, errno.ErrDatabase, nil)
+		fmt.Println(err)
+		h.SendResponse(c, errno.ErrDatabase, err)
 		return
 	}
 	addTagStr, _ := writeProfileRecord(topTagMap, r.Profile)
 	record := model.Record{}
 	record.Object = "profile"
-	record.Body = "描述:职工调动; 姓名:" + tempProfile.Name + ";身份证号码:" + tempProfile.IDCard + ";"
-	record.Body += "系数变化,删除了以下系数:" + removeTagStr + ";"
-	record.Body += "系数变化,新增了以下系数:" + addTagStr + ";"
+	record.Body = "描述:标签关联变动; 姓名:" + tempProfile.Name + ";身份证号码:" + tempProfile.IDCard + ";"
 
+	if len(removeTagStr) > 0{
+		record.Body += "系数变化:删除了以下系数;" + removeTagStr
+	}
+
+	if len(addTagStr) > 0 {
+		record.Body += "系数变化:新增了以下系数;" + addTagStr
+	}
+	fmt.Println(util.PrettyJson(record))
 	if err := record.Create(); err != nil {
 		fmt.Println(err)
 	}

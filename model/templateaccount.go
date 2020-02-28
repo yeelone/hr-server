@@ -110,7 +110,7 @@ func AddTemplateAccountRelateTemplates(tid uint64, IDList []uint64) (err error) 
 	tx := DB.Self.Begin()
 	var templates []Template
 	for _, id := range IDList {
-		templates = append(templates, Template{BaseModel: BaseModel{ID: id}})
+		templates = append(templates, Template{ID: id})
 	}
 
 	tx.Model(&t).Association("Templates").Clear()

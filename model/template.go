@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"hr-server/util"
 	"strings"
+	"time"
 )
 
 var (
@@ -15,7 +16,9 @@ var (
 const TemplateAuditObject = "Template"
 
 type Template struct {
-	BaseModel
+	ID        uint64     `gorm:"primary_key;AUTO_INCREMENT;column:id" json:"id"`
+	CreatedAt time.Time  `gorm:"column:createdAt" json:"-"`
+	UpdatedAt time.Time  `gorm:"column:updatedAt" json:"-"`
 	Name             string            `json:"name"  gorm:"not null;"`
 	Type             string            `json:"type" `                          //可以是普通模板和分摊模板
 	Months           int               `json:"months"`                         //如果分摊模板，可以设置分几个月摊完
@@ -58,6 +61,38 @@ func (t *Template) Save() (err error) {
 	return err
 }
 
+// Create creates a new base salary.
+func (t *Template) Update(id uint64, data map[string]interface{}) (err error) {
+	tx := DB.Self.Begin()
+
+	err = tx.Model(&Template{}).Debug().Where("id = ?", id).Updates(data).Error
+
+	tx.Commit()
+
+	return err
+}
+
+// 主要是想用新模板替换掉旧的模板，为了不造成ID唯一冲突，需要先将旧的模板删掉。再新模板的ID设置为旧模板的ID
+func (t *Template) Replace(oldID uint64,newID uint64 ) (err error) {
+	tx := DB.Self.Begin()
+
+	odlTemplate := Template{}
+	odlTemplate.ID = oldID
+	if err := DB.Self.Delete(&odlTemplate).Error; err != nil {
+		tx.Rollback()
+		return err
+	}
+
+	sql := `UPDATE "tb_template" SET "audit_state" = 1, "id"=`+ util.Uint2Str(oldID) +`  WHERE id=` + util.Uint2Str(newID)
+	if err := tx.Exec(sql).Error;  err != nil {
+		tx.Rollback()
+		return err
+	}
+
+	tx.Commit()
+
+	return err
+}
 func (t *Template) UpdateState(state int) (err error) {
 	tx := DB.Self.Begin()
 	if err = tx.Model(&t).Update(map[string]interface{}{"audit_state": state}).Error; err != nil {

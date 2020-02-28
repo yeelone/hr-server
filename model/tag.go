@@ -215,15 +215,19 @@ func ClearThenAddProfileTags(pid uint64, tids []uint64) (err error) {
 	for _, id := range tids {
 		insertStr = append(insertStr, "("+util.Uint2Str(pid)+", "+util.Uint2Str(id)+")")
 	}
+
 	err = tx.Exec(" delete from profile_tags where profile_id = " + util.Uint2Str(pid) + " ;").Error
 
-	err = tx.Exec(" insert into profile_tags(profile_id,tag_id) values" + strings.Join(insertStr, ",") + ";").Error
+	if len(insertStr) > 0 {
+		err = tx.Exec(" insert into profile_tags(profile_id,tag_id) values" + strings.Join(insertStr, ",") + ";").Error
+	}
+
 	if err != nil {
 		tx.Rollback()
 		return err
 	}
 	tx.Commit()
-	return err
+	return nil
 }
 
 // AddProfileTags : 删除旧的关联，添加新的关联

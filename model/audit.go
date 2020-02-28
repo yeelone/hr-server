@@ -432,6 +432,7 @@ func getRulesFromCSV(group *Group) (rules []string, err error) {
 
 	return rules, err
 }
+
 func handleTemplate(a *Audit, state int) error {
 	oldT, _ := GetTemplate(uint64(a.OrgObjectID[0]))
 	newT, _ := GetTemplate(uint64(a.DestObjectID[0]))
@@ -457,14 +458,20 @@ func handleTemplate(a *Audit, state int) error {
 		if state == AuditStatePermit { //允许创建或者更新的话
 			//因为账套关联模板，所以当审核通过时，直接新模板替换到老模板
 			tempNewID := newT.ID
-			newT.ID = oldT.ID
-			newT.AuditState = AuditStatePermit
-			if err := newT.Save(); err != nil {
+			//newT.ID = oldT.ID
+			//newT.AuditState = AuditStatePermit
+			//fmt.Println("new template")
+			//fmt.Println(util.PrettyJson(newT))
+
+			if err := newT.Replace(oldT.ID, newT.ID); err != nil {
 				return err
 			}
-			//把原本新的模板删除掉.
-			if err := DeleteTemplate(tempNewID); err != nil {
-				return err
+			////把原本新的模板删除掉.
+			//if err := DeleteTemplate(tempNewID); err != nil {
+			//	return err
+			//}
+			if !util.Exists("conf/templates/old/") {
+				os.MkdirAll("conf/templates/old/", os.ModePerm) //创建文件
 			}
 
 			//如果有更新了模板名的话，这里把旧模板先移到old文件夹
