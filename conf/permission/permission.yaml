@@ -426,6 +426,10 @@
     resource: OPERATE_RECORD_LIST
     object: /api/v1/record/operation
     action: GET
+  查询指定员工收入情况:
+    resource: OPERATE_RECORD_LIST
+    object: /api/v1/salary/year/:year/month/:month/profile/:id
+    action: GET
 
 
 

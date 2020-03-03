@@ -118,6 +118,7 @@ func Load(g *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 		p.GET("", profile.List)
 		p.GET("/:id", profile.Get)
 		p.GET("/:id/detail", profile.GetDetail)
+		p.GET("/:id/salary", profile.GetSalary)
 		p.GET("/:id/transfer", profile.GetTransfer)
 		p.GET("/:id/tags", profile.ListProfileTags)
 		p.PUT("/:id/tags", profile.RelateTags)

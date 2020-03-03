@@ -21,7 +21,6 @@ func DetailQuery(c *gin.Context) {
 	log.Info("Detail function called.", lager.Data{"X-Request-Id": util.GetReqID(c)})
 	var r DetailRequest
 	if err := c.Bind(&r); err != nil {
-		fmt.Println("detail error", err)
 		h.SendResponse(c, errno.ErrBind, err.Error())
 		return
 	}
@@ -36,13 +35,12 @@ func DetailQuery(c *gin.Context) {
 	}
 	salaries, err := model.GetSalaryByAccountAndTemplate(r.Year, r.Account, ts)
 	if err != nil {
-		fmt.Println("GetSalaryByAccountAndTemplate error :", err.Error())
 		h.SendResponse(c, errno.ErrBind, err.Error())
 		return
 	}
 
 	if len(salaries) < 1 {
-		//这里失败有一种场景，比如说2018年1月发的加班工资实际应该归纳于2017年12月，但是因为核算是在2018-01， 所以在tb_salary里并没有留有2017的记录，所以在这里会有查不到的问题。
+		// 这里失败有一种场景，比如说2018年1月发的加班工资实际应该归纳于2017年12月，但是因为核算是在2018-01， 所以在tb_salary里并没有留有2017的记录，所以在这里会有查不到的问题。
 		// 这种情况，我们还要试着去找下一年的数据 .
 		year, _ := strconv.Atoi(r.Year)
 		year = year + 1
@@ -60,14 +58,12 @@ func DetailQuery(c *gin.Context) {
 	}
 	fields, err := model.GetFieldByKeys(r.Year, sMap)
 	if err != nil {
-		fmt.Println("GetFieldByKeys error :", err.Error())
 		h.SendResponse(c, errno.ErrBind, err.Error())
 		return
 	}
 
 	filename, err := writeIntoExcel(fields)
 	if err != nil {
-		fmt.Println("writeIntoExcel error :", err.Error())
 		h.SendResponse(c, errno.ErrWriteExcel, err.Error())
 		return
 	}

@@ -22,8 +22,7 @@ func EmployeeAnnualIncome(c *gin.Context) {
 	log.Info("EmployeeAnnualIncome function called.", lager.Data{"X-Request-Id": util.GetReqID(c)})
 	var r CreateRequest
 	if err := c.Bind(&r); err != nil {
-		fmt.Println("annual error", err)
-		h.SendResponse(c, errno.ErrBind, nil)
+		h.SendResponse(c, errno.ErrBind, err.Error())
 		return
 	}
 	var result []model.Statistics

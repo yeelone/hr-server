@@ -1,7 +1,6 @@
 package salary
 
 import (
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/lexkong/log"
 	"github.com/lexkong/log/lager"
@@ -19,8 +18,7 @@ func GetProfileMonthSalary(c *gin.Context) {
 	log.Info("GetProfileMonthSalary query function called.", lager.Data{"X-Request-Id": util.GetReqID(c)})
 	var r ProfileSalaryRequest
 	if err := c.Bind(&r); err != nil {
-		fmt.Println(err)
-		h.SendResponse(c, errno.ErrBind, err)
+		h.SendResponse(c, errno.ErrBind, err.Error())
 		return
 	}
 	pid, _ := strconv.ParseUint(c.Param("id"), 10, 64)
@@ -38,7 +36,7 @@ func GetProfileMonthSalary(c *gin.Context) {
 
 	profile, err := model.GetProfileByIDCard(user.IDCard)
 	if err != nil {
-		h.SendResponse(c, errno.StatusUnauthorized, err)
+		h.SendResponse(c, errno.StatusUnauthorized, err.Error())
 		return
 	}
 

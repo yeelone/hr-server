@@ -6,6 +6,7 @@ import (
 	"hr-server/model"
 	"hr-server/pkg/errno"
 	"hr-server/util"
+	"os"
 	"sort"
 	"strconv"
 	"strings"
@@ -87,6 +88,11 @@ func Export(c *gin.Context) {
 	if isSheetExists {
 		writeSummaryExcel(fieldMap, colsOrder)
 	}
+
+	if !util.Exists("export/") {
+		os.MkdirAll("export/", os.ModePerm) //创建文件
+	}
+
 	// Save xlsx file by the given path.
 	filename := account.Name + year + "-" + month + ".xlsx"
 	err = xlsx.SaveAs("./export/" + filename)

@@ -2,27 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="166c2398-854f-4efb-bc20-8ddd07dc2e5e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/handler/api/profile/getSalary.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/conf/authz_policy.csv" beforeDir="false" afterPath="$PROJECT_DIR$/conf/authz_policy.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conf/permission/permission.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/conf/permission/permission.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conf/permission/查询岗.csv" beforeDir="false" afterPath="$PROJECT_DIR$/conf/permission/查询岗.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/conf/permission/超级管理员.csv" beforeDir="false" afterPath="$PROJECT_DIR$/conf/permission/超级管理员.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/api/group/import.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/group/import.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/api/group/importTags.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/group/importTags.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/api/grouptransfer/list.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/grouptransfer/list.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/api/profile/import.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/profile/import.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/api/salary/calculate.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/salary/calculate.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conf/templates/2222-2.yaml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/handler/api/salary/export.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/salary/export.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/api/salary/import.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/salary/import.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/api/salary/templateconfig.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/salary/templateconfig.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/api/statistics/department.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/statistics/department.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/salary/getprofile.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/salary/getprofile.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/handler/api/statistics/detail.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/statistics/detail.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/handler/api/statistics/income.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/statistics/income.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/api/tag/import.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/tag/import.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/group.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/group.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/profile.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/profile.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/tag.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/tag.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/auth/rbac.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/auth/rbac.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/router/middleware/authority.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/middleware/authority.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/router/middleware/requestid.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/middleware/requestid.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/router/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/router.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,67 +38,67 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main.go">
+        <entry file="file://$PROJECT_DIR$/handler/api/salary/export.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="43" column="59" selection-start-line="43" selection-start-column="59" selection-end-line="43" selection-end-column="59" />
+            <state relative-caret-position="426">
+              <caret line="134" column="29" selection-start-line="134" selection-start-column="29" selection-end-line="134" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/handler/api/profile/getDetail.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="13" selection-start-line="13" selection-end-line="23" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/handler/api/profile/getSalary.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/handler/api/salary/salary.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="410">
+              <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/handler/api/statistics/detail.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="433">
+              <caret line="53" column="55" lean-forward="true" selection-start-line="53" selection-start-column="55" selection-end-line="53" selection-end-column="55" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/router/router.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="346">
+              <caret line="209" column="78" selection-start-line="209" selection-start-column="78" selection-end-line="209" selection-end-column="78" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/handler/api/salary/templateconfig.go">
+        <entry file="file://$PROJECT_DIR$/handler/api/salary/getprofile.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-294">
-              <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pkg/auth/rbac.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/go.mod">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" selection-start-line="8" selection-end-line="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/router/middleware/authority.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
+            <state relative-caret-position="162">
+              <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
               <folding>
-                <element signature="e#20#172#0" expanded="true" />
+                <element signature="e#16#247#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/router/middleware/requestid.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="14" column="16" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/group.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="5" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
         </entry>
@@ -115,17 +106,47 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/profile.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="50" selection-start-line="12" selection-start-column="50" selection-end-line="12" selection-end-column="50" />
+            <state relative-caret-position="189">
+              <caret line="264" column="5" selection-start-line="264" selection-start-column="5" selection-end-line="264" selection-end-column="5" />
+              <folding>
+                <element signature="e#15#236#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/tag.go">
+        <entry file="file://$PROJECT_DIR$/conf/permission/permission.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
+            <state relative-caret-position="340">
+              <caret line="425" column="33" lean-forward="true" selection-start-line="425" selection-start-column="33" selection-end-line="425" selection-end-column="33" />
+              <folding>
+                <element signature="e#799#1466#0" />
+                <element signature="e#1467#2082#0" />
+                <element signature="e#3186#4428#0" />
+                <element signature="e#4429#5131#0" />
+                <element signature="e#5132#5590#0" />
+                <element signature="e#5591#6905#0" />
+                <element signature="e#6906#7301#0" />
+                <element signature="e#7302#8144#0" />
+                <element signature="e#8145#8262#0" />
+                <element signature="e#8263#8678#0" />
+                <element signature="e#8679#8865#0" />
+                <element signature="e#8866#9027#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/salaryfield.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="353">
+              <caret line="221" column="73" selection-start-line="221" selection-start-column="64" selection-end-line="221" selection-end-column="73" />
+              <folding>
+                <element signature="n#!!block;n#BatchCreate#0" />
+                <element signature="n#!!block;n#DeleteSalaryFieldsByMonthAndTemplate#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -142,6 +163,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>casbin</find>
+      <find>/year/:year/month/:month/profile/:id</find>
     </findStrings>
   </component>
   <component name="GOROOT" path="/usr/local/go" />
@@ -159,10 +181,18 @@
         <option value="$PROJECT_DIR$/go.mod" />
         <option value="$PROJECT_DIR$/router/middleware/authority.go" />
         <option value="$PROJECT_DIR$/handler/api/salary/templateconfig.go" />
+        <option value="$PROJECT_DIR$/handler/api/salary/export.go" />
+        <option value="$PROJECT_DIR$/router/router.go" />
+        <option value="$PROJECT_DIR$/handler/api/statistics/income.go" />
+        <option value="$PROJECT_DIR$/handler/api/statistics/detail.go" />
+        <option value="$PROJECT_DIR$/handler/api/profile/getSalary.go" />
+        <option value="$PROJECT_DIR$/conf/permission/permission.yaml" />
+        <option value="$PROJECT_DIR$/handler/api/salary/getprofile.go" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
+    <option name="x" value="-1" />
     <option name="y" value="23" />
     <option name="width" value="1920" />
     <option name="height" value="977" />
@@ -184,13 +214,18 @@
             <path>
               <item name="hr-server" type="b2602c69:ProjectViewProjectNode" />
               <item name="hr-server" type="462c0819:PsiDirectoryNode" />
-              <item name="pkg" type="462c0819:PsiDirectoryNode" />
+              <item name="conf" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="hr-server" type="b2602c69:ProjectViewProjectNode" />
               <item name="hr-server" type="462c0819:PsiDirectoryNode" />
-              <item name="pkg" type="462c0819:PsiDirectoryNode" />
-              <item name="auth" type="462c0819:PsiDirectoryNode" />
+              <item name="conf" type="462c0819:PsiDirectoryNode" />
+              <item name="permission" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hr-server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hr-server" type="462c0819:PsiDirectoryNode" />
+              <item name="router" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -217,6 +252,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/handler/api/profile" />
       <recent name="E:\gopath\src\hr-server\handler\api\record" />
       <recent name="E:\gopath\src\hr-server\model" />
       <recent name="E:\gopath\src\hr-server\handler\api\profile" />
@@ -272,15 +308,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1920" height="977" extended-state="0" />
+    <frame x="-1" y="23" width="1920" height="977" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2550586" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18477103" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3299435" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3299435" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -355,41 +391,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="43" column="59" selection-start-line="43" selection-start-column="59" selection-end-line="43" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/router/middleware/requestid.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="14" column="16" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/tag.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/group.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/profile.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="50" selection-start-line="12" selection-start-column="50" selection-end-line="12" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pkg/auth/auth.go">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -416,18 +417,174 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/router/middleware/authority.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
+        <state relative-caret-position="210">
           <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
-          <folding>
-            <element signature="e#20#172#0" expanded="true" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/router/middleware/requestid.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="14" column="16" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/tag.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/handler/api/salary/templateconfig.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-294">
-          <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
+        <state relative-caret-position="15">
+          <caret line="101" selection-start-line="101" selection-end-line="101" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/api/group/delete.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="21" column="28" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="43" column="59" selection-start-line="43" selection-start-column="59" selection-end-line="43" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/group.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6795">
+          <caret line="463" column="5" selection-start-line="463" selection-start-column="5" selection-end-line="463" selection-end-column="5" />
+          <folding>
+            <element signature="e#15#163#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/api/profile/import.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="40" column="8" selection-start-line="40" selection-start-column="4" selection-end-line="42" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/api/profile/getDetail.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="13" selection-start-line="13" selection-end-line="23" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/api/salary/export.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="426">
+          <caret line="134" column="29" selection-start-line="134" selection-start-column="29" selection-end-line="134" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/api/salary/getbase.go">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/api/salary/salary.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="410">
+          <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/api/statistics/statistics.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="5" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/config.yaml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/api/statistics/income.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/salaryfield.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="353">
+          <caret line="221" column="73" selection-start-line="221" selection-start-column="64" selection-end-line="221" selection-end-column="73" />
+          <folding>
+            <element signature="n#!!block;n#BatchCreate#0" />
+            <element signature="n#!!block;n#DeleteSalaryFieldsByMonthAndTemplate#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/api/profile/getSalary.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/permission/permission.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="425" column="33" lean-forward="true" selection-start-line="425" selection-start-column="33" selection-end-line="425" selection-end-column="33" />
+          <folding>
+            <element signature="e#799#1466#0" />
+            <element signature="e#1467#2082#0" />
+            <element signature="e#3186#4428#0" />
+            <element signature="e#4429#5131#0" />
+            <element signature="e#5132#5590#0" />
+            <element signature="e#5591#6905#0" />
+            <element signature="e#6906#7301#0" />
+            <element signature="e#7302#8144#0" />
+            <element signature="e#8145#8262#0" />
+            <element signature="e#8263#8678#0" />
+            <element signature="e#8679#8865#0" />
+            <element signature="e#8866#9027#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/api/statistics/detail.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="433">
+          <caret line="53" column="55" lean-forward="true" selection-start-line="53" selection-start-column="55" selection-end-line="53" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/router/router.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="346">
+          <caret line="209" column="78" selection-start-line="209" selection-start-column="78" selection-end-line="209" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/profile.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="264" column="5" selection-start-line="264" selection-start-column="5" selection-end-line="264" selection-end-column="5" />
+          <folding>
+            <element signature="e#15#236#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/api/salary/getprofile.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+          <folding>
+            <element signature="e#16#247#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
