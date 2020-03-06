@@ -2,20 +2,21 @@ package templateaccount
 
 import (
 	"fmt"
-	"github.com/gin-gonic/gin"
-	"github.com/lexkong/log"
-	"github.com/lexkong/log/lager"
 	h "hr-server/handler"
 	"hr-server/model"
 	"hr-server/pkg/errno"
 	"hr-server/util"
 	"strconv"
+
+	"github.com/gin-gonic/gin"
+	"github.com/lexkong/log"
+	"github.com/lexkong/log/lager"
 )
 
 // GetAccountFields
 // 根据账套ID 从已核算过的工资表里取出所有模板信息，以及相关联的字段信息，为用户作统计用
 func GetAccountFields(c *gin.Context) {
-	log.Info("GetAccountFields  function called.", lager.Data{"X-Request-Id": util.GetReqID(c)})
+	log.Info("GetAccountFields function called.", lager.Data{"X-Request-Id": util.GetReqID(c)})
 	id, _ := strconv.Atoi(c.Param("id"))
 	year := c.Param("year")
 	// 第一步
@@ -31,7 +32,7 @@ func GetAccountFields(c *gin.Context) {
 	if len(account.Groups) > 0 {
 		group = account.Groups[0]
 	}
-	//todo 为了随机挑选一个人出来却查询所有的人，这里要优化。目前时间比较紧
+	// todo 为了随机挑选一个人出来却查询所有的人，这里要优化。目前时间比较紧
 	group, err = model.GetGroupWithProfile(group.ID, true)
 	if err != nil {
 		fmt.Println("err", err)
@@ -43,10 +44,10 @@ func GetAccountFields(c *gin.Context) {
 
 	salaries, err := model.GetSalaryByAccount(year, account.ID)
 	if err != nil {
-		h.SendResponse(c, errno.ErrGetTemplate, nil)
+		h.SendResponse(c, errno.ErrGetTemplate, err.Error())
 		return
 	}
-	// map[string][string][]string   => month => template name => related fields
+	// map[string][string][]string => month => template name => related fields
 	templates := make(map[string]map[string][]string)
 	salaryMap := make(map[uint64]string)
 	salaryIds := []uint64{}

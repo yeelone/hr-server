@@ -16,9 +16,9 @@ var (
 const TemplateAuditObject = "Template"
 
 type Template struct {
-	ID        uint64     `gorm:"primary_key;AUTO_INCREMENT;column:id" json:"id"`
-	CreatedAt time.Time  `gorm:"column:createdAt" json:"-"`
-	UpdatedAt time.Time  `gorm:"column:updatedAt" json:"-"`
+	ID               uint64            `gorm:"primary_key;AUTO_INCREMENT;column:id" json:"id"`
+	CreatedAt        time.Time         `gorm:"column:createdAt" json:"-"`
+	UpdatedAt        time.Time         `gorm:"column:updatedAt" json:"-"`
 	Name             string            `json:"name"  gorm:"not null;"`
 	Type             string            `json:"type" `                          //可以是普通模板和分摊模板
 	Months           int               `json:"months"`                         //如果分摊模板，可以设置分几个月摊完
@@ -73,7 +73,7 @@ func (t *Template) Update(id uint64, data map[string]interface{}) (err error) {
 }
 
 // 主要是想用新模板替换掉旧的模板，为了不造成ID唯一冲突，需要先将旧的模板删掉。再新模板的ID设置为旧模板的ID
-func (t *Template) Replace(oldID uint64,newID uint64 ) (err error) {
+func (t *Template) Replace(oldID uint64, newID uint64) (err error) {
 	tx := DB.Self.Begin()
 
 	odlTemplate := Template{}
@@ -83,8 +83,8 @@ func (t *Template) Replace(oldID uint64,newID uint64 ) (err error) {
 		return err
 	}
 
-	sql := `UPDATE "tb_template" SET "audit_state" = 1, "id"=`+ util.Uint2Str(oldID) +`  WHERE id=` + util.Uint2Str(newID)
-	if err := tx.Exec(sql).Error;  err != nil {
+	sql := `UPDATE "tb_template" SET "audit_state" = 1, "id"=` + util.Uint2Str(oldID) + `  WHERE id=` + util.Uint2Str(newID)
+	if err := tx.Exec(sql).Error; err != nil {
 		tx.Rollback()
 		return err
 	}

@@ -11,7 +11,7 @@ import (
 
 func GetSalary(c *gin.Context) {
 	id, err := strconv.ParseUint(c.Param("id"), 10, 64)
-	_, err = model.GetSalaryFieldByProfileAndMonth("2020","02",id)
+	_, err = model.GetSalaryFieldByProfileAndMonth("2020", "02", id)
 	if err != nil {
 		h.SendResponse(c, errno.ErrUserNotFound, err.Error())
 		return

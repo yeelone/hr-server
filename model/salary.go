@@ -2,12 +2,13 @@ package model
 
 import (
 	"fmt"
-	"github.com/jinzhu/gorm/dialects/postgres"
-	"github.com/lexkong/log"
-	"github.com/lexkong/log/lager"
 	"hr-server/util"
 	"strings"
 	"time"
+
+	"github.com/jinzhu/gorm/dialects/postgres"
+	"github.com/lexkong/log"
+	"github.com/lexkong/log/lager"
 )
 
 type Salary struct {
@@ -106,7 +107,6 @@ func GetRelatedTemplateValue(year, month, template string, templateAccountID uin
 
 func GetSalaryByAccountAndTemplate(year string, account uint64, templates []string) (result []Salary, err error) {
 	if err = DB.Self.Debug().Select("id,template").Where("year = ? AND template_account = ? AND template IN  (?) ", year, account, templates).Find(&result).Error; err != nil {
-		fmt.Println("err ", err)
 		return nil, err
 	}
 
@@ -115,7 +115,6 @@ func GetSalaryByAccountAndTemplate(year string, account uint64, templates []stri
 
 func GetSalaryByAccount(year string, account uint64) (result []Salary, err error) {
 	if err = DB.Self.Select("id,template").Where("year = ? AND template_account = ?", year, account).Find(&result).Error; err != nil {
-		fmt.Println("err ", err)
 		return nil, err
 	}
 	return result, nil

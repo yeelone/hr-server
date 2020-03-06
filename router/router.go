@@ -4,6 +4,7 @@ import (
 	"hr-server/handler/api/record"
 	"hr-server/handler/api/statistics"
 	"hr-server/handler/api/summary"
+	"hr-server/handler/api/varify"
 	"hr-server/pkg/auth"
 	"net/http"
 
@@ -270,6 +271,24 @@ func Load(g *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 	}
 
 	g.GET("/api/summary", summary.Summary)
+
+
+	v := g.Group("/api/captcha")
+	{
+		//1.获取验证码
+		//http://localhost:8080/api/varify/captcha
+		v.GET("/", varify.GetCode)
+
+		//2.获取验证码图片
+		//http://localhost:8080/api/captcha/captcha/gHEIwh7nWreTFb53MkVk.png
+		v.GET("/image/:captchaId", varify.GetImage)
+
+		//3.验证
+		//http://localhost:8080/api/captcha/verify/dVCqYbq7r2olKZfEtTvo/647489
+		v.GET("/varify/:captchaId/:value", varify.Varify)
+	}
+
+
 
 	return g
 }

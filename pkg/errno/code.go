@@ -37,7 +37,7 @@ var (
 	ErrGetTemplate           = &Errno{Code: 10404, Message: "Cannot query template"}
 	ErrGetTemplateAccount    = &Errno{Code: 10405, Message: "Cannot query template account"}
 	ErrCreateTemplateAccount = &Errno{Code: 10406, Message: "Cannot create template account"}
-	ErrCreateTemplate = &Errno{Code: 10407, Message: "Cannot create template"}
+	ErrCreateTemplate        = &Errno{Code: 10407, Message: "Cannot create template"}
 
 	//tag errors
 	ErrTagNoFount = &Errno{Code: 10501, Message: "Tag not found"}

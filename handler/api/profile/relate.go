@@ -41,7 +41,7 @@ func RelateTags(c *gin.Context) {
 	record.Object = "profile"
 	record.Body = "描述:标签关联变动; 姓名:" + tempProfile.Name + ";身份证号码:" + tempProfile.IDCard + ";"
 
-	if len(removeTagStr) > 0{
+	if len(removeTagStr) > 0 {
 		record.Body += "系数变化:删除了以下系数;" + removeTagStr
 	}
 

@@ -17,7 +17,7 @@
 
 /templates/*
 
-/export/*
+/export/*.xlsx
 
 /.idea/*
 
@@ -25,3 +25,6 @@
 /log/*
 
 /backup/*
+
+
+__debug_bin

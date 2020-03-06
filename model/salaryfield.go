@@ -221,7 +221,6 @@ func GetSalaryFieldByDepartment(groups []uint64, beginDate, endDate string) (fie
 
 func GetSalaryFieldByProfileAndMonth(year string, month string, profileID uint64) (result []SalaryField, err error) {
 	if err = DB.Self.Where("year = ? AND month = ? AND profile_id=? ", year, month, profileID).Find(&result).Error; err != nil {
-		fmt.Println("err ", err)
 		return nil, err
 	}
 
@@ -230,7 +229,6 @@ func GetSalaryFieldByProfileAndMonth(year string, month string, profileID uint64
 
 func GetFieldsBySalaryAndProfilesAndYear(year string, salary []uint64, profiles []uint64) (result []SalaryField, err error) {
 	if err = DB.Self.Debug().Where("year = ? AND salary_id IN (?) AND profile_id IN  (?) ", year, salary, profiles).Find(&result).Error; err != nil {
-		fmt.Println("err ", err)
 		return nil, err
 	}
 

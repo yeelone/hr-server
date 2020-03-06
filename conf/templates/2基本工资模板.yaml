@@ -79,3 +79,33 @@ name:
   fixed_data: false
   must_rounding: false
   visible: true
+木棒:
+  id: 3e23cf83-267a-47a4-8304-09ff8b7f6c6c
+  key: 木棒
+  invalid: false
+  type: Buildin
+  name: 木棒
+  alias: 区间计算
+  require:
+  - 基本工资
+  call: Range
+  formula: ""
+  from: ""
+  params:
+  - "1980"
+  - "250"
+  value: "222"
+  should_tax: false
+  order: 4
+  is_income: false
+  is_deduct: false
+  fit_into_month: ""
+  related_templateaccount: ""
+  related_template: ""
+  related_key: ""
+  related_year: ""
+  related_month: ""
+  description: 调用函数 = Range(基本工资)
+  fixed_data: false
+  must_rounding: false
+  visible: true
