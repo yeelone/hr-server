@@ -17,6 +17,7 @@ var (
 	ErrUserNotFound      = &Errno{Code: 10102, Message: "The user was not found."}
 	ErrTokenInvalid      = &Errno{Code: 10103, Message: "The token was invalid."}
 	ErrPasswordIncorrect = &Errno{Code: 10104, Message: "The password was incorrect."}
+	ErrCaptcha = &Errno{Code: 10105, Message: "验证码错误."}
 
 	// profile errors
 	ErrProfileNotFound = &Errno{Code: 10201, Message: "The profile cannot found."}

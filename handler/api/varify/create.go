@@ -1,8 +1,9 @@
 package varify
 
+// 这个文件里的代码完全是照抄的，但是不知道原始链接是什么了，感谢原作者。
+
 import (
 	"bytes"
-	"fmt"
 	"github.com/dchest/captcha"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -50,9 +51,6 @@ func ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	dir, file := path.Split(r.URL.Path)
 	ext := path.Ext(file)
 	id := file[:len(file)-len(ext)]
-	fmt.Println("file : " + file)
-	fmt.Println("ext : " + ext)
-	fmt.Println("id : " + id)
 	if ext == "" || id == "" {
 		http.NotFound(w, r)
 		return

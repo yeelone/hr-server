@@ -1,14 +1,15 @@
 package user
 
 import (
+	"fmt"
+	"github.com/dchest/captcha"
+	"github.com/gin-gonic/gin"
+	"github.com/lexkong/log"
 	h "hr-server/handler"
 	"hr-server/model"
 	"hr-server/pkg/auth"
 	"hr-server/pkg/errno"
 	"hr-server/pkg/token"
-
-	"github.com/gin-gonic/gin"
-	"github.com/lexkong/log"
 )
 
 // @Summary Login generates the authentication token
@@ -21,7 +22,19 @@ func Login(c *gin.Context) {
 	// Binding the data with the user struct.
 	var r CreateRequest
 	if err := c.Bind(&r); err != nil {
+		fmt.Println(err)
 		h.SendResponse(c, errno.ErrBind, nil)
+		return
+	}
+
+
+	if r.CaptchaId == "" || r.CaptchaValue == "" {
+		h.SendResponse(c, errno.ErrCaptcha, "验证码错误")
+		return
+	}
+
+	if !captcha.VerifyString(r.CaptchaId, r.CaptchaValue) {
+		h.SendResponse(c, errno.ErrCaptcha, "验证码错误")
 		return
 	}
 

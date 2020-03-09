@@ -16,6 +16,8 @@ type CreateRequest struct {
 	State    int      `json:"state"`
 	Group    uint64   `json:"group"`
 	Users    []uint64 `json:"users"`
+	CaptchaId string `json:"captchaId"`
+	CaptchaValue string `json:"captchaValue"`
 	// ProfileID uint64 `json:"profile_id"`
 }
 
