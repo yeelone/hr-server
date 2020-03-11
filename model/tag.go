@@ -22,6 +22,7 @@ type Tag struct {
 	Profiles             []Profile     `json:"profiles" gorm:"many2many:profile_tags;"`
 	Groups               []Group       `json:"groups" gorm:"many2many:group_tags;"`
 	CommensalismGroupIds pq.Int64Array `json:"commensalism_group_ids" gorm:"type:integer[]"` //共生组
+	ProfileCount  int  `json:"profileCount" gorm:"-"` //标签关联员工的数量
 }
 
 /*
@@ -55,6 +56,30 @@ func GetAllTags(offset, limit int, where string, whereKeyword string) (ts []*Tag
 	} else {
 		err = DB.Self.Offset(offset).Limit(limit).Find(&ts).Error
 		err = DB.Self.Model(t).Count(&total).Error
+	}
+
+	// 计算标签关联的人数
+	type countModel struct {
+		Count int `json:"count"`
+		TagId uint64 `json:"tag_id"`
+	}
+
+	count := make([]countModel,0)
+
+	sql := `select count(profile_id) as count ,tag_id from profile_tags group by tag_id;`
+	err = DB.Self.Raw(sql).Scan(&count).Error
+
+	// 将子标签与父标签建立映射表
+	parentMap := make(map[uint64]uint64)
+	tagMap := make(map[uint64]int) //
+	for i, tag := range ts {
+		parentMap[tag.ID] = tag.Parent
+		tagMap[tag.ID] = i
+	}
+
+	for _, item := range count {
+		ts[tagMap[item.TagId]].ProfileCount = item.Count
+		ts[tagMap[parentMap[item.TagId]]].ProfileCount += item.Count
 	}
 
 	return ts, total, err

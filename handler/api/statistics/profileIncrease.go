@@ -1,12 +1,10 @@
 package statistics
 
 import (
-	"fmt"
 	"github.com/gin-gonic/gin"
 	h "hr-server/handler"
 	"hr-server/model"
 	"hr-server/pkg/errno"
-	"hr-server/util"
 )
 
 // 获取用户档案的增长司长 ，type 可以 分为几种情况：
@@ -19,8 +17,6 @@ func ProfileIncrease(c *gin.Context){
 		h.SendResponse(c, errno.ErrBind, err.Error())
 		return
 	}
-
-	fmt.Println(util.PrettyJson(r))
 
 	resp := make([]model.ProfileIncrease, 0)
 	var err error
