@@ -1,5 +1,7 @@
 package statistics
 
+import "hr-server/model"
+
 type CreateRequest struct {
 	Year         string   `json:"year" form:"year"`
 	Month        string   `json:"month" form:"month"`
@@ -21,3 +23,15 @@ type DetailMap struct {
 	Template string   `json:"template" form:"template"`
 	Fields   []string `json:"fields" form:"fields"`
 }
+
+type ProfileRequest struct {
+	GetYear    bool   `json:"getYear"`
+	GetMonth   bool   `json:"getMonth"`
+	GetDay     bool  `json:"getDay"`
+	Amount      int   `json:"amount"`
+}
+
+type ProfileResponse struct {
+	Data []model.ProfileIncrease `json:"data"`
+}
+

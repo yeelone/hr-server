@@ -93,6 +93,11 @@ func (t Tag) Update() (err error) {
 	return nil
 }
 
+func CountTag() (count int, err error) {
+	err = DB.Self.Model(&Tag{}).Count(&count).Error
+	return count, err
+}
+
 func GetTagsByIDList(ids []uint64) (tags []Tag, err error) {
 	err = DB.Self.Where("id IN (?)", ids).Find(&tags).Error
 	return tags, err

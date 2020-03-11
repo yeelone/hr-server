@@ -253,6 +253,7 @@ func Load(g *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 		statisticsPublic.GET("/annual_income/department", statistics.DepartmentAnnualIncome)
 		statisticsPublic.POST("/query/detail", statistics.DetailQuery)
 		statisticsPublic.POST("/query/department/income", statistics.DepartmentIncomeQuery)
+		statisticsPublic.POST("/profile/increase", statistics.ProfileIncrease)
 	}
 
 	auditPrivate := g.Group("/api/v1/audit")

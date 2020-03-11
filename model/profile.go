@@ -439,6 +439,41 @@ func UnFreezeProfile(pids []uint64) error {
 	return nil
 }
 
+type ProfileIncrease struct {
+	Date  string `json:"date"`
+	Count int    `json:"count"`
+}
+
+// 计算用户每月数量
+func GetIncreaseMonth(count int) (resp []ProfileIncrease, err error) {
+	sql := `SELECT COUNT(id) as count, TO_CHAR("createdAt", 'YYYY-MM') AS date
+  				FROM tb_profile  GROUP BY date  ORDER  BY   date limit ` + strconv.Itoa(count) + `;`
+
+	err = DB.Self.Raw(sql).Scan(&resp).Error
+
+	return resp , err
+}
+
+// 计算用户每年数量
+func GetIncreaseYear(count int) (resp []ProfileIncrease, err error) {
+	sql := `SELECT COUNT(id) as count, TO_CHAR("createdAt", 'YYYY') AS date
+  				FROM tb_profile  GROUP BY date  ORDER  BY  date  limit ` + strconv.Itoa(count) + `;`
+
+	err = DB.Self.Raw(sql).Scan(&resp).Error
+
+	return resp , err
+}
+
+// 计算用户每天数量
+func GetIncreaseDay(count int) (resp []ProfileIncrease, err error) {
+	sql := `SELECT COUNT(id) as count, TO_CHAR("createdAt", 'YYYY-MM-DD') AS date
+  				FROM tb_profile  GROUP BY date  ORDER  BY  date  limit ` + strconv.Itoa(count) + `;`
+
+	err = DB.Self.Raw(sql).Scan(&resp).Error
+
+	return resp , err
+}
+
 // Validate the fields.
 func (p *Profile) Validate() error {
 	validate := validator.New()

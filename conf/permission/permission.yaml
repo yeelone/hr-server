@@ -430,6 +430,10 @@
     resource: QUERY_PROFILE_SALARY
     object: /api/v1/salary/year/:year/month/:month/profile/:id
     action: GET
+  查询员工增长情况:
+    resource: QUERY_PROFILE_INCREASE
+    object: /api/v1/salary/profile/increase
+    action: POST
 
 
 

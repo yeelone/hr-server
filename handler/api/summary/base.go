@@ -16,10 +16,12 @@ func Summary(c *gin.Context) {
 	userCount, _ := model.CountUser()
 	groupCount, _ := model.CountUserGroup()
 	auditCount, _ := model.CountAudit()
+	tagCount, _ := model.CountTag()
 	h.SendResponse(c, nil, CreateResponse{
 		ProfileCount: profileCount,
 		UserCount:    userCount,
 		GroupCount:   groupCount,
 		AuditCount:   auditCount,
+		TagCount:   tagCount,
 	})
 }
