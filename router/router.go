@@ -125,6 +125,7 @@ func Load(g *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 		p.PUT("/:id/tags", profile.RelateTags)
 		p.POST("", profile.Create)
 		p.POST("/transfer", transfer.Create)
+		p.POST("/groups", profile.RelateGroups)
 		//p.POST("/delete", profile.Delete)
 		p.POST("/unfreeze", profile.UnFreeze)
 		p.POST("/freeze", profile.Freeze)

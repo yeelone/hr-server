@@ -102,6 +102,10 @@
     resource: GET_PROFILE_INFO
     object : /api/v1/profile/:id
     action : GET
+  查询指定档案详细信息:
+    resource: GET_PROFILE_DETAIL
+    object: /api/v1/profile/:id/detail
+    action: GET
   创建档案:
     resource: CREATE_PROFILE
     object : /api/v1/profile
@@ -110,6 +114,10 @@
     resource: MOVE_PROFILE_TO_GROUP
     object : /api/v1/profile/transfer
     action : POST
+  用户加入组:
+    resource: ADD_PROFILE_TO_GROUP
+    object: /api/v1/profile/groups
+    action: POST
   调动记录:
     resource: TRANSFER_RECORD
     object: /api/v1/profile/:id/transfer

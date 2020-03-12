@@ -264,7 +264,6 @@ func AddProfileToDefaultGroup(pid uint64) (err error) {
 	//找出所有默认的组
 
 	if err := DB.Self.Where("is_default=?", true).Find(&gs).Error; err != nil {
-		fmt.Println(err)
 		return err
 	}
 	for _, g := range gs {

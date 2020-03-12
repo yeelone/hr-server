@@ -38,7 +38,6 @@ func Create(c *gin.Context) {
 
 	// Insert the profile to the database.
 	if err := profile.Create(); err != nil {
-		fmt.Println(err)
 		h.SendResponse(c, errno.ErrDatabase, nil)
 		return
 	}
@@ -70,6 +69,7 @@ func Create(c *gin.Context) {
 	model.CreateOperateRecord(c, fmt.Sprintf("新建员工信息, 员工信息： %s", profile.Name))
 
 	rsp := CreateResponse{
+		ID:profile.ID,
 		Name: profile.Name,
 	}
 

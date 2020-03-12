@@ -14,6 +14,11 @@ type RelateTagsRequest struct {
 	Tags    []uint64 `json:"tags"`
 }
 
+type RelateGroupsRequest struct {
+	Profile uint64   `json:"profile"`
+	Groups    []uint64 `json:"groups"`
+}
+
 type DeleteRequest struct {
 	Profiles []uint64 `json:"profiles"`
 	Remark   string   `json:"remark"`
@@ -25,6 +30,7 @@ type FreezeRequest struct {
 }
 
 type CreateResponse struct {
+	ID     uint64   `json:"id"`
 	Name    string        `json:"name"`
 	Profile model.Profile `json:"profile"`
 	File    string        `json:"file"`
