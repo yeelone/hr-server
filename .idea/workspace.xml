@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="166c2398-854f-4efb-bc20-8ddd07dc2e5e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/handler/api/profile/relateGroups.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conf/authz_policy.csv" beforeDir="false" afterPath="$PROJECT_DIR$/conf/authz_policy.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conf/permission/permission.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/conf/permission/permission.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conf/permission/超级管理员.csv" beforeDir="false" afterPath="$PROJECT_DIR$/conf/permission/超级管理员.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/api/profile/create.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/profile/create.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/api/profile/getDetail.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/profile/getDetail.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/api/profile/profile.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/profile/profile.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/group.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/group.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/router/middleware/authority.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/middleware/authority.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/router/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/router.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,22 +132,22 @@
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
     <state x="692" y="282" key="FileChooserDialogImpl/0.0.1920.1013@0.0.1920.1013" timestamp="1583303337109" />
-    <state width="1868" height="227" key="GridCell.Tab.0.bottom" timestamp="1584001171787">
+    <state width="1868" height="227" key="GridCell.Tab.0.bottom" timestamp="1584002606208">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
-    <state width="1868" height="227" key="GridCell.Tab.0.bottom/0.0.1920.1013@0.0.1920.1013" timestamp="1584001171787" />
-    <state width="1868" height="227" key="GridCell.Tab.0.center" timestamp="1584001171786">
+    <state width="1868" height="227" key="GridCell.Tab.0.bottom/0.0.1920.1013@0.0.1920.1013" timestamp="1584002606208" />
+    <state width="1868" height="227" key="GridCell.Tab.0.center" timestamp="1584002606208">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
-    <state width="1868" height="227" key="GridCell.Tab.0.center/0.0.1920.1013@0.0.1920.1013" timestamp="1584001171786" />
-    <state width="1868" height="227" key="GridCell.Tab.0.left" timestamp="1584001171786">
+    <state width="1868" height="227" key="GridCell.Tab.0.center/0.0.1920.1013@0.0.1920.1013" timestamp="1584002606208" />
+    <state width="1868" height="227" key="GridCell.Tab.0.left" timestamp="1584002606207">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
-    <state width="1868" height="227" key="GridCell.Tab.0.left/0.0.1920.1013@0.0.1920.1013" timestamp="1584001171786" />
-    <state width="1868" height="227" key="GridCell.Tab.0.right" timestamp="1584001171786">
+    <state width="1868" height="227" key="GridCell.Tab.0.left/0.0.1920.1013@0.0.1920.1013" timestamp="1584002606207" />
+    <state width="1868" height="227" key="GridCell.Tab.0.right" timestamp="1584002606208">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
-    <state width="1868" height="227" key="GridCell.Tab.0.right/0.0.1920.1013@0.0.1920.1013" timestamp="1584001171786" />
+    <state width="1868" height="227" key="GridCell.Tab.0.right/0.0.1920.1013@0.0.1920.1013" timestamp="1584002606208" />
     <state x="483" y="130" key="SettingsEditor" timestamp="1583914208782">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
