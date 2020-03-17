@@ -29,7 +29,6 @@ func Create(c *gin.Context) {
 
 	// Validate the data.
 	if err := profile.Validate(); err != nil {
-		fmt.Println("err", err)
 		h.SendResponse(c, errno.ErrValidation, nil)
 		return
 	}

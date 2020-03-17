@@ -47,8 +47,6 @@ func GetAllTags(offset, limit int, where string, whereKeyword string) (ts []*Tag
 	if limit == 0 {
 		limit = constvar.NoLimit
 	}
-	err = DB.Self.Offset(offset).Limit(limit).Find(&ts).Error
-	err = DB.Self.Model(t).Count(&total).Error
 
 	if len(where) > 0 {
 		err = DB.Self.Offset(offset).Limit(limit).Where(where+" = ?", whereKeyword).Find(&ts).Error

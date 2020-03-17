@@ -93,7 +93,9 @@ func initTable() {
 	var record Record
 	var operate OperateRecord
 	var salaryProfileConfig SalaryProfileConfig
-	DB.Self.AutoMigrate(&role, &record, &salaryProfileConfig, &t, &operate, &user, &g, &template, &gt, &profile, &tas, &audit, &usergroup, &permissions, &sf, &s, &tas, &sc)
+	var message Message
+	var messageText MessageText
+	DB.Self.AutoMigrate( &message,&messageText, &role, &record, &salaryProfileConfig, &t, &operate, &user, &g, &template, &gt, &profile, &tas, &audit, &usergroup, &permissions, &sf, &s, &tas, &sc)
 	initAdmin()
 	initDefaultGroup()
 	initDefaultUserGroup()

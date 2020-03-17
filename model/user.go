@@ -120,6 +120,15 @@ func GetUser(id uint64) (*User, error) {
 	return u, d.Error
 }
 
+// GetUser gets an user by the user identifier.
+func GetUserWithGroupAndTag(id uint64) (*User, error) {
+	u := &User{}
+	u.ID = id
+	d := DB.Self.Preload("Groups").Preload("Roles").First(&u)
+
+	return u, d.Error
+}
+
 // ListUser List all users
 func ListUser(username string, offset, limit int) ([]*User, uint64, error) {
 	if limit == 0 {

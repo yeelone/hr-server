@@ -1,6 +1,7 @@
 package router
 
 import (
+	"hr-server/handler/api/message"
 	"hr-server/handler/api/record"
 	"hr-server/handler/api/statistics"
 	"hr-server/handler/api/summary"
@@ -140,6 +141,15 @@ func Load(g *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 		in.POST("/group", group.Import)
 		in.POST("/group/tags", group.ImportTags)
 		in.POST("/salary", salary.Import)
+	}
+
+	msg := g.Group("/api/v1/message")
+	//in.Use(middleware.AuthMiddleware(), middleware.Authority(e))
+	{
+		msg.POST("/send", message.Send)
+		msg.GET("/user/:id/unread/count", message.InboxCount)
+		msg.GET("/user/:id", message.Inbox)
+		msg.PUT("/status", message.UpdateStatus)
 	}
 
 	gPublic := g.Group("/api/v1/group")

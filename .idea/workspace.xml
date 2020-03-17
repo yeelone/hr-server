@@ -2,7 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="166c2398-854f-4efb-bc20-8ddd07dc2e5e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/handler/api/message/inbox.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handler/api/message/message.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handler/api/message/send.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handler/api/message/status.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/message.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/messageText.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conf/authz_policy.csv" beforeDir="false" afterPath="$PROJECT_DIR$/conf/authz_policy.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conf/permission/超级管理员.csv" beforeDir="false" afterPath="$PROJECT_DIR$/conf/permission/超级管理员.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/profile/create.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/profile/create.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/init.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/init.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/tag.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/tag.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/errno/code.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/errno/code.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/router/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/router.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,37 +146,53 @@
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
     <state x="692" y="282" key="FileChooserDialogImpl/0.0.1920.1013@0.0.1920.1013" timestamp="1583303337109" />
-    <state width="1868" height="227" key="GridCell.Tab.0.bottom" timestamp="1584002606208">
+    <state width="1868" height="280" key="GridCell.Tab.0.bottom" timestamp="1584421133124">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
-    <state width="1868" height="227" key="GridCell.Tab.0.bottom/0.0.1920.1013@0.0.1920.1013" timestamp="1584002606208" />
-    <state width="1868" height="227" key="GridCell.Tab.0.center" timestamp="1584002606208">
+    <state width="1868" height="280" key="GridCell.Tab.0.bottom/0.0.1920.1013@0.0.1920.1013" timestamp="1584421133124" />
+    <state width="1868" height="280" key="GridCell.Tab.0.center" timestamp="1584421133124">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
-    <state width="1868" height="227" key="GridCell.Tab.0.center/0.0.1920.1013@0.0.1920.1013" timestamp="1584002606208" />
-    <state width="1868" height="227" key="GridCell.Tab.0.left" timestamp="1584002606207">
+    <state width="1868" height="280" key="GridCell.Tab.0.center/0.0.1920.1013@0.0.1920.1013" timestamp="1584421133124" />
+    <state width="1868" height="280" key="GridCell.Tab.0.left" timestamp="1584421133123">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
-    <state width="1868" height="227" key="GridCell.Tab.0.left/0.0.1920.1013@0.0.1920.1013" timestamp="1584002606207" />
-    <state width="1868" height="227" key="GridCell.Tab.0.right" timestamp="1584002606208">
+    <state width="1868" height="280" key="GridCell.Tab.0.left/0.0.1920.1013@0.0.1920.1013" timestamp="1584421133123" />
+    <state width="1868" height="280" key="GridCell.Tab.0.right" timestamp="1584421133124">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
-    <state width="1868" height="227" key="GridCell.Tab.0.right/0.0.1920.1013@0.0.1920.1013" timestamp="1584002606208" />
+    <state width="1868" height="280" key="GridCell.Tab.0.right/0.0.1920.1013@0.0.1920.1013" timestamp="1584421133124" />
+    <state width="1868" height="314" key="GridCell.Tab.1.bottom" timestamp="1584345246201">
+      <screen x="0" y="0" width="1920" height="1013" />
+    </state>
+    <state width="1868" height="314" key="GridCell.Tab.1.bottom/0.0.1920.1013@0.0.1920.1013" timestamp="1584345246201" />
+    <state width="1868" height="314" key="GridCell.Tab.1.center" timestamp="1584345246200">
+      <screen x="0" y="0" width="1920" height="1013" />
+    </state>
+    <state width="1868" height="314" key="GridCell.Tab.1.center/0.0.1920.1013@0.0.1920.1013" timestamp="1584345246200" />
+    <state width="1868" height="314" key="GridCell.Tab.1.left" timestamp="1584345246200">
+      <screen x="0" y="0" width="1920" height="1013" />
+    </state>
+    <state width="1868" height="314" key="GridCell.Tab.1.left/0.0.1920.1013@0.0.1920.1013" timestamp="1584345246200" />
+    <state width="1868" height="314" key="GridCell.Tab.1.right" timestamp="1584345246200">
+      <screen x="0" y="0" width="1920" height="1013" />
+    </state>
+    <state width="1868" height="314" key="GridCell.Tab.1.right/0.0.1920.1013@0.0.1920.1013" timestamp="1584345246200" />
     <state x="483" y="130" key="SettingsEditor" timestamp="1583914208782">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
     <state x="483" y="130" key="SettingsEditor/0.0.1920.1013@0.0.1920.1013" timestamp="1583914208782" />
-    <state x="535" y="105" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1580916529973">
+    <state x="535" y="105" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1584347818764">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
-    <state x="535" y="105" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1013@0.0.1920.1013" timestamp="1580916529973" />
-    <state x="576" y="56" width="768" height="900" key="find.popup" timestamp="1582534953427">
+    <state x="535" y="105" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1013@0.0.1920.1013" timestamp="1584347818764" />
+    <state x="576" y="56" width="768" height="900" key="find.popup" timestamp="1584348471397">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
-    <state x="576" y="56" width="768" height="900" key="find.popup/0.0.1920.1013@0.0.1920.1013" timestamp="1582534953427" />
-    <state x="608" y="222" width="701" height="678" key="search.everywhere.popup" timestamp="1583975094714">
+    <state x="576" y="56" width="768" height="900" key="find.popup/0.0.1920.1013@0.0.1920.1013" timestamp="1584348471397" />
+    <state x="608" y="222" width="701" height="678" key="search.everywhere.popup" timestamp="1584340161971">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
-    <state x="608" y="222" width="701" height="678" key="search.everywhere.popup/0.0.1920.1013@0.0.1920.1013" timestamp="1583975094714" />
+    <state x="608" y="222" width="701" height="678" key="search.everywhere.popup/0.0.1920.1013@0.0.1920.1013" timestamp="1584340161971" />
   </component>
 </project>

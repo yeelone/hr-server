@@ -56,4 +56,5 @@ var (
 	ErrAnnulIncome = &Errno{Code: 10801, Message: "fetch annual income error "}
 
 	ErrWriteExcel = &Errno{Code: 10901, Message: "write data to excel failed "}
+	ErrSendGlobalMessage = &Errno{Code: 10902, Message: "无权发送系统消息"}
 )
