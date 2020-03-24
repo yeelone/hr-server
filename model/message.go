@@ -55,15 +55,21 @@ func GetMessages(offset, limit int, recId uint64, where string, whereKeyword str
 
 	ids := make([]string,0)
 
+	// 将text_id 与 message id 进行映射 ，因为最终要的是message id
+	idMap := make(map[uint64]uint64)
+
 	for _, m := range ms {
 		ids = append(ids,util.Uint2Str(m.TextId))
+		idMap[m.TextId] = m.ID
 	}
 
 	if len(ids) > 0 {
 		sql := `select * from ` + MessageTextTableName + ` as text where text.id in  ( ` + strings.Join(ids, ",") + `)`
+		DB.Self.Raw(sql).Scan(&mts)
+	}
 
-		DB.Self.Debug().Raw(sql).Scan(&mts)
-
+	for i, mt := range mts {
+		mts[i].MessageId =  idMap[mt.ID]
 	}
 
 	return mts, total , err

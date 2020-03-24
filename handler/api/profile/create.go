@@ -61,11 +61,28 @@ func Create(c *gin.Context) {
 	audit.Remark = r.Remark
 
 	if err := audit.Create(); err != nil {
-		fmt.Println(err)
 		h.SendResponse(c, errno.ErrDatabase, nil)
 		return
 	}
 	model.CreateOperateRecord(c, fmt.Sprintf("新建员工信息, 员工信息： %s", profile.Name))
+
+
+	// 消息提示
+	// 发送给复核岗
+	role , err := model.GetRoleByName("复核岗")
+
+	if err == nil {
+		m := model.MessageText{
+			SendId: userid.(uint64),
+			Title: "有新的审核,请尽快处理",
+			Text: "新员工信息",
+			MType: "Global",
+			Role:role.ID,
+		}
+
+		m.Create()
+	}
+
 
 	rsp := CreateResponse{
 		ID:profile.ID,

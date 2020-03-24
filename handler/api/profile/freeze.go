@@ -53,6 +53,22 @@ func Freeze(c *gin.Context) {
 		h.SendResponse(c, errno.ErrDatabase, err.Error())
 		return
 	}
+
+	// 消息提示
+	role , err := model.GetRoleByName("复核岗")
+	if err == nil {
+		m := model.MessageText{
+			SendId: userid.(uint64),
+			Title: "有新的审核,请尽快处理",
+			Text: "冻结员工信息",
+			MType: "Global",
+			Role:role.ID,
+		}
+
+		m.Create()
+	}
+
+
 	model.CreateOperateRecord(c, fmt.Sprintf("冻结员工, 员工信息：[ %s ]", strings.Join(nameList, ",")))
 	h.SendResponse(c, nil, nil)
 }

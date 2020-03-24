@@ -21,6 +21,8 @@ type CreateRequest struct {
 	// ProfileID uint64 `json:"profile_id"`
 }
 
+
+
 type CreateResponse struct {
 	Username string `json:"username"`
 }

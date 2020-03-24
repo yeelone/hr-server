@@ -144,7 +144,7 @@ func Load(g *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 	}
 
 	msg := g.Group("/api/v1/message")
-	//in.Use(middleware.AuthMiddleware(), middleware.Authority(e))
+	msg.Use(middleware.AuthMiddleware(), middleware.Authority(e))
 	{
 		msg.POST("/send", message.Send)
 		msg.GET("/user/:id/unread/count", message.InboxCount)
@@ -250,7 +250,7 @@ func Load(g *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 	}
 
 	pkgPublic := g.Group("/api/v1/tool")
-	//pkgPublic.Use(middleware.AuthMiddleware(), middleware.Authority(e))
+	pkgPublic.Use(middleware.AuthMiddleware(), middleware.Authority(e))
 	{
 		pkgPublic.GET("/func", tool.ListFunc)
 		pkgPublic.GET("/backup/files", tool.ListBackupFiles)

@@ -8,6 +8,7 @@ import (
 //  MType类型有Private(私信)、Public(公共消息)、Global(系统消息)
 type MessageText struct {
 	ID       uint64    `gorm:"primary_key;AUTO_INCREMENT;column:id" json:"id"`
+	MessageId uint64  `json:"messageId" gorm:"-"`
 	SendId   uint64    `json:"sendId" gorm:"column:send_id;not null"`
 	Title    string    `json:"title" gorm:"column:title;not null"`
 	Text     string    `json:"text" gorm:"column:text;not null"`

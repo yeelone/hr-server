@@ -1,8 +1,6 @@
 package message
 
 import (
-	"errors"
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/lexkong/log"
 	"github.com/lexkong/log/lager"
@@ -37,13 +35,17 @@ func Inbox(c *gin.Context) {
 		return
 	}
 
-	//创建的同时需同时创建审核条目
-	userid, _ := c.Get("userid")
+	//userid, _ := c.Get("userid")
 
-	if recId != userid {
-		h.SendResponse(c, errno.StatusUnauthorized, errors.New("无权查看"))
-		return
-	}
+	//if userid == nil {
+	//	h.SendResponse(c, errno.StatusUnauthorized, errors.New("无权查看"))
+	//	return
+	//}
+	//
+	//if uint64(recId) != userid.(uint64) {
+	//	h.SendResponse(c, errno.StatusUnauthorized, errors.New("无权查看"))
+	//	return
+	//}
 
 	list,total, err := model.GetMessages(r.Offset, r.Limit, uint64(recId),"status", "0")
 
@@ -52,7 +54,6 @@ func Inbox(c *gin.Context) {
 		return
 	}
 
-	fmt.Println(util.PrettyJson(list))
 
 	respItems := make([]CreateResponse,0)
 
@@ -60,11 +61,12 @@ func Inbox(c *gin.Context) {
 		user, _ := model.GetUser(item.SendId)
 
 		resp := CreateResponse{}
-		resp.Id = item.ID
+		resp.Id = item.MessageId
 		resp.SenderId = user.ID
-		resp.SenderName = user.Nickname
+		resp.SenderName = user.Username
 		resp.MType = item.MType
 		resp.Title = item.Title
+		resp.Text = item.Text
 		resp.Date = item.PostDate.String()
 
 		if item.Group != 0 {

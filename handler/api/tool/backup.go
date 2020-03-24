@@ -19,7 +19,11 @@ func Backup(c *gin.Context) {
 		fmt.Println(err)
 	}
 
-	backupFile := dir + "/backup/sql/backup-" + time.Now().Format("2006_01_02_15_04") + ".sql"
+	backupFile := dir + "/temp/sql/backup-" + time.Now().Format("2006_01_02_15_04") + ".sql"
+
+	if !util.Exists("temp/sql/") {
+		os.MkdirAll("temp/sql/", os.ModePerm) //创建文件
+	}
 
 	switch runtime.GOOS {
 	case "windows":
@@ -63,6 +67,7 @@ func Backup(c *gin.Context) {
 			viper.GetString("db.name"),
 			backupFile,
 		)
+
 		_, err = exec.Command("/bin/sh", "-c", linuxShellStr).Output()
 	}
 
@@ -76,7 +81,6 @@ func Backup(c *gin.Context) {
 	//保留原来文件的结构
 	err = util.ZipDir("./conf", files, zipFileName)
 	if err != nil {
-		fmt.Println("zip error", err)
 		h.SendResponse(c, err, nil)
 		return
 	}
@@ -86,7 +90,7 @@ func Backup(c *gin.Context) {
 }
 
 func ListBackupFiles(c *gin.Context) {
-	var files []string
+	var files []CustomFile
 	var exactFilePath []string
 
 	dir, err := os.Getwd()
@@ -99,7 +103,12 @@ func ListBackupFiles(c *gin.Context) {
 		if info.IsDir() {
 			return nil
 		}
-		files = append(files, "/backup/"+info.Name())
+
+		f := CustomFile{}
+		f.Path =  "/backup/"+info.Name()
+		f.Size = info.Size()
+		f.Date = info.ModTime().String()
+		files = append(files,f)
 		exactFilePath = append(exactFilePath, path)
 		return nil
 	})

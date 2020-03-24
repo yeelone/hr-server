@@ -29,6 +29,7 @@ require (
 	github.com/xcltapestry/xclpkg v0.0.0-20150203092146-4bb35f81c878
 	golang.org/x/crypto v0.0.0-20200221231518-2aa609cf4a9d
 	golang.org/x/net v0.0.0-20200226121028-0de0cce0169b // indirect
+	golang.org/x/tools v0.0.0-20190614205625-5aca471b1d59
 	gopkg.in/go-playground/validator.v9 v9.31.0
 	gopkg.in/yaml.v2 v2.2.8
 )

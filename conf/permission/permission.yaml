@@ -314,6 +314,19 @@
     resource: DELETE_SALARY_PROFILE_CUSTOM_CONFIG
     object: /api/v1/salary/profile/config/:id
     action: DELETE
+工具:
+  备份:
+    resource: BACKUP
+    object: /api/v1/tool/backup
+    action: GET
+  列表备份列表:
+    resource: BACKUP_FILES
+    object: /api/v1/tool/backup/files
+    action: GET
+  内建工具函数列表:
+    resource: FUNC_LIST
+    object: /api/v1/tool/func
+    action: GET
 模板:
   查询所有模板:
     resource: GET_TEMPLATES
@@ -442,7 +455,23 @@
     resource: QUERY_PROFILE_INCREASE
     object: /api/v1/salary/profile/increase
     action: POST
-
+消息:
+  消息列表:
+    resource: MESSAGE_LIST
+    object: /api/v1/message/user/:id
+    action: GET
+  发送消息:
+    resource: SEND_MESSAGE
+    object: /api/v1/message/send
+    action: POST
+  设置消息已读:
+    resource: UPDATE_MESSAGE_STATUS
+    object: /api/v1/message/status
+    action: PUT
+  查询未读消息:
+    resource: QUERY_MESSAGE_COUNT
+    object: /api/v1/message/user/:id/unread/count
+    action: GET
 
 
 

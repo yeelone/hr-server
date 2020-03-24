@@ -1,6 +1,7 @@
 package salary
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/lexkong/log"
 	"github.com/lexkong/log/lager"
@@ -35,6 +36,7 @@ func GetProfileMonthSalary(c *gin.Context) {
 	user, err := model.GetUser(userid.(uint64))
 
 	profile, err := model.GetProfileByIDCard(user.IDCard)
+
 	if err != nil {
 		h.SendResponse(c, errno.StatusUnauthorized, err.Error())
 		return
@@ -56,12 +58,15 @@ func GetProfileMonthSalary(c *gin.Context) {
 		return
 	}
 
+	fmt.Println(util.PrettyJson(fields))
+
 	if len(fields) < 1 {
 		h.SendResponse(c, nil, ProfileSalaryResponse{})
 		return
 	}
 
 	// 随便取出一个field ，得到 DepartmentGroupID and PostGroupID
+
 	departmentID := fields[0].DepartmentGroupID
 	postID := fields[0].PostGroupID
 
@@ -123,10 +128,21 @@ func GetProfileMonthSalary(c *gin.Context) {
 		templates[orderMap[t.ID]] = m
 	}
 
+	departmentName := "无"
+	postName := "无"
+
+	if departGroup != nil {
+		departmentName = departGroup.Name
+	}
+
+	if postGroup != nil {
+		postName = postGroup.Name
+	}
+
 	h.SendResponse(c, nil, ProfileSalaryResponse{
 		TemplateList: templates,
 		Profile:      profile,
-		Department:   departGroup.Name,
-		Post:         postGroup.Name,
+		Department:   departmentName,
+		Post:         postName,
 	})
 }

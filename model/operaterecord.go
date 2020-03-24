@@ -23,13 +23,12 @@ func (a *OperateRecord) TableName() string {
 
 // Create :
 func (a *OperateRecord) Create() error {
-	return DB.Self.Debug().Create(&a).Error
+	return DB.Self.Create(&a).Error
 }
 
 func CreateOperateRecord(c *gin.Context, body string) error {
 	ctx, err := token.ParseRequest(c)
 	if err != nil {
-		fmt.Println("err", err)
 		return err
 	}
 	str := fmt.Sprintf("ID: %d | username: %s | operate: %s  ", ctx.ID, ctx.Username, body)

@@ -13,6 +13,12 @@ import (
 
 //此API废除
 func Delete(c *gin.Context) {
+	userid, ok := c.Get("userid")
+	if !ok {
+		h.SendResponse(c, errno.StatusUnauthorized, nil)
+		return
+	}
+
 	profileID, _ := strconv.Atoi(c.Param("id"))
 	profile, err := model.GetProfile(uint64(profileID))
 	if err != nil {
@@ -45,6 +51,17 @@ func Delete(c *gin.Context) {
 		h.SendResponse(c, errno.ErrDatabase, nil)
 		return
 	}
+
+	// 消息提示
+	m := model.MessageText{
+		SendId: userid.(uint64),
+		Title: "有新的审核,请尽快处理",
+		Text: "删除员工信息",
+		MType: "Global",
+	}
+
+	m.Create()
+
 	model.CreateOperateRecord(c, fmt.Sprintf("删除员工信息, 员工信息： %s", profile.Name))
 	h.SendResponse(c, nil, nil)
 }

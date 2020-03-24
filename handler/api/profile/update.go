@@ -16,6 +16,14 @@ import (
 
 func Update(c *gin.Context) {
 	log.Info("Update function called.", lager.Data{"X-Request-Id": util.GetReqID(c)})
+
+	userid, ok := c.Get("userid")
+	if !ok {
+		h.SendResponse(c, errno.StatusUnauthorized, nil)
+		return
+	}
+
+
 	// Get the user id from the url parameter.
 	profileID, _ := strconv.Atoi(c.Param("id"))
 
@@ -68,6 +76,15 @@ func Update(c *gin.Context) {
 		return
 	}
 
+	// 消息提示
+	m := model.MessageText{
+		SendId: userid.(uint64),
+		Title: "有新的审核,请尽快处理",
+		Text: "冻结员工信息",
+		MType: "Global",
+	}
+
+	m.Create()
 	model.CreateOperateRecord(c, fmt.Sprintf("员工信息更新, 员工信息：[ %s ]", profile.Name))
 	h.SendResponse(c, nil, nil)
 }

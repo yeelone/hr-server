@@ -21,6 +21,12 @@ type UserInfo struct {
 	UpdatedAt string `json:"updatedAt"`
 }
 
+
+type Resource struct {
+	ID      string `json:"id"`
+	Checked bool   `json:"checked"`
+}
+
 type UserList struct {
 	Lock  *sync.Mutex
 	IDMap map[uint64]*UserInfo
@@ -30,4 +36,5 @@ type UserList struct {
 type Token struct {
 	Token string `json:"token"`
 	User  *User  `json:"user"`
+	Permissions map[string]map[string]Resource `json:"permissions"`
 }

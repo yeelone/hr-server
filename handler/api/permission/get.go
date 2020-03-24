@@ -26,6 +26,7 @@ type Permission struct {
 
 func Get(c *gin.Context) {
 	rid, _ := strconv.Atoi(c.Param("id"))
+
 	role, err := model.GetRole(uint64(rid), false)
 	if err != nil {
 		h.SendResponse(c, errno.ErrUserBelongRoles, nil)

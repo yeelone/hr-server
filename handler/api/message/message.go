@@ -30,6 +30,7 @@ type CreateResponse struct {
 	SenderId uint64  `json:"senderId"`
 	SenderName string  `json:"senderName"`
 	Title  string      `json:"title"`
+	Text  string      `json:"text"`
 	MType  string      `json:"messageType"`
 	GroupName string `json:"groupName"`
 	RoleName  string  `json:"roleName"`

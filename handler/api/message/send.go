@@ -25,6 +25,7 @@ func Send(c *gin.Context) {
 		Text: r.Text,
 		MType: r.MType,
 		Group: r.Group,
+		Role:r.Role,
 	}
 
 	// Global 消息只有管理员可以发送
