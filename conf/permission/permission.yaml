@@ -384,6 +384,10 @@
     object : /api/v1/tool/func
     action : GET
 服务器基本信息:
+  查看控制面板:
+    resource: DASHBOARD
+    object:
+    action: GET
   查询服务器健康状况:
     resource: SERVER_HEALTH
     default : allow 

@@ -11,6 +11,7 @@ type CreateRequest struct {
 	IDCard   string   `json:"id_card"`
 	Nickname string   `json:"nickname"`
 	Password string   `json:"password"`
+	OldPassword string   `json:"oldPassword"`
 	IsSuper  bool     `json:"is_super"`
 	Picture  string   `json:"picture"`
 	State    int      `json:"state"`

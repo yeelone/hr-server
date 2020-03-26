@@ -1,7 +1,6 @@
 package salary
 
 import (
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/lexkong/log"
 	"github.com/lexkong/log/lager"
@@ -26,7 +25,7 @@ func GetProfileMonthSalary(c *gin.Context) {
 	year := c.Param("year")
 	month := c.Param("month")
 
-	//如果用户是查询岗，则用户只能查询自己
+	// 如果用户是查询岗，则用户只能查询自己
 	userid, ok := c.Get("userid")
 	if !ok {
 		h.SendResponse(c, errno.StatusUnauthorized, nil)
@@ -57,8 +56,6 @@ func GetProfileMonthSalary(c *gin.Context) {
 		h.SendResponse(c, errno.ErrSalaryProfileDetail, err)
 		return
 	}
-
-	fmt.Println(util.PrettyJson(fields))
 
 	if len(fields) < 1 {
 		h.SendResponse(c, nil, ProfileSalaryResponse{})
