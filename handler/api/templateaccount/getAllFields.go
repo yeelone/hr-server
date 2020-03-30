@@ -51,11 +51,11 @@ func GetAccountFields(c *gin.Context) {
 	templates := make(map[string]map[string][]string)
 	salaryMap := make(map[uint64]string)
 	salaryIds := []uint64{}
-	templateOrder := []string{}
+	templateOrder := make(map[string][]string)
 	for _, salary := range salaries {
 		salaryMap[salary.ID] = salary.Template
 		salaryIds = append(salaryIds, salary.ID)
-		templateOrder = append(templateOrder, salary.Template)
+		templateOrder[salary.Month] = append(templateOrder[salary.Month], salary.Template)
 	}
 
 	fields, err := model.GetFieldsBySalaryAndProfilesAndYear(year, salaryIds, profiles)
@@ -77,12 +77,12 @@ func GetAccountFields(c *gin.Context) {
 			//记录模板的顺序
 			if _, ok := templates[field.Month]["__order__"]; !ok {
 				templates[field.Month]["__order__"] = make([]string, 0)
-				templates[field.Month]["__order__"] = templateOrder
+				templates[field.Month]["__order__"] = templateOrder[field.Month]
 			}
-
 		}
 	}
 
+	fmt.Println(util.PrettyJson(templates))
 	h.SendResponse(c, nil, TemplateFieldsResponse{
 		Fields: templates,
 	})

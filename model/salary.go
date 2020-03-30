@@ -114,7 +114,7 @@ func GetSalaryByAccountAndTemplate(year string, account uint64, templates []stri
 }
 
 func GetSalaryByAccount(year string, account uint64) (result []Salary, err error) {
-	if err = DB.Self.Select("id,template").Where("year = ? AND template_account = ?", year, account).Find(&result).Error; err != nil {
+	if err = DB.Self.Select("id,template,month").Where("year = ? AND template_account = ?", year, account).Find(&result).Error; err != nil {
 		return nil, err
 	}
 	return result, nil

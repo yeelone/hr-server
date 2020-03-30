@@ -4,12 +4,9 @@
     <list default="true" id="166c2398-854f-4efb-bc20-8ddd07dc2e5e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/conf/authz_policy.csv" beforeDir="false" afterPath="$PROJECT_DIR$/conf/authz_policy.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conf/permission/permission.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/conf/permission/permission.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conf/permission/查询岗.csv" beforeDir="false" afterPath="$PROJECT_DIR$/conf/permission/查询岗.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/conf/permission/超级管理员.csv" beforeDir="false" afterPath="$PROJECT_DIR$/conf/permission/超级管理员.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/api/salary/getprofile.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/salary/getprofile.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/api/user/reset.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/user/reset.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/api/user/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/user/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/templateaccount/getAllFields.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/templateaccount/getAllFields.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/salary.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/salary.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,22 +136,22 @@
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
     <state x="692" y="282" key="FileChooserDialogImpl/0.0.1920.1013@0.0.1920.1013" timestamp="1583303337109" />
-    <state width="1868" height="219" key="GridCell.Tab.0.bottom" timestamp="1585208365760">
+    <state width="1868" height="218" key="GridCell.Tab.0.bottom" timestamp="1585546038310">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
-    <state width="1868" height="219" key="GridCell.Tab.0.bottom/0.0.1920.1013@0.0.1920.1013" timestamp="1585208365760" />
-    <state width="1868" height="219" key="GridCell.Tab.0.center" timestamp="1585208365760">
+    <state width="1868" height="218" key="GridCell.Tab.0.bottom/0.0.1920.1013@0.0.1920.1013" timestamp="1585546038310" />
+    <state width="1868" height="218" key="GridCell.Tab.0.center" timestamp="1585546038310">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
-    <state width="1868" height="219" key="GridCell.Tab.0.center/0.0.1920.1013@0.0.1920.1013" timestamp="1585208365760" />
-    <state width="1868" height="219" key="GridCell.Tab.0.left" timestamp="1585208365760">
+    <state width="1868" height="218" key="GridCell.Tab.0.center/0.0.1920.1013@0.0.1920.1013" timestamp="1585546038310" />
+    <state width="1868" height="218" key="GridCell.Tab.0.left" timestamp="1585546038310">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
-    <state width="1868" height="219" key="GridCell.Tab.0.left/0.0.1920.1013@0.0.1920.1013" timestamp="1585208365760" />
-    <state width="1868" height="219" key="GridCell.Tab.0.right" timestamp="1585208365760">
+    <state width="1868" height="218" key="GridCell.Tab.0.left/0.0.1920.1013@0.0.1920.1013" timestamp="1585546038310" />
+    <state width="1868" height="218" key="GridCell.Tab.0.right" timestamp="1585546038310">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
-    <state width="1868" height="219" key="GridCell.Tab.0.right/0.0.1920.1013@0.0.1920.1013" timestamp="1585208365760" />
+    <state width="1868" height="218" key="GridCell.Tab.0.right/0.0.1920.1013@0.0.1920.1013" timestamp="1585546038310" />
     <state width="1868" height="314" key="GridCell.Tab.1.bottom" timestamp="1584345246201">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>

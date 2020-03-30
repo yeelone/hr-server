@@ -1,0 +1,2 @@
+p, 复核岗, /api/v1/audit/list, GET
+p, 复核岗, /api/v1/audit/:id, POST
