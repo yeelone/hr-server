@@ -65,7 +65,7 @@ func (t *Template) Save() (err error) {
 func (t *Template) Update(id uint64, data map[string]interface{}) (err error) {
 	tx := DB.Self.Begin()
 
-	err = tx.Model(&Template{}).Debug().Where("id = ?", id).Updates(data).Error
+	err = tx.Model(&Template{}).Where("id = ?", id).Updates(data).Error
 
 	tx.Commit()
 
@@ -117,7 +117,7 @@ func GetTemplate(id uint64) (*Template, error) {
 func GetAccountTemplates(account uint64) (ts []Template, err error) {
 	tac := &TemplateAccount{}
 	tac.ID = account
-	if err = DB.Self.Debug().Preload("Templates").First(&tac).Error; err != nil {
+	if err = DB.Self.Preload("Templates").First(&tac).Error; err != nil {
 		return ts, errors.New("cannot query template from database")
 	}
 	fmt.Println(util.PrettyJson(tac))

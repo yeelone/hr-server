@@ -2,7 +2,6 @@ package model
 
 import (
 	"errors"
-	"fmt"
 	"github.com/lib/pq"
 	"hr-server/util"
 	"regexp"
@@ -75,7 +74,7 @@ func (t *GroupTransfer) Create() error {
 // only update name and coefficient
 func (g *GroupTransfer) Update() error {
 	tx := DB.Self.Begin()
-	if err := tx.Model(&g).Debug().Update(map[string]interface{}{"added_tags_record": g.AddedTagsRecord, "new_group_combination": g.NewGroupCombination}).Error; err != nil {
+	if err := tx.Model(&g).Update(map[string]interface{}{"added_tags_record": g.AddedTagsRecord, "new_group_combination": g.NewGroupCombination}).Error; err != nil {
 		tx.Rollback()
 		return errors.New("无法更新")
 	}
@@ -101,8 +100,7 @@ func GetTransferByNewGroupCombination(gid, pid uint64) (t GroupTransfer, err err
 		` and new_group_combination @> array[` + util.Uint2Str(gid) + `]`
 	//sql := `select * from ` + TRANSFER_TABLENAME + ` where profile = ? and new_group_combination @> array[?]`
 
-	//err = DB.Self.Debug().Where(" profile = ? and new_group_combination @> array[?]" , pid , gid ).First(&t).Error
-	fmt.Println(sql)
+	//err = DB.Self.Where(" profile = ? and new_group_combination @> array[?]" , pid , gid ).First(&t).Error
 	err = DB.Self.Raw(sql).Scan(&t).Error
 	return t, err
 }

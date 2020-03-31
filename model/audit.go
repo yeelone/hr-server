@@ -189,7 +189,6 @@ func handleProfile(a *Audit, state int) error {
 		return nil
 	}
 	if a.Action == AUDITMOVEACTION {
-		fmt.Println("move action")
 		// 员工移动之后
 		// 第一步，查询调动表得到调动信息
 		m, err := GetTransfer(uint64(a.DestObjectID[0]))
@@ -209,7 +208,6 @@ func handleProfile(a *Audit, state int) error {
 			}
 			// 获取新组信息
 			newGroup, err := GetGroup(m.NewGroup, false)
-			fmt.Println("new group ", util.PrettyJson(newGroup))
 			if err != nil {
 				return errors.New("员工调动审核通过,但数据库发生错误:" + err.Error())
 			}
@@ -346,7 +344,6 @@ func handleProfile(a *Audit, state int) error {
 						}
 
 						for _, ptag := range profileTags.Tags {
-							fmt.Println("ptag", util.PrettyJson(ptag), util.PrettyJson(tag), ptag.Parent == tag.Parent)
 							if ptag.Parent == tag.Parent { // 同属于车改补贴这个大标签类，
 								deleteIDList = append(deleteIDList, ptag.ID)
 							}
@@ -359,7 +356,6 @@ func handleProfile(a *Audit, state int) error {
 			}
 			err = RemoveProfileTags(m.Profile, deleteIDList)
 			if err != nil {
-				fmt.Println(" err.Error()", err.Error())
 				return errors.New("员工调动审核通过,但数据库发生错误:" + err.Error())
 			}
 

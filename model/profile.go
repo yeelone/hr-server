@@ -203,7 +203,7 @@ func GetAllProfile() (profiles []*Profile, err error) {
 
 func GetProfileWithGroupAndTag(ids []uint64) (profiles []Profile, err error) {
 	// if err := DB.Self.Preload("Groups").Preload("Tags").Where("id in (?) AND audit_state = ?", ids, 1).Find(&profiles).Error; err != nil {
-	if err := DB.Self.Debug().Preload("Groups").Preload("Tags").Where("id in (?)", ids).Find(&profiles).Error; err != nil {
+	if err := DB.Self.Preload("Groups").Preload("Tags").Where("id in (?)", ids).Find(&profiles).Error; err != nil {
 		return profiles, err
 	}
 

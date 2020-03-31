@@ -16,11 +16,9 @@ func TemplateOrder(c *gin.Context) {
 	log.Info("TemplateOrder Create function called.", lager.Data{"X-Request-Id": util.GetReqID(c)})
 	var r TemplateOrderRequest
 	if err := c.Bind(&r); err != nil {
-		fmt.Println("bind error ", err)
 		h.SendResponse(c, errno.ErrBind, err.Error())
 		return
 	}
-	fmt.Println(util.PrettyJson(r))
 	if err := model.UpdateTemplateOrder(r.Orders); err != nil {
 		fmt.Println("create error", err)
 		h.SendResponse(c, errno.ErrDatabase, err.Error())

@@ -30,8 +30,6 @@ func (b *BuildinFunc) Call(name string, args []interface{}) (values []interface{
 
 	defer func() {
 		if r := recover(); r != nil {
-			fmt.Println("recover error", r)
-			fmt.Printf("recover error %+v \n", args)
 			// 这里可以对异常进行一些处理和捕获
 			err = errors.New("无法调用函数，请仔细检查函数名称是否正确,函数名为" + name)
 		}

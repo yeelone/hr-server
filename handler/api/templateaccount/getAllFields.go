@@ -82,7 +82,6 @@ func GetAccountFields(c *gin.Context) {
 		}
 	}
 
-	fmt.Println(util.PrettyJson(templates))
 	h.SendResponse(c, nil, TemplateFieldsResponse{
 		Fields: templates,
 	})

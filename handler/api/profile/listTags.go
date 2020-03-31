@@ -39,8 +39,6 @@ func ListProfileTags(c *gin.Context) {
 }
 
 func covertTagsToMap(tags []model.Tag) (result []TagResponse, err error) {
-	fmt.Println("tags", tags)
-
 	tids := make([]uint64, len(tags))
 
 	for i, tag := range tags {

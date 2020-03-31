@@ -30,7 +30,7 @@ func (m *Message) Create() error {
 
 func (m *Message) SetStatus(status int) error {
 	tx := DB.Self.Begin()
-	if err := tx.Debug().Model(&m).Update(map[string]interface{}{"status": status}).Error; err != nil {
+	if err := tx.Model(&m).Update(map[string]interface{}{"status": status}).Error; err != nil {
 		tx.Rollback()
 		return err
 	}
@@ -46,7 +46,7 @@ func GetMessages(offset, limit int, recId uint64, where string, whereKeyword str
 	}
 
 	if len(where) > 0 {
-		err = DB.Self.Debug().Offset(offset).Limit(limit).Where(where+" = ? and rec_id = ? ", whereKeyword, recId).Find(&ms).Error
+		err = DB.Self.Offset(offset).Limit(limit).Where(where+" = ? and rec_id = ? ", whereKeyword, recId).Find(&ms).Error
 		err = DB.Self.Model(Message{}).Where(where+" = ? and rec_id = ? ", whereKeyword, recId).Count(&total).Error
 	} else {
 		err = DB.Self.Offset(offset).Limit(limit).Find(&ms).Error
@@ -78,15 +78,15 @@ func GetMessages(offset, limit int, recId uint64, where string, whereKeyword str
 func CheckUserMessage(recId uint64, status int) (private, public, global int) {
 
 	// 检查私信
-	if err := DB.Self.Debug().Model(Message{}).Where(" rec_id = ? AND status = ? AND message_type =  ?", recId, status, "Private").Count(&private).Error; err != nil {
+	if err := DB.Self.Model(Message{}).Where(" rec_id = ? AND status = ? AND message_type =  ?", recId, status, "Private").Count(&private).Error; err != nil {
 		return 0, 0, 0
 	}
 
-	if err := DB.Self.Debug().Model(Message{}).Where(" rec_id = ? AND status = ?  AND message_type =  ?", recId, status, "Public").Count(&public).Error; err != nil {
+	if err := DB.Self.Model(Message{}).Where(" rec_id = ? AND status = ?  AND message_type =  ?", recId, status, "Public").Count(&public).Error; err != nil {
 		return 0, 0, 0
 	}
 
-	if err := DB.Self.Debug().Model(Message{}).Where(" rec_id = ? AND status = ?  AND message_type =  ?", recId, status, "Global").Count(&global).Error; err != nil {
+	if err := DB.Self.Model(Message{}).Where(" rec_id = ? AND status = ?  AND message_type =  ?", recId, status, "Global").Count(&global).Error; err != nil {
 		return 0, 0, 0
 	}
 
@@ -133,7 +133,7 @@ func CheckUserMessage(recId uint64, status int) (private, public, global int) {
 		where +
 		`AND text.id NOT IN (select m.text_id from ` + MessageTableName + ` as m  where m.rec_id=` + util.Uint2Str(recId) + `)`
 
-	rows, _ := DB.Self.Debug().Raw(sql).Rows()
+	rows, _ := DB.Self.Raw(sql).Rows()
 
 	for rows.Next() {
 		var id uint64
@@ -152,7 +152,7 @@ func CheckUserMessage(recId uint64, status int) (private, public, global int) {
 	// 如果是全部人，属于系统消息，同时这条消息又不在于message表中，则进行统计回馈给用户 ，同时也需要将这些消息加入到message表中。
 	sql = `select text.id from ` + MessageTextTableName + ` as text where text.message_type='Global' AND text.id NOT IN (select m.text_id from ` + MessageTableName + ` as m  where m.rec_id=` + util.Uint2Str(recId) + `)`
 
-	rows, _ = DB.Self.Debug().Raw(sql).Rows()
+	rows, _ = DB.Self.Raw(sql).Rows()
 
 	for rows.Next() {
 		var id uint64

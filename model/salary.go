@@ -68,7 +68,6 @@ func ClearSalary(year, month string, templateAccount uint64) (err error) {
 			ids[i] = s.ID
 		}
 		if err := DeleteSalaryFieldsByMonthAndTemplate(ids); err != nil {
-			fmt.Println("DeleteSalaryFieldsByMonthAndTemplate", err)
 			return err
 		}
 
@@ -83,7 +82,6 @@ func ClearSalary(year, month string, templateAccount uint64) (err error) {
 func GetRelatedTemplateValue(year, month, template string, templateAccountID uint64, fields []string) (result []SalaryField) {
 	sModel := &Salary{}
 	if err := DB.Self.Model(&sModel).Where("template_account = ? AND template = ? AND  year = ? AND month = ?", templateAccountID, template, year, month).First(&sModel).Error; err != nil {
-		fmt.Println("无法找到相关的工资模板", template, err)
 		log.Info("GetRelatedTemplateValue function called.", lager.Data{"message": "无法找到相关的工资模板:" + template, "error": err.Error()})
 	}
 
@@ -106,7 +104,7 @@ func GetRelatedTemplateValue(year, month, template string, templateAccountID uin
 }
 
 func GetSalaryByAccountAndTemplate(year string, account uint64, templates []string) (result []Salary, err error) {
-	if err = DB.Self.Debug().Select("id,template").Where("year = ? AND template_account = ? AND template IN  (?) ", year, account, templates).Find(&result).Error; err != nil {
+	if err = DB.Self.Select("id,template").Where("year = ? AND template_account = ? AND template IN  (?) ", year, account, templates).Find(&result).Error; err != nil {
 		return nil, err
 	}
 

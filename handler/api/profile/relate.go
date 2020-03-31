@@ -48,7 +48,6 @@ func RelateTags(c *gin.Context) {
 	if len(addTagStr) > 0 {
 		record.Body += "系数变化:新增了以下系数;" + addTagStr
 	}
-	fmt.Println(util.PrettyJson(record))
 	if err := record.Create(); err != nil {
 		fmt.Println(err)
 	}

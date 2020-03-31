@@ -22,7 +22,6 @@ func ImportTags(c *gin.Context) {
 	log.Info("Import tags into group from excel function called.", lager.Data{"X-Request-Id": util.GetReqID(c)})
 	file, err := c.FormFile("file")
 	if err != nil {
-		fmt.Println("file err ", err)
 		h.SendResponse(c, errno.ErrTemplateInvalid, err.Error())
 		return
 	}
@@ -40,7 +39,6 @@ func ImportTags(c *gin.Context) {
 	newFile := "/export/importGroupTagsRelationshipResult.xlsx"
 	if errs, err := model.ImportGroupTagRelationshipFromExcel(newFilename); len(errs) > 0 {
 		if err != nil {
-			fmt.Println("OpenFile", err)
 			h.SendResponse(c, errors.New("导入数据库之后发现错误，请下载错误文件"), CreateResponse{File: "", Error: "无法将错误信息写入文件"})
 			return
 		}

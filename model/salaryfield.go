@@ -98,7 +98,7 @@ func GetFieldByKeys(year string, salarymap map[uint64][]string) (result []Salary
 		s := "(salary_id=" + util.Uint2Str(id) + " AND key IN (" + strings.Join(newKeys, ",") + "))"
 		whereSql = append(whereSql, s)
 	}
-	if err = DB.Self.Debug().Select("profile_id,department_group_id,post_group_id,salary_id,key,name, month,fit_into_year, fit_into_month,value").Where("(year='" + year + "' OR fit_into_year='" + year + "') AND " + strings.Join(whereSql, " or ")).Order("profile_id,key, month").Find(&result).Error; err != nil {
+	if err = DB.Self.Select("profile_id,department_group_id,post_group_id,salary_id,key,name, month,fit_into_year, fit_into_month,value").Where("(year='" + year + "' OR fit_into_year='" + year + "') AND " + strings.Join(whereSql, " or ")).Order("profile_id,key, month").Find(&result).Error; err != nil {
 		fmt.Println("err ", err)
 		return nil, err
 	}
@@ -131,7 +131,7 @@ func GetFieldByKeyAndMonth(key, year, fromMonth, toMonth string) (result []Salar
 			break
 		}
 	}
-	if err = DB.Self.Debug().Select("profile_id,key,value,year,month").Where("key=? AND year=? AND month IN (?)", key, year, specialMonth).Order("profile_id,key, month").Find(&result).Error; err != nil {
+	if err = DB.Self.Select("profile_id,key,value,year,month").Where("key=? AND year=? AND month IN (?)", key, year, specialMonth).Order("profile_id,key, month").Find(&result).Error; err != nil {
 		fmt.Println("err ", err)
 		return nil, err
 	}
@@ -152,7 +152,7 @@ func GetFieldLastMonthValueByKey(key, year, month string) (result []SalaryField,
 		month = "0" + month
 	}
 
-	if err = DB.Self.Debug().Select("profile_id,key,value,year,month").Where("key=? AND year=? AND month=?", key, year, month).Order("profile_id,key, month").Find(&result).Error; err != nil {
+	if err = DB.Self.Select("profile_id,key,value,year,month").Where("key=? AND year=? AND month=?", key, year, month).Order("profile_id,key, month").Find(&result).Error; err != nil {
 		fmt.Println("err ", err)
 		return nil, err
 	}
@@ -182,7 +182,7 @@ func GetDepartmentTotalIncome(year string, salarymap map[uint64][]string) (resul
 		whereSql = append(whereSql, s)
 	}
 
-	if err = DB.Self.Table(SALARYFIELDTABLENAME).Debug().Select("department_group_id as department,fit_into_year as year ,fit_into_month as month,count(profile_id) as number,sum(value) as total").Where("fit_into_year='" + year + "' AND " + strings.Join(whereSql, " or ")).Group("department_group_id,fit_into_year,fit_into_month").Order("fit_into_month").Scan(&result).Error; err != nil {
+	if err = DB.Self.Table(SALARYFIELDTABLENAME).Select("department_group_id as department,fit_into_year as year ,fit_into_month as month,count(profile_id) as number,sum(value) as total").Where("fit_into_year='" + year + "' AND " + strings.Join(whereSql, " or ")).Group("department_group_id,fit_into_year,fit_into_month").Order("fit_into_month").Scan(&result).Error; err != nil {
 		fmt.Println("err ", err)
 		return nil, err
 	}
@@ -228,7 +228,7 @@ func GetSalaryFieldByProfileAndMonth(year string, month string, profileID uint64
 }
 
 func GetFieldsBySalaryAndProfilesAndYear(year string, salary []uint64, profiles []uint64) (result []SalaryField, err error) {
-	if err = DB.Self.Debug().Where("year = ? AND salary_id IN (?) AND profile_id IN  (?) ", year, salary, profiles).Find(&result).Error; err != nil {
+	if err = DB.Self.Where("year = ? AND salary_id IN (?) AND profile_id IN  (?) ", year, salary, profiles).Find(&result).Error; err != nil {
 		return nil, err
 	}
 

@@ -1,13 +1,11 @@
 package middleware
 
 import (
-	"fmt"
 	"github.com/casbin/casbin/v2"
 	"github.com/gin-gonic/gin"
 	"hr-server/handler"
 	"hr-server/pkg/errno"
 	"hr-server/pkg/token"
-	"hr-server/util"
 	"net/http"
 	"strings"
 )
@@ -21,9 +19,6 @@ func Authority(e *casbin.Enforcer) gin.HandlerFunc {
 		act := c.Request.Method   // the operation that the user performs on the resource.
 		c.Set("userid", body.ID)
 
-		fmt.Println(util.PrettyJson(body))
-
-		fmt.Println(sub, obj,act )
 		if strings.Contains(obj, "/api/captcha") {
 			c.Next()
 			return

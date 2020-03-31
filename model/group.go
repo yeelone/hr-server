@@ -384,7 +384,7 @@ func GetGroupWithProfile(id uint64, withProfiles bool) (result Group, err error)
 	err = DB.Self.Select("id,name,code,coefficient,parent,levels").First(&g, id).Error
 	// err = DB.Self.Model(&Group{BaseModel: BaseModel{ID: id}}).First(&result).Error
 	if withProfiles {
-		DB.Self.Debug().Model(&result).Select("id").Preload("Profiles").Find(&g.Profiles)
+		DB.Self.Model(&result).Select("id").Preload("Profiles").Find(&g.Profiles)
 	}
 	return g, err
 }

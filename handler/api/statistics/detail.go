@@ -275,6 +275,7 @@ func writeIntoExcel(fields []model.SalaryField) (filename string, err error) {
 	//获取所有用户档案 ，因为最终写入excel的是名字而不是ID
 	allProfiles, err := model.GetAllProfile()
 	allGroups, err := model.GetGroupWithAllChildren("部门")
+
 	if err != nil {
 		fmt.Println("GetAllProfileWidthGroup error :", err.Error())
 	}
@@ -291,7 +292,7 @@ func writeIntoExcel(fields []model.SalaryField) (filename string, err error) {
 	//对field 要进行排序归类等相关处理
 	rows := make(map[uint64]map[string]map[string]map[string]float64) // 用户 -- > 模板名 --> 字段 --> 月份 -> 值
 	departmentMap := make(map[uint64]map[string]uint64)               // 用户 -- > 月份 --> 部门
-	//monthOrder := []string{"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"}
+	monthOrder := []string{"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"}
 	//
 	for _, field := range fields {
 		month := field.Month
@@ -353,11 +354,7 @@ func writeIntoExcel(fields []model.SalaryField) (filename string, err error) {
 		break //只需要遍历一行
 	}
 
-	fmt.Println("templateOrder", util.PrettyJson(templateOrder))
-	fmt.Println("fieldOrder", util.PrettyJson(fieldOrder))
-
 	for profile, salary := range rows {
-		fmt.Println("profile", profile)
 		xlsx.MergeCell(sheet1, "A"+strconv.Itoa(row), "A"+strconv.Itoa(row+2))
 		xlsx.SetCellValue(sheet1, "A"+strconv.Itoa(row), allProfiles[profileIndexMap[profile]].Name)
 		xlsx.MergeCell(sheet1, "B"+strconv.Itoa(row), "B"+strconv.Itoa(row+2))
@@ -379,15 +376,10 @@ func writeIntoExcel(fields []model.SalaryField) (filename string, err error) {
 				xlsx.SetCellValue(sheet1, startCell+"2", template+"."+field)
 				j := fieldCount*12 + startCol
 
-				fmt.Println("template,field", startCell, template, field)
-
 				for month, value := range months {
 
 					cell := fieldCount*13 + startCol + 1
 					valueRow := row + 1
-					if field == "独生子女费" && value > 30 {
-						fmt.Println("month ,value ", profile, field, month, value, cell)
-					}
 					xlsx.SetCellValue(sheet1, util.ConvertToNumberingScheme(cell+1)+"3", "1月")
 					xlsx.SetCellValue(sheet1, util.ConvertToNumberingScheme(cell+2)+"3", "2月")
 					xlsx.SetCellValue(sheet1, util.ConvertToNumberingScheme(cell+3)+"3", "3月")
@@ -432,47 +424,47 @@ func writeIntoExcel(fields []model.SalaryField) (filename string, err error) {
 					j++
 				}
 				//对部门进行分阶段，然后在excel中写入到已合并的表格中
-				//j := 1
+				// j := 1
 				//departLen := 1
 
-				//分析出部门所占的Cell数目
+				// 分析出部门所占的Cell数目
 				//departs := make([]uint64 , 12)
-				//departArr := make([]uint64, 0)
-				//lenArr := make([]int, 0)
-				//
-				//length := 1
-				//last := departmentMap[profile]["01"]
-				//for _, d := range monthOrder[1:] {
-				//	if departmentMap[profile][d] != last { // 这个月跟上个月不同，表示调整了部门
-				//		lenArr = append(lenArr, length) // 记录上个部门所占有的月数
-				//		departArr = append(departArr, last)
-				//		last = departmentMap[profile][d]
-				//		length = 1
-				//	} else {
-				//		length++
-				//	}
-				//
-				//	if d == "12" { //当是最后一个月的时候
-				//		lenArr = append(lenArr, length)
-				//		departArr = append(departArr, last)
-				//	}
-				//}
-				//
-				//from := 1
-				//for i, d := range departArr {
-				//	if d == 0 {
-				//		from += lenArr[i] + 1
-				//		continue
-				//	}
-				//	start := util.ConvertToNumberingScheme(fieldCount*13 + startCol + from)
-				//	if lenArr[i] > 1 {
-				//		end := util.ConvertToNumberingScheme(fieldCount*13 + startCol + from + lenArr[i] - 1)
-				//		xlsx.MergeCell(sheet1, start+strconv.Itoa(row), end+strconv.Itoa(row))
-				//	}
-				//
-				//	xlsx.SetCellValue(sheet1, start+strconv.Itoa(row), allGroups[departmentIndexMap[d]].Name)
-				//	from = from + lenArr[i]
-				//}
+				departArr := make([]uint64, 0)
+				lenArr := make([]int , 0)
+
+				for _, d := range monthOrder {
+					departArr = append(departArr, departmentMap[profile][d])
+				}
+
+				// departArr 的格式 ： [69 69 70 70 70 70 70 70 70 70 70 69]
+				// 现在要得出长度： [2,9,1]
+				last := departArr[0]
+				lenArr = append(lenArr,1)
+
+				newDepartArr := make([]uint64, 0)
+				newDepartArr = append(newDepartArr, departArr[0])
+				for i, d := range departArr[1:]{
+					if d != last {  //
+						lenArr = append(lenArr,1)
+						newDepartArr = append(newDepartArr, d)
+					}else {
+						lenArr[len(lenArr) - 1] += 1
+					}
+
+					last = departArr[i+1]
+				}
+				from := 2
+				for i, d := range newDepartArr {
+					start := util.ConvertToNumberingScheme(fieldCount*13 + startCol + from)
+
+					if lenArr[i] > 1 {
+						end := util.ConvertToNumberingScheme(fieldCount*13 + startCol + from + lenArr[i] -1  )
+						xlsx.MergeCell(sheet1, start+strconv.Itoa(row), end+strconv.Itoa(row))
+					}
+
+					xlsx.SetCellValue(sheet1, start+strconv.Itoa(row), allGroups[departmentIndexMap[d]].Name)
+					from = from + lenArr[i]
+				}
 
 				fieldCount++
 			}

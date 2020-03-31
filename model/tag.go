@@ -270,7 +270,7 @@ func AddProfileTags(pid uint64, tids []uint64) (err error) {
 	}
 
 	if len(deleteStr) > 0 {
-		err = tx.Debug().Exec(" delete from profile_tags where " + strings.Join(deleteStr, " OR ") + " ;").Error
+		err = tx.Exec(" delete from profile_tags where " + strings.Join(deleteStr, " OR ") + " ;").Error
 		if err != nil {
 			tx.Rollback()
 			return err
@@ -278,7 +278,7 @@ func AddProfileTags(pid uint64, tids []uint64) (err error) {
 	}
 
 	if len(insertStr) > 0 {
-		err = tx.Debug().Exec(" insert into profile_tags(profile_id,tag_id) values" + strings.Join(insertStr, ",") + ";").Error
+		err = tx.Exec(" insert into profile_tags(profile_id,tag_id) values" + strings.Join(insertStr, ",") + ";").Error
 		if err != nil {
 			tx.Rollback()
 			return err
@@ -372,7 +372,7 @@ func RemoveProfileTags(pid uint64, tids []uint64) (err error) {
 		tidStr = append(tidStr, fmt.Sprint(id))
 	}
 	tx := DB.Self.Begin()
-	err = tx.Debug().Exec(" delete from profile_tags where profile_id = " + util.Uint2Str(pid) + " AND tag_id IN (" + strings.Join(tidStr, ",") + ")").Error
+	err = tx.Exec(" delete from profile_tags where profile_id = " + util.Uint2Str(pid) + " AND tag_id IN (" + strings.Join(tidStr, ",") + ")").Error
 	if err != nil {
 		tx.Rollback()
 		return err
