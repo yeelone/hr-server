@@ -5,25 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/conf/authz_policy.csv" beforeDir="false" afterPath="$PROJECT_DIR$/conf/authz_policy.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/conf/permission/超级管理员.csv" beforeDir="false" afterPath="$PROJECT_DIR$/conf/permission/超级管理员.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/api/group/import.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/group/import.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/api/group/importTags.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/group/importTags.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/api/profile/listTags.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/profile/listTags.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/api/profile/relate.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/profile/relate.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/api/salary/templateorder.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/salary/templateorder.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/handler/api/statistics/detail.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/statistics/detail.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/api/tag/get.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/tag/get.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/api/templateaccount/getAllFields.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/templateaccount/getAllFields.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/audit.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/audit.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/group.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/group.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/grouptransfer.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/grouptransfer.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/message.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/message.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/profile.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/profile.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/salary.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/salary.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/salaryfield.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/salaryfield.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/tag.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/tag.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/template.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/template.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/buildinfunc/buildin.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/buildinfunc/buildin.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/router/middleware/authority.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/middleware/authority.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,22 +135,22 @@
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
     <state x="692" y="282" key="FileChooserDialogImpl/0.0.1920.1013@0.0.1920.1013" timestamp="1583303337109" />
-    <state width="1868" height="273" key="GridCell.Tab.0.bottom" timestamp="1585623762215">
+    <state width="1868" height="271" key="GridCell.Tab.0.bottom" timestamp="1585636175659">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
-    <state width="1868" height="273" key="GridCell.Tab.0.bottom/0.0.1920.1013@0.0.1920.1013" timestamp="1585623762215" />
-    <state width="1868" height="273" key="GridCell.Tab.0.center" timestamp="1585623762214">
+    <state width="1868" height="271" key="GridCell.Tab.0.bottom/0.0.1920.1013@0.0.1920.1013" timestamp="1585636175659" />
+    <state width="1868" height="271" key="GridCell.Tab.0.center" timestamp="1585636175659">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
-    <state width="1868" height="273" key="GridCell.Tab.0.center/0.0.1920.1013@0.0.1920.1013" timestamp="1585623762214" />
-    <state width="1868" height="273" key="GridCell.Tab.0.left" timestamp="1585623762214">
+    <state width="1868" height="271" key="GridCell.Tab.0.center/0.0.1920.1013@0.0.1920.1013" timestamp="1585636175659" />
+    <state width="1868" height="271" key="GridCell.Tab.0.left" timestamp="1585636175658">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
-    <state width="1868" height="273" key="GridCell.Tab.0.left/0.0.1920.1013@0.0.1920.1013" timestamp="1585623762214" />
-    <state width="1868" height="273" key="GridCell.Tab.0.right" timestamp="1585623762214">
+    <state width="1868" height="271" key="GridCell.Tab.0.left/0.0.1920.1013@0.0.1920.1013" timestamp="1585636175658" />
+    <state width="1868" height="271" key="GridCell.Tab.0.right" timestamp="1585636175659">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
-    <state width="1868" height="273" key="GridCell.Tab.0.right/0.0.1920.1013@0.0.1920.1013" timestamp="1585623762214" />
+    <state width="1868" height="271" key="GridCell.Tab.0.right/0.0.1920.1013@0.0.1920.1013" timestamp="1585636175659" />
     <state width="1868" height="314" key="GridCell.Tab.1.bottom" timestamp="1585549131357">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
