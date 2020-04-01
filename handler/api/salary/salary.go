@@ -18,6 +18,7 @@ type CreateRequest struct {
 	Startup             bool                      `json:"startup"`
 	Year                string                    `json:"year"`
 	Month               string                    `json:"month"`
+	Password            string                    `json:"password"`
 	Group               uint64                    `json:"group" `
 	Body                map[string]template.Field `json:"body"` //模板配置内容,从客户端发送的json格式，在服务器端要转化为yaml并保存到template文件夹中
 	Remark              string                    `json:"remark"`

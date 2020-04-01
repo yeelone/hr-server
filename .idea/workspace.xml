@@ -4,8 +4,13 @@
     <list default="true" id="166c2398-854f-4efb-bc20-8ddd07dc2e5e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/conf/authz_policy.csv" beforeDir="false" afterPath="$PROJECT_DIR$/conf/authz_policy.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conf/permission/复核岗.csv" beforeDir="false" afterPath="$PROJECT_DIR$/conf/permission/复核岗.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/conf/permission/超级管理员.csv" beforeDir="false" afterPath="$PROJECT_DIR$/conf/permission/超级管理员.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/api/statistics/detail.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/statistics/detail.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/grouptransfer/create.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/grouptransfer/create.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/salary/calculate.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/salary/calculate.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/salary/salary.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/salary/salary.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/api/user/reset.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/user/reset.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/router/middleware/authority.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/middleware/authority.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,22 +140,22 @@
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
     <state x="692" y="282" key="FileChooserDialogImpl/0.0.1920.1013@0.0.1920.1013" timestamp="1583303337109" />
-    <state width="1868" height="271" key="GridCell.Tab.0.bottom" timestamp="1585636175659">
+    <state width="1868" height="297" key="GridCell.Tab.0.bottom" timestamp="1585706997439">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
-    <state width="1868" height="271" key="GridCell.Tab.0.bottom/0.0.1920.1013@0.0.1920.1013" timestamp="1585636175659" />
-    <state width="1868" height="271" key="GridCell.Tab.0.center" timestamp="1585636175659">
+    <state width="1868" height="297" key="GridCell.Tab.0.bottom/0.0.1920.1013@0.0.1920.1013" timestamp="1585706997439" />
+    <state width="1868" height="297" key="GridCell.Tab.0.center" timestamp="1585706997439">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
-    <state width="1868" height="271" key="GridCell.Tab.0.center/0.0.1920.1013@0.0.1920.1013" timestamp="1585636175659" />
-    <state width="1868" height="271" key="GridCell.Tab.0.left" timestamp="1585636175658">
+    <state width="1868" height="297" key="GridCell.Tab.0.center/0.0.1920.1013@0.0.1920.1013" timestamp="1585706997439" />
+    <state width="1868" height="297" key="GridCell.Tab.0.left" timestamp="1585706997438">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
-    <state width="1868" height="271" key="GridCell.Tab.0.left/0.0.1920.1013@0.0.1920.1013" timestamp="1585636175658" />
-    <state width="1868" height="271" key="GridCell.Tab.0.right" timestamp="1585636175659">
+    <state width="1868" height="297" key="GridCell.Tab.0.left/0.0.1920.1013@0.0.1920.1013" timestamp="1585706997438" />
+    <state width="1868" height="297" key="GridCell.Tab.0.right" timestamp="1585706997439">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
-    <state width="1868" height="271" key="GridCell.Tab.0.right/0.0.1920.1013@0.0.1920.1013" timestamp="1585636175659" />
+    <state width="1868" height="297" key="GridCell.Tab.0.right/0.0.1920.1013@0.0.1920.1013" timestamp="1585706997439" />
     <state width="1868" height="314" key="GridCell.Tab.1.bottom" timestamp="1585549131357">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
@@ -179,9 +184,9 @@
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
     <state x="576" y="56" width="768" height="900" key="find.popup/0.0.1920.1013@0.0.1920.1013" timestamp="1585547077995" />
-    <state x="608" y="222" width="701" height="678" key="search.everywhere.popup" timestamp="1584943058328">
+    <state x="608" y="222" width="701" height="678" key="search.everywhere.popup" timestamp="1585706711131">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
-    <state x="608" y="222" width="701" height="678" key="search.everywhere.popup/0.0.1920.1013@0.0.1920.1013" timestamp="1584943058328" />
+    <state x="608" y="222" width="701" height="678" key="search.everywhere.popup/0.0.1920.1013@0.0.1920.1013" timestamp="1585706711131" />
   </component>
 </project>

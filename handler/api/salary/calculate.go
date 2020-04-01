@@ -9,6 +9,7 @@ import (
 	"github.com/lexkong/log"
 	h "hr-server/handler"
 	"hr-server/model"
+	"hr-server/pkg/auth"
 	"hr-server/pkg/buildinfunc"
 	"hr-server/pkg/errno"
 	"hr-server/pkg/formula"
@@ -38,8 +39,28 @@ func Calculate(c *gin.Context) {
 	var r CreateRequest
 	var err error
 	if err = c.Bind(&r); err != nil {
-		fmt.Println(err)
 		h.SendResponse(c, errno.ErrBind, err.Error())
+		return
+	}
+
+	// 工资计算是一件严肃的事情，每次都必须验证密码
+	// Get the user information by the login username.
+	userid, ok := c.Get("userid")
+	if !ok {
+		h.SendResponse(c, errno.StatusUnauthorized, nil)
+		return
+	}
+
+	u, err := model.GetUser(userid.(uint64))
+	if err != nil {
+		h.SendResponse(c, errno.ErrUserNotFound, err.Error())
+		return
+	}
+	fmt.Println(r.Password)
+
+	// Compare the login password with the user password.
+	if err := auth.Compare(u.Password, r.Password); err != nil {
+		h.SendResponse(c, errno.ErrPasswordIncorrect, err.Error())
 		return
 	}
 

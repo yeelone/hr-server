@@ -19,12 +19,13 @@ func Authority(e *casbin.Enforcer) gin.HandlerFunc {
 		act := c.Request.Method   // the operation that the user performs on the resource.
 		c.Set("userid", body.ID)
 
+
 		if strings.Contains(obj, "/api/captcha") {
 			c.Next()
 			return
 		}
 
-		result, _ := e.Enforce(sub, obj, act)
+		result, _  := e.Enforce(sub, obj, act)
 		if result == true {
 			// permit alice to read data1
 			c.Next()

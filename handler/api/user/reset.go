@@ -37,8 +37,6 @@ func ChangePassword(c *gin.Context) {
 		return
 	}
 
-	fmt.Println(util.PrettyJson(r))
-
 	// 先验证旧密码是否正确
 	u, err := model.GetUser(r.ID)
 	if err != nil {
@@ -48,7 +46,6 @@ func ChangePassword(c *gin.Context) {
 	}
 
 	// Compare the login password with the user password.
-	fmt.Println(r.OldPassword, u.Password)
 	if err := auth.Compare(u.Password , r.OldPassword ); err != nil {
 		log.Warnf("Login function called. ID: %d | username: %s | info: %s  ", u.ID, u.Username, "password incorrect")
 		h.SendResponse(c, errno.ErrPasswordIncorrect, err.Error())

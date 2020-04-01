@@ -1,2 +1,6 @@
+p, 复核岗, /api/v1/message/send, POST
+p, 复核岗, /api/v1/message/user/:id/unread/count, GET
+p, 复核岗, /api/v1/message/user/:id, GET
+p, 复核岗, /api/v1/message/status, PUT
 p, 复核岗, /api/v1/audit/list, GET
 p, 复核岗, /api/v1/audit/:id, POST

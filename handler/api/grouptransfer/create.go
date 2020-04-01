@@ -29,7 +29,6 @@ func Create(c *gin.Context) {
 	}
 	// Insert the group to the database.
 	if err := m.Create(); err != nil {
-		fmt.Println(err)
 		h.SendResponse(c, errno.ErrDatabase, nil)
 		return
 	}
