@@ -51,7 +51,7 @@ func Create(c *gin.Context) {
 	audit := &model.Audit{}
 	audit.OperatorID = userid.(uint64)
 	audit.Object = model.ProfileAuditObject
-	audit.Action = model.AUDITCREATEACTION
+	audit.Action = model.AUDIT_CREATE_ACTION
 	audit.OrgObjectID = []int64{int64(profile.ID)}
 	audit.State = model.AuditStateWaiting
 	audit.Body = "描述:创建职工档案;" +
@@ -64,6 +64,7 @@ func Create(c *gin.Context) {
 		h.SendResponse(c, errno.ErrDatabase, nil)
 		return
 	}
+
 	model.CreateOperateRecord(c, fmt.Sprintf("新建员工信息, 员工信息： %s", profile.Name))
 
 
@@ -76,7 +77,7 @@ func Create(c *gin.Context) {
 			SendId: userid.(uint64),
 			Title: "有新的审核,请尽快处理",
 			Text: "新员工信息",
-			MType: "Global",
+			MType: "Public",
 			Role:role.ID,
 		}
 

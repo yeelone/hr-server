@@ -128,12 +128,12 @@
     action : POST
   冻结:
     resource: FREEZE_PROFILE
-    object : /api/v1/:id/freeze
-    action : GET
+    object : /api/v1/profile/freeze
+    action : POST
   解冻:
     resource: UNFREEZE_PROFILE
-    object: /api/v1/:id/unfreeze
-    action: GET
+    object: /api/v1/profile/unfreeze
+    action: POST
   更新档案:
     resource: UPDATE_PROFILE
     object : /api/v1/profile/:id

@@ -158,11 +158,11 @@ func TemplateConfig(c *gin.Context) {
 	}
 
 	if r.ID > 0 {
-		audit.Action = model.AUDITUPDATEACTION
+		audit.Action = model.AUDIT_UPDATE_ACTION
 		change2, _ := template.ComparedTemplate(r.Name, r.Name+"-"+util.Uint2Str(m.ID))
 		audit.Body = "描述:更新模板;" + change + change2
 	} else {
-		audit.Action = model.AUDITCREATEACTION
+		audit.Action = model.AUDIT_CREATE_ACTION
 		audit.Body = "描述:创建模板;" +
 			"档案名:" + m.Name + "; "
 	}
@@ -172,6 +172,20 @@ func TemplateConfig(c *gin.Context) {
 		h.SendResponse(c, errno.ErrDatabase, err.Error())
 		return
 	}
+	// 消息提示
+	role , err := model.GetRoleByName("复核岗")
+	if err == nil {
+		m := model.MessageText{
+			SendId: userid.(uint64),
+			Title: "有新的审核,请尽快处理",
+			Text: "模板更新",
+			MType: "Public",
+			Role:role.ID,
+		}
+
+		m.Create()
+	}
+
 	model.CreateOperateRecord(c, fmt.Sprintf("配置模板,模板名: %s", r.Name))
 	h.SendResponse(c, nil, nil)
 }

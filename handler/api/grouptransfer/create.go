@@ -46,7 +46,7 @@ func Create(c *gin.Context) {
 	audit := &model.Audit{}
 	audit.OperatorID = userid.(uint64)
 	audit.Object = model.ProfileAuditObject
-	audit.Action = model.AUDITMOVEACTION
+	audit.Action = model.AUDIT_MOVE_ACTION
 	audit.OrgObjectID = []int64{int64(profile.ID)}
 	audit.DestObjectID = []int64{int64(m.ID)}
 	audit.State = model.AuditStateWaiting
@@ -66,6 +66,20 @@ func Create(c *gin.Context) {
 
 	profile.UpdateState(model.AuditStateWaiting)
 	model.CreateOperateRecord(c, fmt.Sprintf("人员调动, 姓名: %s ", profile.Name))
+
+	// 消息提示
+	role , err := model.GetRoleByName("复核岗")
+	if err == nil {
+		m := model.MessageText{
+			SendId: userid.(uint64),
+			Title: "有新的审核,请尽快处理",
+			Text: "职工部门调动",
+			MType: "Public",
+			Role:role.ID,
+		}
+
+		m.Create()
+	}
 
 	// Show the tag information.
 	h.SendResponse(c, nil, nil)

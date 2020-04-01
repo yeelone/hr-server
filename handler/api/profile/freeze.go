@@ -20,10 +20,10 @@ func Freeze(c *gin.Context) {
 		return
 	}
 	// Save changed fields.
-	if err := model.FreezeProfile(r.Profiles); err != nil {
-		h.SendResponse(c, errno.ErrFreezeProfile, err.Error())
-		return
-	}
+	//if err := model.FreezeProfile(r.Profiles); err != nil {
+	//	h.SendResponse(c, errno.ErrFreezeProfile, err.Error())
+	//	return
+	//}
 	//创建的同时需同时创建审核条目
 	userid, _ := c.Get("userid")
 	//查底所有用户资料，记录在audit中
@@ -43,7 +43,7 @@ func Freeze(c *gin.Context) {
 	audit := &model.Audit{}
 	audit.OperatorID = userid.(uint64)
 	audit.Object = model.ProfileAuditObject
-	audit.Action = model.AUDITUPDATEACTION
+	audit.Action = model.AUDIT_FREEZED_ACTION
 	audit.OrgObjectID = ids
 	audit.State = model.AuditStateWaiting
 	audit.Body = "描述:冻结职工档案;" + body
@@ -80,11 +80,11 @@ func UnFreeze(c *gin.Context) {
 		h.SendResponse(c, errno.ErrBind, err.Error())
 		return
 	}
-	// Save changed fields.
-	if err := model.UnFreezeProfile(r.Profiles); err != nil {
-		h.SendResponse(c, errno.ErrFreezeProfile, err.Error())
-		return
-	}
+	//// Save changed fields.
+	//if err := model.UnFreezeProfile(r.Profiles); err != nil {
+	//	h.SendResponse(c, errno.ErrFreezeProfile, err.Error())
+	//	return
+	//}
 	//创建的同时需同时创建审核条目
 	profiles, _ := model.GetProfiles(r.Profiles)
 	body := ""
@@ -102,16 +102,29 @@ func UnFreeze(c *gin.Context) {
 	audit := &model.Audit{}
 	audit.OperatorID = userid.(uint64)
 	audit.Object = model.ProfileAuditObject
-	audit.Action = model.AUDITUPDATEACTION
+	audit.Action = model.AUDIT_UNFREEZED_ACTION
 	audit.OrgObjectID = ids
 	audit.State = model.AuditStateWaiting
 	audit.Body = "描述:激活职工档案;" + body
 	audit.Remark = r.Remark
 
 	if err := audit.Create(); err != nil {
-		fmt.Println(err)
 		h.SendResponse(c, errno.ErrDatabase, err.Error())
 		return
+	}
+
+	// 消息提示
+	role , err := model.GetRoleByName("复核岗")
+	if err == nil {
+		m := model.MessageText{
+			SendId: userid.(uint64),
+			Title: "有新的审核,请尽快处理",
+			Text: "激活职工档案",
+			MType: "Public",
+			Role:role.ID,
+		}
+
+		m.Create()
 	}
 	model.CreateOperateRecord(c, fmt.Sprintf("解冻员工, 员工信息：[ %s ]", strings.Join(nameList, ",")))
 	h.SendResponse(c, nil, nil)

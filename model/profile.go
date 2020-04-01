@@ -353,7 +353,7 @@ func ImportProfileFromExcel(filepath string, operatorId uint64) (file string, er
 			audit := &Audit{}
 			audit.OperatorID = operatorId
 			audit.Object = ProfileAuditObject
-			audit.Action = AUDITCREATEACTION
+			audit.Action = AUDIT_CREATE_ACTION
 			audit.OrgObjectID = []int64{int64(newProfile.Id)}
 			audit.State = AuditStateWaiting
 			audit.Body = "描述:创建职工档案;" +

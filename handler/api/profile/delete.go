@@ -38,7 +38,7 @@ func Delete(c *gin.Context) {
 	audit := &model.Audit{}
 	audit.OperatorID = uid.(uint64)
 	audit.Object = model.ProfileAuditObject
-	audit.Action = model.AUDITDELETEACTION
+	audit.Action = model.AUDIT_DELETE_ACTION
 	//audit.OrgObjectID = profile.ID
 	audit.State = model.AuditStateWaiting
 	audit.Body = "描述:删除职工档案;" +
@@ -53,14 +53,18 @@ func Delete(c *gin.Context) {
 	}
 
 	// 消息提示
-	m := model.MessageText{
-		SendId: userid.(uint64),
-		Title: "有新的审核,请尽快处理",
-		Text: "删除员工信息",
-		MType: "Global",
-	}
+	role , err := model.GetRoleByName("复核岗")
+	if err == nil {
+		m := model.MessageText{
+			SendId: userid.(uint64),
+			Title: "有新的审核,请尽快处理",
+			Text: "删除员工信息",
+			MType: "Public",
+			Role:role.ID,
+		}
 
-	m.Create()
+		m.Create()
+	}
 
 	model.CreateOperateRecord(c, fmt.Sprintf("删除员工信息, 员工信息： %s", profile.Name))
 	h.SendResponse(c, nil, nil)

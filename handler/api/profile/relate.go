@@ -32,7 +32,6 @@ func RelateTags(c *gin.Context) {
 	removeTagStr, _ := writeProfileRecord(topTagMap, r.Profile)
 
 	if err := model.ClearThenAddProfileTags(r.Profile, r.Tags); err != nil {
-		fmt.Println(err)
 		h.SendResponse(c, errno.ErrDatabase, err)
 		return
 	}

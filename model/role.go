@@ -112,7 +112,7 @@ func GetRole(id uint64, withUsers bool) (result *Role, err error) {
 // GetRoles :
 func GetRoleByName(name string) (result *Role, err error) {
 	r := &Role{}
-	err = DB.Self.Where("name", name).First(&r).Error
+	err = DB.Self.Debug().Model(&Role{}).Where("name = ?", name).First(&r).Error
 	return r, err
 }
 

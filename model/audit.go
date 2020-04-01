@@ -15,11 +15,13 @@ import (
 )
 
 const (
-	AUDITCREATEACTION = 1
-	AUDITUPDATEACTION = 2
-	AUDITDELETEACTION = 3
-	AUDITQUERYACTION  = 4
-	AUDITMOVEACTION   = 5
+	AUDIT_CREATE_ACTION = 1
+	AUDIT_UPDATE_ACTION = 2
+	AUDIT_DELETE_ACTION = 3
+	AUDIT_QUERY_ACTION  = 4
+	AUDIT_MOVE_ACTION   = 5
+	AUDIT_FREEZED_ACTION   = 6
+	AUDIT_UNFREEZED_ACTION   = 6
 )
 
 const (
@@ -132,7 +134,7 @@ func ListAudit(state int, offset, limit int) (audits []Audit, total uint64, err 
 }
 
 func handleProfile(a *Audit, state int) error {
-	if a.Action == AUDITCREATEACTION {
+	if a.Action == AUDIT_CREATE_ACTION {
 		if state == AuditStatePermit { //允许创建的话
 			if err := AddProfileToDefaultGroup(uint64(a.OrgObjectID[0])); err != nil {
 				return errors.New("新增职工档案审核通过，但无法将职工档案添加到部门里，错误信息:" + err.Error())
@@ -150,8 +152,8 @@ func handleProfile(a *Audit, state int) error {
 		}
 		return nil
 	}
-	if a.Action == AUDITUPDATEACTION {
-		if state == AuditStatePermit { //允许创建的话
+	if a.Action == AUDIT_UPDATE_ACTION {
+		if state == AuditStatePermit { //允许更新的话
 			record := Record{}
 			record.Body = a.Body
 			if err := record.Create(); err != nil {
@@ -160,7 +162,7 @@ func handleProfile(a *Audit, state int) error {
 		}
 		return nil
 	}
-	if a.Action == AUDITDELETEACTION {
+	if a.Action == AUDIT_DELETE_ACTION {
 		if state == AuditStatePermit { //允许删除
 			if err := DeleteProfile(uint64(a.OrgObjectID[0])); err != nil {
 				return errors.New("审核通过，但可能发生一些错误，无法删除.错误信息:" + err.Error())
@@ -188,7 +190,7 @@ func handleProfile(a *Audit, state int) error {
 		}
 		return nil
 	}
-	if a.Action == AUDITMOVEACTION {
+	if a.Action == AUDIT_MOVE_ACTION {
 		// 员工移动之后
 		// 第一步，查询调动表得到调动信息
 		m, err := GetTransfer(uint64(a.DestObjectID[0]))
@@ -385,7 +387,6 @@ func handleProfile(a *Audit, state int) error {
 			if len(addTagErrRecord) > 0 {
 				record.Body += addTagErrRecord
 			}
-			fmt.Println("move action", record.Body)
 			if err = record.Create(); err != nil {
 				return errors.New("删除职工档案审核通过，但无法将新增职工信息添加到记录表里，错误信息:" + err.Error())
 			}
@@ -398,6 +399,44 @@ func handleProfile(a *Audit, state int) error {
 			p.UpdateState(AuditStateDeny)
 		}
 	}
+
+	if a.Action == AUDIT_FREEZED_ACTION {
+		p := &Profile{}
+		p.ID = uint64(a.OrgObjectID[0])
+
+		if state == AuditStatePermit {
+			ids := []uint64{}
+			ids = append( ids, p.ID )
+			 if err := FreezeProfile(ids) ; err != nil {
+			 	return err
+			 }
+
+			p.UpdateState(AuditStatePermit)
+		} else {
+			p.UpdateState(AuditStateDeny)
+		}
+		return nil
+	}
+
+	if a.Action == AUDIT_UNFREEZED_ACTION {
+		p := &Profile{}
+		p.ID = uint64(a.OrgObjectID[0])
+
+		if state == AuditStatePermit {
+			ids := []uint64{}
+			ids = append( ids, p.ID )
+			if err := UnFreezeProfile(ids) ; err != nil {
+				return err
+			}
+
+			p.UpdateState(AuditStatePermit)
+		} else {
+			p.UpdateState(AuditStateDeny)
+		}
+		return nil
+	}
+
+
 	return nil
 }
 
@@ -433,7 +472,7 @@ func handleTemplate(a *Audit, state int) error {
 	oldT, _ := GetTemplate(uint64(a.OrgObjectID[0]))
 	newT, _ := GetTemplate(uint64(a.DestObjectID[0]))
 
-	if a.Action == AUDITCREATEACTION {
+	if a.Action == AUDIT_CREATE_ACTION {
 		if state == AuditStatePermit { //允许创建或者更新的话e
 			filename := "conf/templates/" + newT.Name + "-" + util.Uint2Str(newT.ID) + ".yaml"
 			if util.Exists(filename) {
@@ -450,7 +489,7 @@ func handleTemplate(a *Audit, state int) error {
 		}
 	}
 
-	if a.Action == AUDITUPDATEACTION {
+	if a.Action == AUDIT_UPDATE_ACTION {
 		if state == AuditStatePermit { //允许创建或者更新的话
 			//因为账套关联模板，所以当审核通过时，直接新模板替换到老模板
 			tempNewID := newT.ID

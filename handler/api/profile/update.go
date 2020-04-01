@@ -55,7 +55,7 @@ func Update(c *gin.Context) {
 	audit := &model.Audit{}
 	audit.OperatorID = uid.(uint64)
 	audit.Object = model.ProfileAuditObject
-	audit.Action = model.AUDITUPDATEACTION
+	audit.Action = model.AUDIT_UPDATE_ACTION
 	audit.OrgObjectID = []int64{int64(profile.ID)}
 	audit.State = model.AuditStateWaiting
 	body := ""
