@@ -3,19 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="166c2398-854f-4efb-bc20-8ddd07dc2e5e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conf/authz_policy.csv" beforeDir="false" afterPath="$PROJECT_DIR$/conf/authz_policy.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conf/permission/permission.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/conf/permission/permission.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conf/permission/超级管理员.csv" beforeDir="false" afterPath="$PROJECT_DIR$/conf/permission/超级管理员.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/api/grouptransfer/create.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/grouptransfer/create.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/api/profile/create.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/profile/create.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/api/profile/delete.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/profile/delete.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/api/profile/freeze.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/profile/freeze.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/api/profile/relate.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/profile/relate.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/api/profile/update.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/profile/update.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/api/salary/templateconfig.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/api/salary/templateconfig.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/audit.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/audit.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/profile.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/profile.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/role.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/role.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,22 +132,22 @@
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
     <state x="692" y="282" key="FileChooserDialogImpl/0.0.1920.1013@0.0.1920.1013" timestamp="1583303337109" />
-    <state width="1868" height="167" key="GridCell.Tab.0.bottom" timestamp="1585727129841">
+    <state width="1868" height="167" key="GridCell.Tab.0.bottom" timestamp="1585728551395">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
-    <state width="1868" height="167" key="GridCell.Tab.0.bottom/0.0.1920.1013@0.0.1920.1013" timestamp="1585727129841" />
-    <state width="1868" height="167" key="GridCell.Tab.0.center" timestamp="1585727129841">
+    <state width="1868" height="167" key="GridCell.Tab.0.bottom/0.0.1920.1013@0.0.1920.1013" timestamp="1585728551395" />
+    <state width="1868" height="167" key="GridCell.Tab.0.center" timestamp="1585728551395">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
-    <state width="1868" height="167" key="GridCell.Tab.0.center/0.0.1920.1013@0.0.1920.1013" timestamp="1585727129841" />
-    <state width="1868" height="167" key="GridCell.Tab.0.left" timestamp="1585727129841">
+    <state width="1868" height="167" key="GridCell.Tab.0.center/0.0.1920.1013@0.0.1920.1013" timestamp="1585728551395" />
+    <state width="1868" height="167" key="GridCell.Tab.0.left" timestamp="1585728551395">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
-    <state width="1868" height="167" key="GridCell.Tab.0.left/0.0.1920.1013@0.0.1920.1013" timestamp="1585727129841" />
-    <state width="1868" height="167" key="GridCell.Tab.0.right" timestamp="1585727129841">
+    <state width="1868" height="167" key="GridCell.Tab.0.left/0.0.1920.1013@0.0.1920.1013" timestamp="1585728551395" />
+    <state width="1868" height="167" key="GridCell.Tab.0.right" timestamp="1585728551395">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
-    <state width="1868" height="167" key="GridCell.Tab.0.right/0.0.1920.1013@0.0.1920.1013" timestamp="1585727129841" />
+    <state width="1868" height="167" key="GridCell.Tab.0.right/0.0.1920.1013@0.0.1920.1013" timestamp="1585728551395" />
     <state width="1868" height="314" key="GridCell.Tab.1.bottom" timestamp="1585549131357">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
