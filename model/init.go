@@ -3,10 +3,11 @@ package model
 import (
 	"bufio"
 	"fmt"
-	"github.com/lexkong/log"
 	"hr-server/pkg/auth"
 	"os"
 	"strings"
+
+	"github.com/lexkong/log"
 
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
@@ -22,18 +23,20 @@ var DB *Database
 
 var TableNames = map[string]string{"Profile": "tb_profile", "Template": "tb_template"}
 
-func openDB(username, password, addr, name string) *gorm.DB {
+func openDB(username, password, addr, port, name string) *gorm.DB {
 
-	config := fmt.Sprintf("host=%s dbname=%s user=%s  password=%s sslmode=disable",
+	config := fmt.Sprintf("host=%s dbname=%s port=%s user=%s  password=%s sslmode=disable",
 		addr,
 		name,
+		port,
 		username,
 		password,
 	)
 
 	db, err := gorm.Open("postgres", config)
 	if err != nil {
-		//log.Errorf(err, "Database connection failed. Database name: %s", name)
+		log.Errorf(err, "Database connection failed. Database name: %s, db: %s, port: %s ", name, addr, port)
+		return db
 	}
 
 	// set for db connection
@@ -53,6 +56,7 @@ func InitSelfDB() *gorm.DB {
 	return openDB(viper.GetString("db.username"),
 		viper.GetString("db.password"),
 		viper.GetString("db.addr"),
+		viper.GetString("db.port"),
 		viper.GetString("db.name"))
 }
 
@@ -95,7 +99,7 @@ func initTable() {
 	var salaryProfileConfig SalaryProfileConfig
 	var message Message
 	var messageText MessageText
-	DB.Self.AutoMigrate( &message,&messageText, &role, &record, &salaryProfileConfig, &t, &operate, &user, &g, &template, &gt, &profile, &tas, &audit, &usergroup, &permissions, &sf, &s, &tas, &sc)
+	DB.Self.AutoMigrate(&message, &messageText, &role, &record, &salaryProfileConfig, &t, &operate, &user, &g, &template, &gt, &profile, &tas, &audit, &usergroup, &permissions, &sf, &s, &tas, &sc)
 	initAdmin()
 	initDefaultGroup()
 	initDefaultUserGroup()

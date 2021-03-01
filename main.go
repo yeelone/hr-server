@@ -27,16 +27,16 @@ var (
 	version = pflag.BoolP("version", "v", false, "show version info.")
 )
 
-// @title hr-server Example API
+// @title hr-server API
 // @version 1.0
-// @description hr-server demo
+// @description hr-server
 
-// @contact.name lkong
-// @contact.url http://www.swagger.io/support
-// @contact.email 466701708@qq.com
+// @contact.name yeelone
+// @contact.url https://www.tdongli.com
+// @contact.email yljckh@gmail.com
 
-// @host localhost:8080
-// @BasePath /v1
+// @host localhost:8083
+// @BasePath /
 func main() {
 	pflag.Parse()
 	if *version {
@@ -68,7 +68,6 @@ func main() {
 
 	// Create the Gin engine.
 	g := gin.New()
-
 	// Routes.
 	router.Load(
 		// Cores.

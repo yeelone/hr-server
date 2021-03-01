@@ -2,16 +2,17 @@ package sd
 
 import (
 	"fmt"
-	"github.com/gin-gonic/gin"
-	"github.com/shirou/gopsutil/disk"
-	"github.com/shirou/gopsutil/load"
-	"github.com/shirou/gopsutil/mem"
 	h "hr-server/handler"
 	"io/ioutil"
 	"net/http"
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/gin-gonic/gin"
+	"github.com/shirou/gopsutil/disk"
+	"github.com/shirou/gopsutil/load"
+	"github.com/shirou/gopsutil/mem"
 )
 
 const (
@@ -27,16 +28,16 @@ const (
 // @Accept  json
 // @Produce  json
 // @Success 200 {string} plain "OK"
-// @Router /sd/health [get]
+// @Router /v1/sd/health [get]
 func HealthCheck(c *gin.Context) {
 	_, disk := readDisk()
 	_, ram := readRAM()
 	_, cpu := readCPU()
 
-	h.SendResponse(c, nil, CreateResponse{Disk:disk,CPU:cpu,RAM:ram})
+	h.SendResponse(c, nil, CreateResponse{Disk: disk, CPU: cpu, RAM: ram})
 }
 
-func readDisk() (status int ,health Health ) {
+func readDisk() (status int, health Health) {
 	u, _ := disk.Usage("/")
 
 	health.UsedMB = int(u.Used) / MB
@@ -48,10 +49,10 @@ func readDisk() (status int ,health Health ) {
 	status = http.StatusOK
 	//text := "OK"
 
-	if health.UsedPercent  >= 95 {
+	if health.UsedPercent >= 95 {
 		status = http.StatusOK
 		//text = "CRITICAL"
-	} else if health.UsedPercent  >= 90 {
+	} else if health.UsedPercent >= 90 {
 		status = http.StatusTooManyRequests
 		//text = "WARNING"
 	}
@@ -60,7 +61,7 @@ func readDisk() (status int ,health Health ) {
 	return status, health
 }
 
-func readRAM() (status int ,health Health ) {
+func readRAM() (status int, health Health) {
 	u, _ := mem.VirtualMemory()
 
 	health.UsedMB = int(u.Used) / MB
@@ -71,9 +72,9 @@ func readRAM() (status int ,health Health ) {
 
 	status = http.StatusOK
 
-	if health.UsedPercent  >= 95 {
+	if health.UsedPercent >= 95 {
 		status = http.StatusInternalServerError
-	} else if health.UsedPercent  >= 90 {
+	} else if health.UsedPercent >= 90 {
 		status = http.StatusTooManyRequests
 	}
 
@@ -81,12 +82,11 @@ func readRAM() (status int ,health Health ) {
 	return status, health
 }
 
-func readCPU() (status int ,health Health ) {
+func readCPU() (status int, health Health) {
 	a, _ := load.Avg()
 	health.Load1 = a.Load1
 	health.Load5 = a.Load5
 	health.Load15 = a.Load15
-
 
 	return status, health
 }
@@ -97,10 +97,10 @@ func readCPU() (status int ,health Health ) {
 // @Accept  json
 // @Produce  json
 // @Success 200 {string} plain "OK - Free space: 17233MB (16GB) / 51200MB (50GB) | Used: 33%"
-// @Router /sd/disk [get]
+// @Router /v1/sd/disk [get]
 func DiskCheck(c *gin.Context) {
 	status, data := readDisk()
-	h.SendResponse(c, nil, CreateResponse{Status:status, Disk:data})
+	h.SendResponse(c, nil, CreateResponse{Status: status, Disk: data})
 }
 
 func getCPUSample() (idle, total uint64) {
@@ -109,7 +109,7 @@ func getCPUSample() (idle, total uint64) {
 		return
 	}
 	lines := strings.Split(string(contents), "\n")
-	for _, line := range(lines) {
+	for _, line := range lines {
 		fields := strings.Fields(line)
 		if fields[0] == "cpu" {
 			numFields := len(fields)
@@ -135,7 +135,7 @@ func getCPUSample() (idle, total uint64) {
 // @Accept  json
 // @Produce  json
 // @Success 200 {string} plain "CRITICAL - Load average: 1.78, 1.99, 2.02 | Cores: 2"
-// @Router /sd/cpu [get]
+// @Router /v1/sd/cpu [get]
 func CPUCheck(c *gin.Context) {
 	idle0, total0 := getCPUSample()
 	time.Sleep(3 * time.Second)
@@ -148,7 +148,7 @@ func CPUCheck(c *gin.Context) {
 	health := Health{}
 	health.CpuUsage = cpuUsage
 	health.CpuTotal = totalTicks
-	h.SendResponse(c, nil, CreateResponse{CPU:health})
+	h.SendResponse(c, nil, CreateResponse{CPU: health})
 }
 
 // @Summary Checks the ram usage
@@ -157,8 +157,8 @@ func CPUCheck(c *gin.Context) {
 // @Accept  json
 // @Produce  json
 // @Success 200 {string} plain "OK - Free space: 402MB (0GB) / 8192MB (8GB) | Used: 4%"
-// @Router /sd/ram [get]
+// @Router /v1/sd/ram [get]
 func RAMCheck(c *gin.Context) {
 	status, data := readRAM()
-	h.SendResponse(c, nil, CreateResponse{Status:status, RAM:data})
+	h.SendResponse(c, nil, CreateResponse{Status: status, RAM: data})
 }

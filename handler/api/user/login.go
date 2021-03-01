@@ -2,11 +2,6 @@ package user
 
 import (
 	"encoding/csv"
-	"github.com/axgle/mahonia"
-	"github.com/dchest/captcha"
-	"github.com/gin-gonic/gin"
-	"github.com/lexkong/log"
-	"github.com/spf13/viper"
 	h "hr-server/handler"
 	"hr-server/model"
 	"hr-server/pkg/auth"
@@ -16,14 +11,22 @@ import (
 	"io"
 	"os"
 	"strings"
+
+	"github.com/axgle/mahonia"
+	"github.com/dchest/captcha"
+	"github.com/gin-gonic/gin"
+	"github.com/lexkong/log"
+	"github.com/spf13/viper"
 )
 
 // @Summary Login generates the authentication token
 // @Produce  json
 // @Param username body string true "Username"
 // @Param password body string true "Password"
-// @Success 200 {string} json "{"code":0,"message":"OK","data":{"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1MjgwMTY5MjIsImlkIjowLCJuYmYiOjE1MjgwMTY5MjIsInVzZXJuYW1lIjoiYWRtaW4ifQ.LjxrK9DuAwAzUD8-9v43NzWBN7HXsSLfebw92DKd1JQ"}}"
-// @Router /login [post]
+// @Param CaptchaId body string true "CaptchaId"
+// @Param CaptchaValue body string true "CaptchaValue"
+// @Success 200 {string} json "{"code":0,"message":"OK","data":{"token":"yourtoken"}}"
+// @Router /api/login [post]
 func Login(c *gin.Context) {
 	// Binding the data with the user struct.
 	var r CreateRequest
@@ -84,8 +87,8 @@ func Login(c *gin.Context) {
 	permissions := getRolePermissionFromCSVFile(role.Name)
 
 	h.SendResponse(c, nil, model.Token{
-		Token: t,
-		User:  d,
+		Token:       t,
+		User:        d,
 		Permissions: getPermissionFieldsFromConf(role.Name, permissions),
 	})
 }
@@ -93,7 +96,6 @@ func Login(c *gin.Context) {
 func Logout(c *gin.Context) {
 	h.SendResponse(c, nil, "Successfully logged out")
 }
-
 
 func getPermissionFieldsFromConf(subject string, permissions map[string]model.Resource) map[string]map[string]model.Resource {
 

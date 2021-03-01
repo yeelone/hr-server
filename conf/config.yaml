@@ -1,8 +1,8 @@
 version: 1.0.1
 runmode: debug                 # 开发模式, debug, release, test
-addr: :8080                 # HTTP绑定端口
+addr: :8083                 # HTTP绑定端口
 name: hr              # API Server的名字
-url: http://127.0.0.1:8080   # pingServer函数请求的API服务器的ip:port
+url: http://127.0.0.1:8083   # pingServer函数请求的API服务器的ip:port
 max_ping_count: 10           # pingServer函数try的次数
 jwt_secret: Rtg8BPKNEf2mB4mgvKONGPZZQSaJWNLijxR42qRgq0iBb5
 hasid_salt: Rtg8BPKNEf2mB4mgvKONGPZZQSaJWNLijxR42qRgq0iBb5
@@ -10,7 +10,7 @@ default_password : '000000'
 company: 
   name: "新阶段"
 tls:
-  addr: :8081
+  addr: :8084
   cert: conf/server.crt
   key: conf/server.key
 log:
@@ -25,7 +25,7 @@ log:
 db:
   name: db_hr
   addr: 127.0.0.1
-  port: 5432
+  port: 5433
   username: postgres
   password: 123456
 docker_db:
