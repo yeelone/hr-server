@@ -22,6 +22,8 @@ require (
 	github.com/lexkong/log v0.0.0-20180607165131-972f9cd951fc
 	github.com/lib/pq v1.3.0
 	github.com/mailru/easyjson v0.7.7 // indirect
+	github.com/robfig/cron v1.2.0 // indirect
+	github.com/robfig/cron/v3 v3.0.0 // indirect
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
 	github.com/satori/go.uuid v1.2.0
 	github.com/shirou/gopsutil v2.20.1+incompatible

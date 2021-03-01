@@ -4,16 +4,15 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"net/http"
-	_ "net/http/pprof"
-	"os"
-	"time"
-
 	"hr-server/config"
 	"hr-server/model"
 	v "hr-server/pkg/version"
 	"hr-server/router"
 	"hr-server/router/middleware"
+	"net/http"
+	_ "net/http/pprof"
+	"os"
+	"time"
 
 	"github.com/gin-gonic/contrib/sessions"
 	"github.com/gin-gonic/gin"
@@ -38,6 +37,8 @@ var (
 // @host localhost:8083
 // @BasePath /
 func main() {
+	cronWork()
+
 	pflag.Parse()
 	if *version {
 		v := v.Get()
@@ -78,7 +79,6 @@ func main() {
 
 		sessions.Sessions("mysession", store),
 	)
-
 	// Ping the server to make sure the router is working.
 	go func() {
 		if err := pingServer(); err != nil {
@@ -100,6 +100,14 @@ func main() {
 	log.Infof("Start to listening the incoming requests on http address: %s", viper.GetString("addr"))
 	log.Info(http.ListenAndServe(viper.GetString("addr"), g).Error())
 }
+
+// func cronWork() {
+// 	c := cron.New()
+// 	c.AddFunc("@every 3s", func() { log.Info("every 3 seconds executing") })
+
+// 	go c.Start()
+// 	defer c.Stop()
+// }
 
 // pingServer pings the http server to make sure the router is working.
 func pingServer() error {

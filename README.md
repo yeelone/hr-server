@@ -17,6 +17,15 @@ GroupTransfer
 1、增加版本号
 2、
 
+## 展图
+![image](https://wx4.sinaimg.cn/mw690/6547935dgy1glzak7s4i8j21b30u0n9q.jpg) 
 
 ## 欢迎
 [访问主页](https://tdongli.com/)
+
+### [支持作者，下载原语英语APP]
+[原语英语 APP STORE ](https://apps.apple.com/cn/app/id1550241884)
+
+![image](https://wx1.sinaimg.cn/mw690/6547935dgy1gn84ll92kbj206y06yq4b.jpg)
+
+![image](https://wx2.sinaimg.cn/mw690/6547935dgy1gn84l5xr6pj20u01hcwkx.jpg) 
