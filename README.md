@@ -17,6 +17,9 @@ GroupTransfer
 1、增加版本号
 2、
 
+## 部署
+[部署体验](https://juejin.cn/post/6932129625166479367)
+
 ## 展图
 ![image](https://wx4.sinaimg.cn/mw690/6547935dgy1glzak7s4i8j21b30u0n9q.jpg) 
 
