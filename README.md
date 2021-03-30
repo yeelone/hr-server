@@ -26,9 +26,12 @@ GroupTransfer
 ## 欢迎
 [访问主页](https://tdongli.com/)
 
-### [支持作者，下载原语英语APP]
-[原语英语 APP STORE ](https://apps.apple.com/cn/app/id1550241884)
+### [支持作者，下载领域英语APP]
+[领域英语 APP STORE ](https://apps.apple.com/cn/app/id1550241884)
 
-![image](https://wx1.sinaimg.cn/mw690/6547935dgy1gn84ll92kbj206y06yq4b.jpg)
+![ic_launcher.png](https://i.loli.net/2021/03/31/VMfApJBv8RmFWdl.png)
 
-![image](https://wx2.sinaimg.cn/mw690/6547935dgy1gn84l5xr6pj20u01hcwkx.jpg) 
+![image](https://i.loli.net/2021/03/31/rRgu7HNDAzhYbWm.png) 
+
+
+![微信图片_20210331003708.jpg.jpg](https://i.loli.net/2021/03/31/KTlE2gtxdP69srB.jpg)
